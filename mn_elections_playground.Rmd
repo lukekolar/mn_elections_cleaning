@@ -1,0 +1,58 @@
+---
+title: "mn_elections_playground"
+author: "Luke Kolar"
+date: "10/3/2020"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+
+```
+
+```{r}
+
+elec.col.names <- c("state", "county_id", "precinct_name",
+                    "office_id", "office_name", "district", 
+                    "candidate_order_code", "candidate_name",
+                    "suffix", "incumbent_code", "party_affiliation",
+                    "num_precincts_reporting", "total_num_precincts_voting",
+                    "candidate_votes", "candidate_percent_vote", "total_race_votes")
+
+sb_2018 <- read.delim("2018_general_schoolboard.txt", 
+  sep = ";", header = FALSE, col.names = elec.col.names)
+
+sb_2018 %>% 
+  mutate(sd_code = str_extract(office_name, "\\([^()]+\\)")) %>% 
+  mutate(office_name = gsub("[()]", "", office_name)) %>% 
+  mutate(office_name = str_remove(office_name, sd_code))
+  mutate(sd_code = gsub("[(]", "", sd_code)) %>% 
+  mutate(sd_code = gsub("[)]", "", sd_code)) %>% 
+  select(office_name, sd_code, district, candidate_name, )
+
+sb_2018
+
+
+# all precincts reporting?
+sb_2018 %>% 
+  mutate(test = num_precincts_reporting - total_num_precincts_voting) %>% 
+  group_by(test) %>% 
+  summarize(n = n())
+
+# all non-partisan?
+sb_2018 %>% 
+  group_by(party_affiliation) %>% 
+  summarize(n = n())
+
+# no suffixes?
+sb_2018 %>% 
+  group_by(suffix) %>% 
+  summarize(n = n())
+
+# incumbent codes?
+sb_2018 %>% 
+  group_by(incumbent_code) %>% 
+  summarize(n = n())
+
+```
+

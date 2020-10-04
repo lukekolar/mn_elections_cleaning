@@ -34,32 +34,28 @@ test <- sb_2018 %>%
          candidate_votes, candidate_percent_vote, total_race_votes) %>% 
   mutate(elect = str_extract(office_name, "(?i)(?<=Elect\\D)\\d+")) %>% 
   mutate(office_name = str_remove(office_name, "Elect [^.]*$")) %>% 
-  mutate(district = str_extract(office_name, dist.names)) %>%
-  mutate(office_name = str_remove(office_name, dist.names))
+  mutate(dist_num = str_extract(office_name, "(?i)(?<=District\\D)\\d+")) %>%
+  mutate(office_name = str_remove(office_name, "(?i)(?<=District\\D)\\d+")) %>% 
   mutate(position = str_extract(office_name, "(?i)(?<=Position\\D)\\d+")) %>% 
-  mutate(office_name = str_remove(office_name, "Position [^.]*$"))
-  mutate(district = ifelse(district %in% dist.names, district,
-           str_extract(office_name, "(?i)(?<=District\\D)\\d+")))
+  mutate(office_name = str_remove(office_name, "Position [^.]*$")) %>% 
+  mutate(dist_name = str_extract(office_name, dist.names))
            
            
            
            
-           ifelse(isTRUE(grepl("Fairfax", office_name, fixed = TRUE)), "Fairfax",
-                  ifelse(isTRUE(grepl("Gibbon", office_name, fixed = TRUE)), "Gibbon", 
-                         ifelse(isTRUE(grepl("Winthrop", office_name, fixed = TRUE)), "Winthrop", 
-                                ifelse(isTRUE(grepl("District", office_name, fixed = TRUE)), 
-                                       gsub("([0-9]+).*$", "\\1", office_name), "NA")))))
+
 
 
 isTRUE(grepl(test$office_name, "Fairfax", fixed = TRUE))
 
 ?grepl
 
-test
+sb_2018 %>% View()
 
-sb_2018 %>% 
-  group_by(office_name, district) %>% 
+test %>% 
+  group_by(office_name, dist_name) %>% 
   summarize(n = n())
+
 
 
 # all precincts reporting?

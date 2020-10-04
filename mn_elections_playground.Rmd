@@ -22,15 +22,44 @@ elec.col.names <- c("state", "county_id", "precinct_name",
 sb_2018 <- read.delim("2018_general_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names)
 
-sb_2018 %>% 
+dist.names <- c("Fairfax", "Gibbon", "Winthrop")
+
+test <- sb_2018 %>% 
   mutate(sd_code = str_extract(office_name, "\\([^()]+\\)")) %>% 
   mutate(office_name = gsub("[()]", "", office_name)) %>% 
-  mutate(office_name = str_remove(office_name, sd_code))
+  mutate(office_name = str_remove(office_name, sd_code)) %>% 
   mutate(sd_code = gsub("[(]", "", sd_code)) %>% 
   mutate(sd_code = gsub("[)]", "", sd_code)) %>% 
-  select(office_name, sd_code, district, candidate_name, )
+  select(office_name, sd_code, candidate_name, total_num_precincts_voting,
+         candidate_votes, candidate_percent_vote, total_race_votes) %>% 
+  mutate(elect = str_extract(office_name, "(?i)(?<=Elect\\D)\\d+")) %>% 
+  mutate(office_name = str_remove(office_name, "Elect [^.]*$")) %>% 
+  mutate(district = str_extract(office_name, dist.names)) %>%
+  mutate(office_name = str_remove(office_name, dist.names))
+  mutate(position = str_extract(office_name, "(?i)(?<=Position\\D)\\d+")) %>% 
+  mutate(office_name = str_remove(office_name, "Position [^.]*$"))
+  mutate(district = ifelse(district %in% dist.names, district,
+           str_extract(office_name, "(?i)(?<=District\\D)\\d+")))
+           
+           
+           
+           
+           ifelse(isTRUE(grepl("Fairfax", office_name, fixed = TRUE)), "Fairfax",
+                  ifelse(isTRUE(grepl("Gibbon", office_name, fixed = TRUE)), "Gibbon", 
+                         ifelse(isTRUE(grepl("Winthrop", office_name, fixed = TRUE)), "Winthrop", 
+                                ifelse(isTRUE(grepl("District", office_name, fixed = TRUE)), 
+                                       gsub("([0-9]+).*$", "\\1", office_name), "NA")))))
 
-sb_2018
+
+isTRUE(grepl(test$office_name, "Fairfax", fixed = TRUE))
+
+?grepl
+
+test
+
+sb_2018 %>% 
+  group_by(office_name, district) %>% 
+  summarize(n = n())
 
 
 # all precincts reporting?

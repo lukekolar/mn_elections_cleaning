@@ -22,27 +22,14 @@ elec.col.names <- c("state", "county_id", "precinct_name",
 sb_2018 <- read.delim("2018_general_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names)
 
+
 dist.names <- c("Fairfax", "Gibbon", "Winthrop")
 
-test <- sb_2018 %>% 
-  mutate(sd_code = str_extract(office_name, "\\([^()]+\\)")) %>% 
-  mutate(office_name = gsub("[()]", "", office_name)) %>% 
-  mutate(office_name = str_remove(office_name, sd_code)) %>% 
-  mutate(sd_code = gsub("[(]", "", sd_code)) %>% 
-  mutate(sd_code = gsub("[)]", "", sd_code)) %>% 
-  select(office_name, sd_code, candidate_name, total_num_precincts_voting,
-         candidate_votes, candidate_percent_vote, total_race_votes) %>% 
-  mutate(elect = str_extract(office_name, "(?i)(?<=Elect\\D)\\d+")) %>% 
-  mutate(office_name = str_remove(office_name, "Elect [^.]*$")) %>% 
-  mutate(dist_num = str_extract(office_name, "(?i)(?<=District\\D)\\d+")) %>%
-  mutate(office_name = str_remove(office_name, "(?i)(?<=District\\D)\\d+")) %>% 
-  mutate(position = str_extract(office_name, "(?i)(?<=Position\\D)\\d+")) %>% 
-  mutate(office_name = str_remove(office_name, "Position [^.]*$")) %>% 
-  mutate(dist_name = str_extract(office_name, dist.names))
+test <- sb_2018
            
            
            
-           
+# sd_code, elect_num, dist_name, dist_num, position        
 
 
 
@@ -53,7 +40,7 @@ isTRUE(grepl(test$office_name, "Fairfax", fixed = TRUE))
 sb_2018 %>% View()
 
 test %>% 
-  group_by(office_name, dist_name) %>% 
+  group_by(office_name, district_name) %>% 
   summarize(n = n())
 
 
@@ -80,4 +67,31 @@ sb_2018 %>%
   summarize(n = n())
 
 ```
+
+
+```{r}
+
+elec.col.names <- c("state", "county_id", "precinct_name",
+                    "office_id", "office_name", "district", 
+                    "candidate_order_code", "candidate_name",
+                    "suffix", "incumbent_code", "party_affiliation",
+                    "num_precincts_reporting", "total_num_precincts_voting",
+                    "candidate_votes", "candidate_percent_vote", "total_race_votes")
+
+dist.names <- c("Fairfax", "Gibbon", "Winthrop")
+
+board_elections <- 
+  read_delim("https://electionresultsfiles.sos.state.mn.us/20181106/sdrace.txt", 
+  delim = ";", col_names = elec.col.names)
+
+board_elections %>% 
+  mutate(dist_name = str_extract(office_name, dist.names)) %>% 
+  group_by(office_name, dist_name) %>% 
+  summarize(n = n())
+  
+
+
+```
+
+
 

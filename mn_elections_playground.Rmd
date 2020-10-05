@@ -6,44 +6,21 @@ output: html_document
 ---
 
 ```{r}
-library(tidyverse)
+library(geojsonio)
+library(rgdal)
+library(raster)
+library(rgeos)
+library(cowplot)
+library(rcartocolor)
+library(zipcodeR)
+library(broom)
+library(sf)
+library(janitor)
 
+library(tidyverse)
 ```
 
 ```{r}
-
-elec.col.names <- c("state", "county_id", "precinct_name",
-                    "office_id", "office_name", "district", 
-                    "candidate_order_code", "candidate_name",
-                    "suffix", "incumbent_code", "party_affiliation",
-                    "num_precincts_reporting", "total_num_precincts_voting",
-                    "candidate_votes", "candidate_percent_vote", "total_race_votes")
-
-sb_2018 <- read.delim("2018_general_schoolboard.txt", 
-  sep = ";", header = FALSE, col.names = elec.col.names)
-
-
-dist.names <- c("Fairfax", "Gibbon", "Winthrop")
-
-test <- sb_2018
-           
-           
-           
-# sd_code, elect_num, dist_name, dist_num, position        
-
-
-
-isTRUE(grepl(test$office_name, "Fairfax", fixed = TRUE))
-
-?grepl
-
-sb_2018 %>% View()
-
-test %>% 
-  group_by(office_name, district_name) %>% 
-  summarize(n = n())
-
-
 
 # all precincts reporting?
 sb_2018 %>% 
@@ -78,20 +55,13 @@ elec.col.names <- c("state", "county_id", "precinct_name",
                     "num_precincts_reporting", "total_num_precincts_voting",
                     "candidate_votes", "candidate_percent_vote", "total_race_votes")
 
-dist.names <- c("Fairfax", "Gibbon", "Winthrop")
-
-# board_elections <- 
-#   read_delim("https://electionresultsfiles.sos.state.mn.us/20181106/sdrace.txt", 
-#   delim = ";", col_names = elec.col.names)
-
 sb_2018 <- read.delim("2018_general_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names)
 
-sb_2018 %>% 
+sb_2018_clean <- sb_2018 %>% 
   select(office_name, candidate_name, total_num_precincts_voting,
          candidate_votes, candidate_percent_vote, total_race_votes) %>% 
   mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
-  mutate(office_name = str_remove(office_name, "Special Election for ")) %>% 
   mutate(position = ifelse(grepl("Position", office_name), 
                            str_match(office_name, "(?<=Position )[:digit:]*"), 
                            "at-large")) %>% 
@@ -103,18 +73,63 @@ sb_2018 %>%
   mutate(elect = ifelse(grepl("Elect [[:digit:]]", office_name), 
                         str_match(office_name, "(?<=Elect )[:digit:]*"),
                         1)) %>% 
-  mutate(sd = ifelse(grepl("ISD", office_name), 
-                     paste0("ISD ", str_extract(office_name, "(?<=ISD #)[:digit:]*")),
+  mutate(sd_type = ifelse(grepl("ISD", office_name), "ISD",
+                          ifelse(grepl("SDD", office_name), "SSD", "CSD"))) %>% 
+  mutate(sd_code = ifelse(sd_type == "ISD", 1,
+                          ifelse(sd_type == "SSD", 3, 2))) %>% 
+  mutate(sd_code = sprintf("%02d", sd_code)) %>% 
+  mutate(sd_num = ifelse(grepl("ISD", office_name), 
+                     str_extract(office_name, "(?<=ISD #)[:digit:]*"),
                      ifelse(grepl("SSD", office_name), 
-                            paste0("SSD ", str_extract(office_name, "(?<=SSD #)[:digit:]*")),
+                            str_extract(office_name, "(?<=SSD #)[:digit:]*"),
                             "none"))) %>% 
-  group_by(office_name, sd, special, position, district, elect) %>%
-  summarize(n = n()) %>% View
+  mutate(sd_num = as.numeric(sd_num)) %>% 
+  mutate(sd_num = sprintf("%04d", sd_num)) %>% 
+  mutate(elect = as.numeric(elect)) %>% 
+  select(candidate_name, sd_num, sd_code, sd_type, total_num_precincts_voting, elect, 
+         position, district, special, office_name)
   
+sb_2018_clean_grouped <- sb_2018_clean %>% 
+  group_by(sd_num, sd_code, total_num_precincts_voting) %>% 
+  summarise(num_candidates = n()) %>% 
+  ungroup()
+
+sb_2018_clean_grouped
+
+```
+
+```{r}
+
+school_dist <- readOGR( 
+  dsn = paste0(getwd(),"/shp_bdry_school_district_boundaries/"), 
+  layer = "school_district_boundaries",
+  verbose = FALSE) 
+
+school_dist_new1 <- spTransform(school_dist, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+school_dist_new2 <- st_as_sf(school_dist_new1) %>% 
+  rename(sd_code = UNI_TYP,
+         sd_num = UNI_MAJ,
+         dist_name = UNI_NAM) %>% clean_names() %>%
+  mutate(sd_num = sprintf("%04d", sd_num),
+         sd_code = sprintf("%02d", sd_code)) %>% 
+  select(sd_code, sd_num, dist_name, sqmiles, acres, geometry) 
   
+school_dist_elections <- school_dist_new2 %>% 
+  full_join(sb_2018_clean_grouped, by = c("sd_code", "sd_num"))
+
+ggplot(school_dist_elections, aes(fill = num_candidates/total_num_precincts_voting)) + 
+  geom_sf(color = "grey30", lwd = 0.25) + 
+  theme_void() + scale_fill_gradient(low = "white", high = "red")
+
+
+
+glimpse(school_dist_new2)
 
 
 ```
+
 
 
 

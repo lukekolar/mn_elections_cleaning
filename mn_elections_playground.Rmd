@@ -80,14 +80,37 @@ elec.col.names <- c("state", "county_id", "precinct_name",
 
 dist.names <- c("Fairfax", "Gibbon", "Winthrop")
 
-board_elections <- 
-  read_delim("https://electionresultsfiles.sos.state.mn.us/20181106/sdrace.txt", 
-  delim = ";", col_names = elec.col.names)
+# board_elections <- 
+#   read_delim("https://electionresultsfiles.sos.state.mn.us/20181106/sdrace.txt", 
+#   delim = ";", col_names = elec.col.names)
 
-board_elections %>% 
-  mutate(dist_name = str_extract(office_name, dist.names)) %>% 
-  group_by(office_name, dist_name) %>% 
-  summarize(n = n())
+sb_2018 <- read.delim("2018_general_schoolboard.txt", 
+  sep = ";", header = FALSE, col.names = elec.col.names)
+
+sb_2018 %>% 
+  select(office_name, candidate_name, total_num_precincts_voting,
+         candidate_votes, candidate_percent_vote, total_race_votes) %>% 
+  mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
+  mutate(office_name = str_remove(office_name, "Special Election for ")) %>% 
+  mutate(position = ifelse(grepl("Position", office_name), 
+                           str_match(office_name, "(?<=Position )[:digit:]*"), 
+                           "at-large")) %>% 
+  mutate(district = ifelse(grepl("District [[:digit:]]", office_name), 
+                           str_match(office_name, "(?<=District )[:digit:]*"), 
+                           ifelse(grepl("District", office_name), 
+                                  str_match(office_name, 
+                                            "(?<=Member ).*(?= District)"), NA))) %>% 
+  mutate(elect = ifelse(grepl("Elect [[:digit:]]", office_name), 
+                        str_match(office_name, "(?<=Elect )[:digit:]*"),
+                        1)) %>% 
+  mutate(sd = ifelse(grepl("ISD", office_name), 
+                     paste0("ISD ", str_extract(office_name, "(?<=ISD #)[:digit:]*")),
+                     ifelse(grepl("SSD", office_name), 
+                            paste0("SSD ", str_extract(office_name, "(?<=SSD #)[:digit:]*")),
+                            "none"))) %>% 
+  group_by(office_name, sd, special, position, district, elect) %>%
+  summarize(n = n()) %>% View
+  
   
 
 

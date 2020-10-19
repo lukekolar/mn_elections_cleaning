@@ -181,7 +181,11 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
   
 }
 
-clean_county(2018, "general") %>% View
+View(county_ids)
+
+clean_county(2010, "general") %>% filter(county_id == 18) %>% 
+  select(office_name, district, candidate_name, candidate_votes, 
+         candidate_percent_vote, special) %>% View
 
 ```
 

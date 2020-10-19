@@ -1,0 +1,75 @@
+MN;10;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919003;JULIANNE ORTMAN                                ;;;NP ;   5; 565;    777;39.14;   1985
+MN;10;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919005;BRAD JOHNSON                                   ;;;NP ;   5; 565;    403;20.30;   1985
+MN;10;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919004;DONALD T SMITH                                 ;;;NP ;   5; 565;    103; 5.19;   1985
+MN;10;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919002;KATHLEEN E PECK                                ;;;NP ;   5; 565;    317;15.97;   1985
+MN;10;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919001;CONRAD FISKNESS                                ;;;NP ;   5; 565;    385;19.40;   1985
+MN;62;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919003;DAVID L CHRISTIANSON                           ;;;NP ;  24; 565;   2168;25.31;   8566
+MN;62;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919001;RICHARD A. BOKOVOY                             ;;;NP ;  24; 565;    966;11.28;   8566
+MN;62;;0391;COUNTY COMMISSIONER DISTRICT 1                   ;01 ;03919002;TONY L. BENNETT                                ;;;NP ;  24; 565;   5432;63.41;   8566
+MN;10;;0392;COUNTY COMMISSIONER DISTRICT 2                   ;02 ;03929003;PAUL NEUMANN                                   ;;;NP ;   7; 296;    421;30.77;   1368
+MN;10;;0392;COUNTY COMMISSIONER DISTRICT 2                   ;02 ;03929004;MARK DUDEK                                     ;;;NP ;   7; 296;     63; 4.61;   1368
+MN;10;;0392;COUNTY COMMISSIONER DISTRICT 2                   ;02 ;03929002;RANDALL (RANDY) SCHULTZ                        ;;;NP ;   7; 296;    280;20.47;   1368
+MN;10;;0392;COUNTY COMMISSIONER DISTRICT 2                   ;02 ;03929001;HARLAN DOBRATZ                                 ;;;NP ;   7; 296;    604;44.15;   1368
+MN;02;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939003;JERRY HEIM                                     ;;;NP ;   0; 463;      0; 0.00;      0
+MN;02;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939004;EDGAR N HANSGEN                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;02;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939002;CYRIL SPELTZ                                   ;;;NP ;   0; 463;      0; 0.00;      0
+MN;02;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;CHARLES H MEYER                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;02;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;RONALD STAPLES                                 ;;;NP ;   0; 463;      0; 0.00;      0
+MN;10;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939003;JERRY HEIM                                     ;;;NP ;   0; 463;      0; 0.00;      0
+MN;10;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939004;EDGAR N HANSGEN                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;10;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939002;CYRIL SPELTZ                                   ;;;NP ;   0; 463;      0; 0.00;      0
+MN;10;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;CHARLES H MEYER                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;10;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;RONALD STAPLES                                 ;;;NP ;   0; 463;      0; 0.00;      0
+MN;19;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939003;JERRY HEIM                                     ;;;NP ;   0; 463;      0; 0.00;      0
+MN;19;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939004;EDGAR N HANSGEN                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;19;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939002;CYRIL SPELTZ                                   ;;;NP ;   0; 463;      0; 0.00;      0
+MN;19;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;CHARLES H MEYER                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;19;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;RONALD STAPLES                                 ;;;NP ;   0; 463;      0; 0.00;      0
+MN;27;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939003;JERRY HEIM                                     ;;;NP ;   0; 463;      0; 0.00;      0
+MN;27;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939004;EDGAR N HANSGEN                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;27;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939002;CYRIL SPELTZ                                   ;;;NP ;   0; 463;      0; 0.00;      0
+MN;27;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;CHARLES H MEYER                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;27;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;RONALD STAPLES                                 ;;;NP ;   0; 463;      0; 0.00;      0
+MN;71;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939003;JERRY HEIM                                     ;;;NP ;   0; 463;      0; 0.00;      0
+MN;71;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939004;EDGAR N HANSGEN                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;71;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939002;CYRIL SPELTZ                                   ;;;NP ;   0; 463;      0; 0.00;      0
+MN;71;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;CHARLES H MEYER                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;71;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;RONALD STAPLES                                 ;;;NP ;   0; 463;      0; 0.00;      0
+MN;82;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939003;JERRY HEIM                                     ;;;NP ;   0; 463;      0; 0.00;      0
+MN;82;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939004;EDGAR N HANSGEN                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;82;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939002;CYRIL SPELTZ                                   ;;;NP ;   0; 463;      0; 0.00;      0
+MN;82;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;CHARLES H MEYER                                ;;;NP ;   0; 463;      0; 0.00;      0
+MN;82;;0393;COUNTY COMMISSIONER DISTRICT 3                   ;03 ;03939001;RONALD STAPLES                                 ;;;NP ;   0; 463;      0; 0.00;      0
+MN;02;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949002;LARRY J. SAYRE                                 ;;;NP ;   0; 298;      0; 0.00;      0
+MN;02;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949001;GERALD (JERRY) LOHER                           ;;;NP ;   0; 298;      0; 0.00;      0
+MN;02;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;DAVE GIBSON                                    ;;;NP ;   0; 298;      0; 0.00;      0
+MN;02;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;GREG BENNETT                                   ;;;NP ;   0; 298;      0; 0.00;      0
+MN;02;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;MONA L. GLASSMANN                              ;;;NP ;   0; 298;      0; 0.00;      0
+MN;02;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949006;KENT NELSON                                    ;;;NP ;   0; 298;      0; 0.00;      0
+MN;27;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949002;LARRY J. SAYRE                                 ;;;NP ;   0; 298;      0; 0.00;      0
+MN;27;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949001;GERALD (JERRY) LOHER                           ;;;NP ;   0; 298;      0; 0.00;      0
+MN;27;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;DAVE GIBSON                                    ;;;NP ;   0; 298;      0; 0.00;      0
+MN;27;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;GREG BENNETT                                   ;;;NP ;   0; 298;      0; 0.00;      0
+MN;27;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;MONA L. GLASSMANN                              ;;;NP ;   0; 298;      0; 0.00;      0
+MN;27;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949006;KENT NELSON                                    ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949002;LARRY J. SAYRE                                 ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949001;GERALD (JERRY) LOHER                           ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;DAVE GIBSON                                    ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;GREG BENNETT                                   ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949003;MONA L. GLASSMANN                              ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0394;COUNTY COMMISSIONER DISTRICT 4                   ;04 ;03949006;KENT NELSON                                    ;;;NP ;   0; 298;      0; 0.00;      0
+MN;70;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959001;JON ULRICH                                     ;;;NP ;   6; 439;    638;44.03;   1449
+MN;70;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959002;ED MACKIE                                      ;;;NP ;   6; 439;    395;27.26;   1449
+MN;70;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959003;TOM WOLF                                       ;;;NP ;   6; 439;    416;28.71;   1449
+MN;71;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959004;RONALD "RON" BOLIN                             ;;;NP ;   4; 439;    102; 8.70;   1172
+MN;71;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959003;STEVE FOSTER                                   ;;;NP ;   4; 439;     81; 6.91;   1172
+MN;71;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959005;LEANDER (LEE) SCHLOSSER                        ;;;NP ;   4; 439;     71; 6.06;   1172
+MN;71;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959006;RACHEL S. LEONARD                              ;;;NP ;   4; 439;    451;38.48;   1172
+MN;71;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959001;LARRY THORESON                                 ;;;NP ;   4; 439;    239;20.39;   1172
+MN;71;;0395;COUNTY COMMISSIONER DISTRICT 5                   ;05 ;03959002;TY BISCHOFF                                    ;;;NP ;   4; 439;    228;19.45;   1172
+MN;62;;0396;COUNTY COMMISSIONER DISTRICT 6                   ;06 ;03969002;STEVE TRIMBLE                                  ;;;NP ;  30;  30;   3987;52.93;   7533
+MN;62;;0396;COUNTY COMMISSIONER DISTRICT 6                   ;06 ;03969001;DINO P. GUERIN                                 ;;;NP ;  30;  30;   1165;15.47;   7533
+MN;62;;0396;COUNTY COMMISSIONER DISTRICT 6                   ;06 ;03969003;JIM MCDONOUGH                                  ;;;NP ;  30;  30;   2381;31.61;   7533
+MN;62;;0397;COUNTY COMMISSIONER DISTRICT 7                   ;07 ;03979001;JAN STEINER                                    ;;;NP ;  28;  98;   2041;22.72;   8983
+MN;62;;0397;COUNTY COMMISSIONER DISTRICT 7                   ;07 ;03979002;MICHAEL "MIKE" PITZEL                          ;;;NP ;  28;  98;   1644;18.30;   8983
+MN;62;;0397;COUNTY COMMISSIONER DISTRICT 7                   ;07 ;03979003;VICTORIA A REINHARDT                           ;;;NP ;  28;  98;   5298;58.98;   8983

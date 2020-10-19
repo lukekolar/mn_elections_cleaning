@@ -1,0 +1,287 @@
+MN;01;;0393;County Commissioner District 3;03;9001;Donald (Don) Niemi;;;NP;18;18;262;46.05;569
+MN;01;;0393;County Commissioner District 3;03;9002;Todd R. Johnson;;;NP;18;18;177;31.11;569
+MN;01;;0393;County Commissioner District 3;03;9003;Robert Marcum;;;NP;18;18;130;22.85;569
+MN;01;;0395;County Commissioner District 5;05;9001;Stephanie "Steph" Payment;;;NP;18;18;209;33.66;621
+MN;01;;0395;County Commissioner District 5;05;9002;Galen N. Tveit (Tweet);;;NP;18;18;157;25.28;621
+MN;01;;0395;County Commissioner District 5;05;9003;Anne Marcotte;;;NP;18;18;255;41.06;621
+MN;02;;0394;County Commissioner District 4;04;9001;Sean Broom;;;NP;21;21;1667;23.94;6964
+MN;02;;0394;County Commissioner District 4;04;9002;Joe Sturdevant;;;NP;21;21;980;14.07;6964
+MN;02;;0394;County Commissioner District 4;04;9003;Adam Davis;;;NP;21;21;910;13.07;6964
+MN;02;;0394;County Commissioner District 4;04;9004;Mandy Meisner;;;NP;21;21;3407;48.92;6964
+MN;04;;0391;County Commissioner District 1;01;9001;Craig Gaasvig;;;NP;13;13;767;53.60;1431
+MN;04;;0391;County Commissioner District 1;01;9002;Natalie Grosfield;;;NP;13;13;442;30.89;1431
+MN;04;;0391;County Commissioner District 1;01;9003;Heather L. Broda;;;NP;13;13;222;15.51;1431
+MN;06;;0395;Special Election for County Commissioner District 5;05;9001;Erick Klepel;;;NP;4;4;95;36.82;258
+MN;06;;0395;Special Election for County Commissioner District 5;05;9002;Stephen Strei;;;NP;4;4;40;15.50;258
+MN;06;;0395;Special Election for County Commissioner District 5;05;9003;Alan Arndt;;;NP;4;4;57;22.09;258
+MN;06;;0395;Special Election for County Commissioner District 5;05;9004;Jeff Klages;;;NP;4;4;66;25.58;258
+MN;07;;0391;County Commissioner District 1;01;9001;Colleen Landkamer;;;NP;6;6;814;59.42;1370
+MN;07;;0391;County Commissioner District 1;01;9002;Katie Boone;;;NP;6;6;368;26.86;1370
+MN;07;;0391;County Commissioner District 1;01;9003;Tamera Marie Hansen;;;NP;6;6;188;13.72;1370
+MN;08;;0395;County Commissioner District 5;05;9001;Derek Tonn;;;NP;13;13;152;12.67;1200
+MN;08;;0395;County Commissioner District 5;05;9002;Lynn Anderson;;;NP;13;13;471;39.25;1200
+MN;08;;0395;County Commissioner District 5;05;9003;Jack Vogel;;;NP;13;13;173;14.42;1200
+MN;08;;0395;County Commissioner District 5;05;9004;Jeffrey Veerkamp;;;NP;13;13;404;33.67;1200
+MN;08;;0404;County Sheriff;;9001;Jason Seidl;;;NP;32;32;3306;54.88;6024
+MN;08;;0404;County Sheriff;;9002;Matt Ibberson;;;NP;32;32;496;8.23;6024
+MN;08;;0404;County Sheriff;;9003;Jason Fairbairn;;;NP;32;32;617;10.24;6024
+MN;08;;0404;County Sheriff;;9004;Jeffrey S. Hohensee;;;NP;32;32;1605;26.64;6024
+MN;09;;0394;County Commissioner District 4;04;9001;Susan K. Zmyslony;;;NP;11;11;623;34.92;1784
+MN;09;;0394;County Commissioner District 4;04;9002;Brenda Martini;;;NP;11;11;61;3.42;1784
+MN;09;;0394;County Commissioner District 4;04;9003;Mark J. Thell;;;NP;11;11;439;24.61;1784
+MN;09;;0394;County Commissioner District 4;04;9004;Randy L. McCuskey;;;NP;11;11;382;21.41;1784
+MN;09;;0394;County Commissioner District 4;04;9005;Michael K. Gay;;;NP;11;11;279;15.64;1784
+MN;10;;0394;County Commissioner District 4;04;9001;Tim Lynch;;;NP;7;7;1148;48.40;2372
+MN;10;;0394;County Commissioner District 4;04;9002;Jeremy Langanki;;;NP;7;7;397;16.74;2372
+MN;10;;0394;County Commissioner District 4;04;9003;Bruce Schwichtenberg;;;NP;7;7;269;11.34;2372
+MN;10;;0394;County Commissioner District 4;04;9004;Frank Long;;;NP;7;7;257;10.83;2372
+MN;10;;0394;County Commissioner District 4;04;9005;Justin Dietrick;;;NP;7;7;301;12.69;2372
+MN;12;;0404;County Sheriff;;9001;Derek Olson;;;NP;25;25;1289;50.99;2528
+MN;12;;0404;County Sheriff;;9002;Shawn Joyce;;;NP;25;25;963;38.09;2528
+MN;12;;0404;County Sheriff;;9003;Brian Hanson;;;NP;25;25;276;10.92;2528
+MN;12;;0405;County Attorney;;9001;Douglas Kluver;;;NP;25;25;814;32.66;2492
+MN;12;;0405;County Attorney;;9002;Krystal M. Lynne;;;NP;25;25;513;20.59;2492
+MN;12;;0405;County Attorney;;9003;Matthew Haugen;;;NP;25;25;1165;46.75;2492
+MN;13;;0391;County Commissioner District 1;01;9001;Jill M. Behnke;;;NP;4;4;406;23.69;1714
+MN;13;;0391;County Commissioner District 1;01;9002;Chris DuBose;;;NP;4;4;497;29.00;1714
+MN;13;;0391;County Commissioner District 1;01;9003;Mac Guptil;;;NP;4;4;126;7.35;1714
+MN;13;;0391;County Commissioner District 1;01;9004;Lyle G. Johnson;;;NP;4;4;390;22.75;1714
+MN;13;;0391;County Commissioner District 1;01;9005;Jolene Wille;;;NP;4;4;295;17.21;1714
+MN;13;;0404;County Sheriff;;9001;Brandon Thyen;;;NP;23;23;4162;47.25;8808
+MN;13;;0404;County Sheriff;;9002;Ron Rollins;;;NP;23;23;1965;22.31;8808
+MN;13;;0404;County Sheriff;;9003;Mark Osland;;;NP;23;23;1090;12.38;8808
+MN;13;;0404;County Sheriff;;9004;J. Carlson;;;NP;23;23;537;6.10;8808
+MN;13;;0404;County Sheriff;;9005;Cory Spencer;;;NP;23;23;1054;11.97;8808
+MN;14;;0394;County Commissioner District 4;04;9001;Kevin Campbell;;;NP;5;5;462;36.55;1264
+MN;14;;0394;County Commissioner District 4;04;9002;Al Gordon;;;NP;5;5;307;24.29;1264
+MN;14;;0394;County Commissioner District 4;04;9003;Mari Dailey;;;NP;5;5;495;39.16;1264
+MN;14;;0404;County Sheriff;;9001;Jason Hicks;;;NP;58;58;1012;13.64;7420
+MN;14;;0404;County Sheriff;;9002;Scott Steffes;;;NP;58;58;1897;25.57;7420
+MN;14;;0404;County Sheriff;;9003;Mark Empting;;;NP;58;58;2843;38.32;7420
+MN;14;;0404;County Sheriff;;9004;Mark Hendrickson;;;NP;58;58;1668;22.48;7420
+MN;15;;0395;County Commissioner District 5;05;9001;Mark Larson;;;NP;8;8;114;46.72;244
+MN;15;;0395;County Commissioner District 5;05;9002;Richard Djernes;;;NP;8;8;47;19.26;244
+MN;15;;0395;County Commissioner District 5;05;9003;Gary Eck;;;NP;8;8;83;34.02;244
+MN;16;;0393;County Commissioner District 3;03;9001;Dave Mills;;;NP;2;2;189;40.91;462
+MN;16;;0393;County Commissioner District 3;03;9002;Mickey Brazell;;;NP;2;2;156;33.77;462
+MN;16;;0393;County Commissioner District 3;03;9003;Jean Marie Modl;;;NP;2;2;117;25.32;462
+MN;16;;0395;County Commissioner District 5;05;9001;Ginny Storlie;;;NP;4;4;193;37.48;515
+MN;16;;0395;County Commissioner District 5;05;9002;Bruce Martinson;;;NP;4;4;150;29.13;515
+MN;16;;0395;County Commissioner District 5;05;9003;Don McKeever;;;NP;4;4;145;28.16;515
+MN;16;;0395;County Commissioner District 5;05;9004;Bruce Zimpel;;;NP;4;4;27;5.24;515
+MN;17;;0391;County Commissioner District 1;01;9001;JON JOHNSON;;;NP;10;10;83;18.00;461
+MN;17;;0391;County Commissioner District 1;01;9002;Larry Anderson;;;NP;10;10;199;43.17;461
+MN;17;;0391;County Commissioner District 1;01;9003;Jim Schmidt;;;NP;10;10;179;38.83;461
+MN;18;;0404;County Sheriff;;9001;Scott Goddard;;;NP;64;64;4463;34.58;12906
+MN;18;;0404;County Sheriff;;9002;Pat Pickar;;;NP;64;64;4533;35.12;12906
+MN;18;;0404;County Sheriff;;9003;Eric P. Klang;;;NP;64;64;3910;30.30;12906
+MN;21;;0392;County Commissioner District 2;02;9001;Judy Backhaus;;;NP;6;6;506;31.63;1600
+MN;21;;0392;County Commissioner District 2;02;9002;Tim Kalina;;;NP;6;6;619;38.69;1600
+MN;21;;0392;County Commissioner District 2;02;9003;James Stratton;;;NP;6;6;475;29.69;1600
+MN;21;;0394;County Commissioner District 4;04;9001;Michael Woods;;;NP;3;3;345;27.71;1245
+MN;21;;0394;County Commissioner District 4;04;9002;Charlie Meyer;;;NP;3;3;648;52.05;1245
+MN;21;;0394;County Commissioner District 4;04;9003;Elizabeth Teeuwen;;;NP;3;3;252;20.24;1245
+MN;23;;0400;County Auditor/Treasurer;;9001;Heidi 'Bly' Jones;;;NP;37;37;1264;48.45;2609
+MN;23;;0400;County Auditor/Treasurer;;9002;Brian Hoff;;;NP;37;37;892;34.19;2609
+MN;23;;0400;County Auditor/Treasurer;;9003;Marc Prestby;;;NP;37;37;453;17.36;2609
+MN;25;;0404;County Sheriff;;9001;Marty Kelly;;;NP;40;40;3822;47.79;7997
+MN;25;;0404;County Sheriff;;9002;Josh Stehr;;;NP;40;40;1232;15.41;7997
+MN;25;;0404;County Sheriff;;9003;Paul Gielau;;;NP;40;40;2943;36.80;7997
+MN;26;;0392;County Commissioner District 2;02;9001;Dwight Walvatne;;;NP;5;5;238;58.05;410
+MN;26;;0392;County Commissioner District 2;02;9002;Troy A. Johnsrud;;;NP;5;5;81;19.76;410
+MN;26;;0392;County Commissioner District 2;02;9003;Paul Jennen;;;NP;5;5;91;22.20;410
+MN;27;;0392;County Commissioner District 2;02;9001;Blong Yang;;;NP;56;56;7593;26.33;28839
+MN;27;;0392;County Commissioner District 2;02;9002;Irene Fernando;;;NP;56;56;9577;33.21;28839
+MN;27;;0392;County Commissioner District 2;02;9003;Natalie Johnson Lee;;;NP;56;56;5649;19.59;28839
+MN;27;;0392;County Commissioner District 2;02;9004;Iyob Waldsmayate;;;NP;56;56;794;2.75;28839
+MN;27;;0392;County Commissioner District 2;02;9005;Tim Bildsoe;;;NP;56;56;5226;18.12;28839
+MN;27;;0394;County Commissioner District 4;04;9001;Peter McLaughlin;;;NP;59;59;16122;45.40;35508
+MN;27;;0394;County Commissioner District 4;04;9002;Angela Conley;;;NP;59;59;14976;42.18;35508
+MN;27;;0394;County Commissioner District 4;04;9003;Megan Kuhl-Stennes;;;NP;59;59;4410;12.42;35508
+MN;27;;0404;County Sheriff;;9001;Dave Hutch;;;NP;422;422;69899;34.57;202195
+MN;27;;0404;County Sheriff;;9002;Rich Stanek;;;NP;422;422;99431;49.18;202195
+MN;27;;0404;County Sheriff;;9003;Joseph Banks;;;NP;422;422;32865;16.25;202195
+MN;28;;0394;County Commissioner District 4;04;9001;Gary Parr;;;NP;6;6;93;10.85;857
+MN;28;;0394;County Commissioner District 4;04;9002;Teresa Walter;;;NP;6;6;241;28.12;857
+MN;28;;0394;County Commissioner District 4;04;9003;Ken Visger;;;NP;6;6;359;41.89;857
+MN;28;;0394;County Commissioner District 4;04;9004;Bob Scanlan;;;NP;6;6;164;19.14;857
+MN;30;;0403;County Recorder;;9001;Susan G. Anderson;;;NP;19;19;1353;24.81;5453
+MN;30;;0403;County Recorder;;9002;Michele (Mickey) Erlandson;;;NP;19;19;1388;25.45;5453
+MN;30;;0403;County Recorder;;9003;Lynette L. Guderian;;;NP;19;19;1338;24.54;5453
+MN;30;;0403;County Recorder;;9004;Karen M. Long;;;NP;19;19;1374;25.20;5453
+MN;30;;0404;County Sheriff;;9001;Wayne Seiberlich;;;NP;19;19;1523;25.39;5999
+MN;30;;0404;County Sheriff;;9002;Christopher Caulk;;;NP;19;19;3721;62.03;5999
+MN;30;;0404;County Sheriff;;9003;John McCarty;;;NP;19;19;755;12.59;5999
+MN;31;;0391;County Commissioner District 1;01;9001;James D. Rasley;;;NP;29;29;746;29.60;2520
+MN;31;;0391;County Commissioner District 1;01;9002;Lori Dowling-Hanson;;;NP;29;29;567;22.50;2520
+MN;31;;0391;County Commissioner District 1;01;9003;Davin Tinquist;;;NP;29;29;1207;47.90;2520
+MN;31;;0404;County Sheriff;;9001;Jeffrey Carlson;;;NP;78;78;2337;20.20;11567
+MN;31;;0404;County Sheriff;;9002;Bryan Johnson;;;NP;78;78;3269;28.26;11567
+MN;31;;0404;County Sheriff;;9003;Ken Weis;;;NP;78;78;1604;13.87;11567
+MN;31;;0404;County Sheriff;;9004;Victor J. Williams;;;NP;78;78;4357;37.67;11567
+MN;31;;0405;County Attorney;;9001;Ellen E. Tholen;;;NP;78;78;2472;21.64;11425
+MN;31;;0405;County Attorney;;9002;John Dimich;;;NP;78;78;3308;28.95;11425
+MN;31;;0405;County Attorney;;9003;Matti R. Adam;;;NP;78;78;5645;49.41;11425
+MN;32;;0394;County Commissioner District 4;04;9001;Mark McCann;;;NP;3;3;76;19.44;391
+MN;32;;0394;County Commissioner District 4;04;9002;Phil Nasby;;;NP;3;3;100;25.58;391
+MN;32;;0394;County Commissioner District 4;04;9003;Donnie Schoenrock;;;NP;3;3;121;30.95;391
+MN;32;;0394;County Commissioner District 4;04;9004;Cheryl Brooks;;;NP;3;3;94;24.04;391
+MN;33;;0395;County Commissioner District 5;05;9001;Kim Smith;;;NP;7;7;209;39.14;534
+MN;33;;0395;County Commissioner District 5;05;9002;Zelly Wellnitz;;;NP;7;7;94;17.60;534
+MN;33;;0395;County Commissioner District 5;05;9003;Craig J. Smith;;;NP;7;7;231;43.26;534
+MN;34;;0391;County Commissioner District 1;01;9001;George "Corky" Berg;;;NP;5;5;592;44.58;1328
+MN;34;;0391;County Commissioner District 1;01;9002;Dale L. Anderson;;;NP;5;5;425;32.00;1328
+MN;34;;0391;County Commissioner District 1;01;9003;Stephen L Iverson;;;NP;5;5;311;23.42;1328
+MN;34;;0393;County Commissioner District 3;03;9001;Duane Hultgren;;;NP;12;12;379;18.66;2031
+MN;34;;0393;County Commissioner District 3;03;9002;Dale H. Anderson;;;NP;12;12;388;19.10;2031
+MN;34;;0393;County Commissioner District 3;03;9003;Bruce Shuck;;;NP;12;12;418;20.58;2031
+MN;34;;0393;County Commissioner District 3;03;9004;Rollie Nissen;;;NP;12;12;846;41.65;2031
+MN;34;;0404;County Sheriff;;9001;Daniel Burns;;;NP;48;48;1909;25.36;7527
+MN;34;;0404;County Sheriff;;9002;Eric Holien;;;NP;48;48;2034;27.02;7527
+MN;34;;0404;County Sheriff;;9003;Todd Neumann;;;NP;48;48;424;5.63;7527
+MN;34;;0404;County Sheriff;;9004;Greg Stehn;;;NP;48;48;3160;41.98;7527
+MN;35;;0395;County Commissioner District 5;05;9001;Alex J. Gustafson;;;NP;11;11;22;8.70;253
+MN;35;;0395;County Commissioner District 5;05;9002;Darrel Johnson;;;NP;11;11;133;52.57;253
+MN;35;;0395;County Commissioner District 5;05;9003;George Hanson;;;NP;11;11;98;38.74;253
+MN;37;;0404;County Sheriff;;9001;Brian D. Benck;;;NP;29;29;540;30.61;1764
+MN;37;;0404;County Sheriff;;9002;Andrew Stock;;;NP;29;29;345;19.56;1764
+MN;37;;0404;County Sheriff;;9003;Allen Anderson;;;NP;29;29;879;49.83;1764
+MN;39;;0393;County Commissioner District 3;03;9001;Linwood "Woody" Fiala;;;NP;5;5;82;37.61;218
+MN;39;;0393;County Commissioner District 3;03;9002;Jim Meikle;;;NP;5;5;32;14.68;218
+MN;39;;0393;County Commissioner District 3;03;9003;Joe Grund;;;NP;5;5;104;47.71;218
+MN;40;;0392;County Commissioner District 2;02;9001;Danny O'Keefe;;;NP;5;5;161;17.48;921
+MN;40;;0392;County Commissioner District 2;02;9002;Brad Collins;;;NP;5;5;78;8.47;921
+MN;40;;0392;County Commissioner District 2;02;9003;Dennis Lambrecht;;;NP;5;5;46;4.99;921
+MN;40;;0392;County Commissioner District 2;02;9004;Joe Schloesser;;;NP;5;5;94;10.21;921
+MN;40;;0392;County Commissioner District 2;02;9005;Anna L. Holicky;;;NP;5;5;132;14.33;921
+MN;40;;0392;County Commissioner District 2;02;9006;Karen Richter;;;NP;5;5;157;17.05;921
+MN;40;;0392;County Commissioner District 2;02;9007;Maureen A. Franek;;;NP;5;5;253;27.47;921
+MN;41;;0404;County Sheriff;;9001;Chad Meester;;;NP;20;20;499;52.97;942
+MN;41;;0404;County Sheriff;;9002;Nathan Nafziger;;;NP;20;20;349;37.05;942
+MN;41;;0404;County Sheriff;;9003;John Spindler;;;NP;20;20;94;9.98;942
+MN;42;;0404;County Sheriff;;9001;Jim Marshall;;;NP;33;33;1437;35.35;4065
+MN;42;;0404;County Sheriff;;9002;Tony Rolling;;;NP;33;33;529;13.01;4065
+MN;42;;0404;County Sheriff;;9003;Steven Louwagie;;;NP;33;33;728;17.91;4065
+MN;42;;0404;County Sheriff;;9004;Eric Wallen;;;NP;33;33;1371;33.73;4065
+MN;44;;0393;County Commissioner District 3;03;9001;Larry Olson;;;NP;2;2;52;37.96;137
+MN;44;;0393;County Commissioner District 3;03;9002;Brad Athmann;;;NP;2;2;31;22.63;137
+MN;44;;0393;County Commissioner District 3;03;9003;Josh Thorpe;;;NP;2;2;54;39.42;137
+MN;44;;0401;County Auditor;;9001;Kevin Andring;;;NP;19;19;198;21.81;908
+MN;44;;0401;County Auditor;;9002;Gloria Winkler;;;NP;19;19;164;18.06;908
+MN;44;;0401;County Auditor;;9003;Tammy Benson;;;NP;19;19;132;14.54;908
+MN;44;;0401;County Auditor;;9004;Cindy Large;;;NP;19;19;198;21.81;908
+MN;44;;0401;County Auditor;;9005;James Lee;;;NP;19;19;216;23.79;908
+MN;46;;0394;County Commissioner District 4;04;9001;Neal Potthoff;;;NP;11;11;161;19.21;838
+MN;46;;0394;County Commissioner District 4;04;9002;Richard Koons;;;NP;11;11;391;46.66;838
+MN;46;;0394;County Commissioner District 4;04;9003;Dan Schmidtke;;;NP;11;11;286;34.13;838
+MN;48;;0405;County Attorney;;9001;Richard D. Osburn;;;NP;25;25;377;10.82;3484
+MN;48;;0405;County Attorney;;9002;Jan Jude;;;NP;25;25;1369;39.29;3484
+MN;48;;0405;County Attorney;;9003;Joe Walsh;;;NP;25;25;1738;49.89;3484
+MN;49;;0400;County Auditor/Treasurer;;9001;Deb Lowe;;;NP;48;48;1767;35.94;4916
+MN;49;;0400;County Auditor/Treasurer;;9002;Tammy (Virnig) Giuliani;;;NP;48;48;836;17.01;4916
+MN;49;;0400;County Auditor/Treasurer;;9003;Ross R Wamre;;;NP;48;48;807;16.42;4916
+MN;49;;0400;County Auditor/Treasurer;;9004;Chelsey Robinson;;;NP;48;48;1506;30.63;4916
+MN;50;;0393;County Commissioner District 3;03;9001;Loren "crow" Bellrichard;;;NP;8;8;72;6.88;1047
+MN;50;;0393;County Commissioner District 3;03;9002;Duane Felt;;;NP;8;8;92;8.79;1047
+MN;50;;0393;County Commissioner District 3;03;9003;Jerry Reinartz;;;NP;8;8;683;65.23;1047
+MN;50;;0393;County Commissioner District 3;03;9004;Penra Grimley;;;NP;8;8;200;19.10;1047
+MN;50;;0400;County Auditor/Treasurer;;9001;Steve Reinartz;;;NP;40;40;1225;29.82;4108
+MN;50;;0400;County Auditor/Treasurer;;9002;Scott A. Felten;;;NP;40;40;1947;47.40;4108
+MN;50;;0400;County Auditor/Treasurer;;9003;Donna Welsh;;;NP;40;40;936;22.78;4108
+MN;51;;0393;County Commissioner District 3;03;9001;Roger A. Lindmeier;;;NP;8;8;77;13.73;561
+MN;51;;0393;County Commissioner District 3;03;9002;Dennis Welgraven;;;NP;8;8;298;53.12;561
+MN;51;;0393;County Commissioner District 3;03;9003;Tim Gass;;;NP;8;8;79;14.08;561
+MN;51;;0393;County Commissioner District 3;03;9004;Sarah Rylaarsdam;;;NP;8;8;107;19.07;561
+MN;51;;0394;County Commissioner District 4;04;9001;Patricia Pagel;;;NP;1;1;44;6.77;650
+MN;51;;0394;County Commissioner District 4;04;9002;Aarron Mollema;;;NP;1;1;30;4.62;650
+MN;51;;0394;County Commissioner District 4;04;9003;Jim Kluis;;;NP;1;1;384;59.08;650
+MN;51;;0394;County Commissioner District 4;04;9004;Wayne Mollema;;;NP;1;1;18;2.77;650
+MN;51;;0394;County Commissioner District 4;04;9005;Glenn (Corky) Kluis;;;NP;1;1;174;26.77;650
+MN;51;;0404;County Sheriff;;9001;Jeremy Steinle;;;NP;29;29;208;7.56;2750
+MN;51;;0404;County Sheriff;;9002;Paul Kenney;;;NP;29;29;693;25.20;2750
+MN;51;;0404;County Sheriff;;9003;Randy Donahue;;;NP;29;29;255;9.27;2750
+MN;51;;0404;County Sheriff;;9004;Steve Telkamp;;;NP;29;29;1594;57.96;2750
+MN;52;;0392;County Commissioner District 2;02;9001;Chuck Zieman;;;NP;5;5;227;27.75;818
+MN;52;;0392;County Commissioner District 2;02;9002;Terry Morrow;;;NP;5;5;470;57.46;818
+MN;52;;0392;County Commissioner District 2;02;9003;Harry Jenness;;;NP;5;5;121;14.79;818
+MN;56;;0392;County Commissioner District 2;02;9001;Jeff Gontarek;;;NP;17;17;440;27.09;1624
+MN;56;;0392;County Commissioner District 2;02;9002;Everett P. Erickson;;;NP;17;17;404;24.88;1624
+MN;56;;0392;County Commissioner District 2;02;9003;Wayne D. Johnson;;;NP;17;17;780;48.03;1624
+MN;56;;0394;County Commissioner District 4;04;9001;Charles Debilzen;;;NP;28;28;369;22.58;1634
+MN;56;;0394;County Commissioner District 4;04;9002;Robert Lahman;;;NP;28;28;575;35.19;1634
+MN;56;;0394;County Commissioner District 4;04;9003;Betty Murphy;;;NP;28;28;690;42.23;1634
+MN;56;;0404;County Sheriff;;9001;Jason Hoaby;;;NP;92;92;1691;20.51;8243
+MN;56;;0404;County Sheriff;;9002;Barry Fitzgibbons;;;NP;92;92;3444;41.78;8243
+MN;56;;0404;County Sheriff;;9003;Kile G. Bergren;;;NP;92;92;3108;37.70;8243
+MN;62;;0393;County Commissioner District 3;03;9001;Jennifer Nguyen Moore;;;NP;21;21;2503;27.22;9196
+MN;62;;0393;County Commissioner District 3;03;9002;Trista MatasCastillo;;;NP;21;21;4022;43.74;9196
+MN;62;;0393;County Commissioner District 3;03;9003;Janice Rettman;;;NP;21;21;2671;29.05;9196
+MN;62;;0395;County Commissioner District 5;05;9001;Rafael E. Ortega;;;NP;25;25;9275;79.12;11722
+MN;62;;0395;County Commissioner District 5;05;9002;Charles S. Barklind;;;NP;25;25;937;7.99;11722
+MN;62;;0395;County Commissioner District 5;05;9003;James Jaeger;;;NP;25;25;1510;12.88;11722
+MN;68;;0395;County Commissioner District 5;05;9001;Larry Emery;;;NP;18;18;130;23.99;542
+MN;68;;0395;County Commissioner District 5;05;9002;Daryl Wicklund;;;NP;18;18;236;43.54;542
+MN;68;;0395;County Commissioner District 5;05;9003;Jerry Peters;;;NP;18;18;176;32.47;542
+MN;69;;0394;County Commissioner District 4;04;9001;Daniel Manick;;;NP;67;67;1238;15.65;7909
+MN;69;;0394;County Commissioner District 4;04;9002;Kristin Larsen;;;NP;67;67;407;5.15;7909
+MN;69;;0394;County Commissioner District 4;04;9003;Mike Forsman;;;NP;67;67;1140;14.41;7909
+MN;69;;0394;County Commissioner District 4;04;9004;Bernie Mettler;;;NP;67;67;2012;25.44;7909
+MN;69;;0394;County Commissioner District 4;04;9005;Paul McDonald;;;NP;67;67;1908;24.12;7909
+MN;69;;0394;County Commissioner District 4;04;9006;Paul Kess;;;NP;67;67;498;6.30;7909
+MN;69;;0394;County Commissioner District 4;04;9007;Christine Schlotec;;;NP;67;67;706;8.93;7909
+MN;70;;0404;County Sheriff;;9001;Jason Arras;;;NP;47;47;4782;27.29;17522
+MN;70;;0404;County Sheriff;;9002;Joe Theis;;;NP;47;47;3344;19.08;17522
+MN;70;;0404;County Sheriff;;9003;Luke W. Hennen;;;NP;47;47;7566;43.18;17522
+MN;70;;0404;County Sheriff;;9004;Duane "Dewey" Jirik;;;NP;47;47;1830;10.44;17522
+MN;71;;0392;County Commissioner District 2;02;9001;Raeanne Danielowski;;;NP;7;7;905;47.99;1886
+MN;71;;0392;County Commissioner District 2;02;9002;Paul Seefeld;;;NP;7;7;754;39.98;1886
+MN;71;;0392;County Commissioner District 2;02;9003;John Donovan;;;NP;7;7;227;12.04;1886
+MN;72;;0391;County Commissioner District 1;01;9001;Bobbie V. Harder;;;NP;6;6;318;52.91;601
+MN;72;;0391;County Commissioner District 1;01;9002;Jim Nytes;;;NP;6;6;116;19.30;601
+MN;72;;0391;County Commissioner District 1;01;9003;James "Rosey" Rosenthal;;;NP;6;6;167;27.79;601
+MN;72;;0394;County Commissioner District 4;04;9001;Josh Byro;;;NP;8;8;43;11.14;386
+MN;72;;0394;County Commissioner District 4;04;9002;Steve L Gillaspie;;;NP;8;8;136;35.23;386
+MN;72;;0394;County Commissioner District 4;04;9003;Joy Cohrs;;;NP;8;8;207;53.63;386
+MN;72;;0395;County Commissioner District 5;05;9001;Gary A. Kruggel;;;NP;5;5;114;21.35;534
+MN;72;;0395;County Commissioner District 5;05;9002;Steven Saxton;;;NP;5;5;391;73.22;534
+MN;72;;0395;County Commissioner District 5;05;9003;Pete Schuckert;;;NP;5;5;29;5.43;534
+MN;73;;0391;County Commissioner District 1;01;9001;Tarryl Clark;;;NP;12;12;1782;48.94;3641
+MN;73;;0391;County Commissioner District 1;01;9002;Craig Bomgaars;;;NP;12;12;287;7.88;3641
+MN;73;;0391;County Commissioner District 1;01;9003;Steve Gottwalt;;;NP;12;12;1572;43.17;3641
+MN;73;;0404;County Sheriff;;9001;Dwight P Pfannenstein;;;NP;98;98;1115;5.90;18908
+MN;73;;0404;County Sheriff;;9002;Dave Bentrud;;;NP;98;98;6335;33.50;18908
+MN;73;;0404;County Sheriff;;9003;Bob Dickhaus;;;NP;98;98;4112;21.75;18908
+MN;73;;0404;County Sheriff;;9004;Steve Soyka;;;NP;98;98;7346;38.85;18908
+MN;75;;0395;County Commissioner District 5;05;9001;Neil Wiese;;;NP;7;7;91;24.46;372
+MN;75;;0395;County Commissioner District 5;05;9002;James Solvie;;;NP;7;7;76;20.43;372
+MN;75;;0395;County Commissioner District 5;05;9003;Phil Gausman;;;NP;7;7;205;55.11;372
+MN;77;;0394;County Commissioner District 4;04;9001;Nikki Deyle;;;NP;11;11;171;29.43;581
+MN;77;;0394;County Commissioner District 4;04;9002;Robert Henrich;;;NP;11;11;112;19.28;581
+MN;77;;0394;County Commissioner District 4;04;9003;David G. Kircher;;;NP;11;11;298;51.29;581
+MN;80;;0395;County Commissioner District 5;05;9001;Jon Kangas;;;NP;5;5;227;47.89;474
+MN;80;;0395;County Commissioner District 5;05;9002;Randy Wenthold;;;NP;5;5;81;17.09;474
+MN;80;;0395;County Commissioner District 5;05;9003;Curtis Ronneberg;;;NP;5;5;166;35.02;474
+MN;80;;0400;County Auditor/Treasurer;;9001;Curtis Kreklau Jr.;;;NP;25;25;231;11.50;2008
+MN;80;;0400;County Auditor/Treasurer;;9002;Stacy Smagacz;;;NP;25;25;223;11.11;2008
+MN;80;;0400;County Auditor/Treasurer;;9003;Judy Taves;;;NP;25;25;390;19.42;2008
+MN;80;;0400;County Auditor/Treasurer;;9004;Heather R Olson;;;NP;25;25;772;38.45;2008
+MN;80;;0400;County Auditor/Treasurer;;9005;Brian Hagen;;;NP;25;25;392;19.52;2008
+MN;81;;0394;County Commissioner District 4;04;9001;Alvin Grams;;;NP;5;5;111;18.41;603
+MN;81;;0394;County Commissioner District 4;04;9002;DeAnne (De) Malterer;;;NP;5;5;310;51.41;603
+MN;81;;0394;County Commissioner District 4;04;9003;Laurel Remund;;;NP;5;5;182;30.18;603
+MN;82;;0392;County Commissioner District 2;02;9001;Stan Karwoski;;;NP;17;17;3182;51.50;6179
+MN;82;;0392;County Commissioner District 2;02;9002;Joe Delaney;;;NP;17;17;770;12.46;6179
+MN;82;;0392;County Commissioner District 2;02;9003;Julie Ohs;;;NP;17;17;2227;36.04;6179
+MN;82;;0394;County Commissioner District 4;04;9001;Bill Sumner;;;NP;20;20;945;16.15;5851
+MN;82;;0394;County Commissioner District 4;04;9002;Wayne A Johnson;;;NP;20;20;1420;24.27;5851
+MN;82;;0394;County Commissioner District 4;04;9003;John Thorson;;;NP;20;20;1335;22.82;5851
+MN;82;;0394;County Commissioner District 4;04;9004;Marvin Taylor;;;NP;20;20;746;12.75;5851
+MN;82;;0394;County Commissioner District 4;04;9005;Jeff Swenson;;;NP;20;20;1405;24.01;5851
+MN;85;;0395;County Commissioner District 5;05;9001;Marcia L. Ward;;;NP;15;15;927;58.67;1580
+MN;85;;0395;County Commissioner District 5;05;9002;Lynn Carlson;;;NP;15;15;285;18.04;1580
+MN;85;;0395;County Commissioner District 5;05;9003;Bryce Allen-Orville Lange;;;NP;15;15;368;23.29;1580
+MN;86;;0404;County Sheriff;;9001;Chad Torkelson;;;NP;43;43;1184;6.81;17385
+MN;86;;0404;County Sheriff;;9002;Drew Scherber;;;NP;43;43;3155;18.15;17385
+MN;86;;0404;County Sheriff;;9003;Sean A. Deringer;;;NP;43;43;5543;31.88;17385
+MN;86;;0404;County Sheriff;;9004;Mike Kaczmarek;;;NP;43;43;5032;28.94;17385
+MN;86;;0404;County Sheriff;;9005;Stacy Braun;;;NP;43;43;2471;14.21;17385

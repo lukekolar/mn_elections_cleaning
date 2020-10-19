@@ -5,7 +5,10 @@ date: "10/3/2020"
 output: html_document
 ---
 
-```{r}
+```{r, message = F}
+
+# Loading necessary packages...
+
 library(geojsonio)
 library(rgdal)
 library(raster)
@@ -47,6 +50,7 @@ sb_2018 %>%
 
 
 ```{r}
+## Practicing with the 2018 dataset
 
 elec.col.names <- c("state", "county_id", "precinct_name",
                     "office_id", "office_name", "district", 
@@ -55,7 +59,7 @@ elec.col.names <- c("state", "county_id", "precinct_name",
                     "num_precincts_reporting", "total_num_precincts_voting",
                     "candidate_votes", "candidate_percent_vote", "total_race_votes")
 
-sb_2018 <- read.delim("2018_general_schoolboard.txt", 
+sb_2018 <- read.delim("board_races_datasets/2018_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names)
 
 sb_2018_clean <- sb_2018 %>% 
@@ -101,8 +105,8 @@ sb_2018_clean_grouped
 ```{r}
 
 school_dist <- readOGR( 
-  dsn = paste0(getwd(),"/shp_bdry_school_district_boundaries/"), 
-  layer = "school_district_boundaries",
+  dsn = paste0(getwd(),"/shp_bdry_school_district_2010s/"), 
+  layer = "school_district_boundaries_2018_19",
   verbose = FALSE) 
 
 school_dist_new1 <- spTransform(school_dist, 

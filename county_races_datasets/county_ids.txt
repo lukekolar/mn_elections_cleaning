@@ -1,0 +1,87 @@
+01;AITKIN           ; 47
+02;ANOKA            ;116
+03;BECKER           ; 47
+04;BELTRAMI         ; 61
+05;BENTON           ; 29
+06;BIG STONE        ; 23
+07;BLUE EARTH       ; 54
+08;BROWN            ; 32
+09;CARLTON          ; 37
+10;CARVER           ; 31
+11;CASS             ; 72
+12;CHIPPEWA         ; 27
+13;CHISAGO          ; 22
+14;CLAY             ; 54
+15;CLEARWATER       ; 29
+16;COOK             ; 10
+17;COTTONWOOD       ; 29
+18;CROW WING        ; 59
+19;DAKOTA           ;127
+20;DODGE            ; 19
+21;DOUGLAS          ; 35
+22;FARIBAULT        ; 33
+23;FILLMORE         ; 39
+24;FREEBORN         ; 40
+25;GOODHUE          ; 44
+26;GRANT            ; 23
+27;HENNEPIN         ;430
+28;HOUSTON          ; 27
+29;HUBBARD          ; 35
+30;ISANTI           ; 16
+31;ITASCA           ; 80
+32;JACKSON          ; 30
+33;KANABEC          ; 21
+34;KANDIYOHI        ; 49
+35;KITTSON          ; 38
+36;KOOCHICHING      ; 33
+37;LAC QUI PARLE    ; 33
+38;LAKE             ; 18
+39;LAKE OF THE WOODS; 14
+40;LE SUEUR         ; 29
+41;LINCOLN          ; 20
+42;LYON             ; 33
+43;MCLEOD           ; 28
+44;MAHNOMEN         ; 19
+45;MARSHALL         ; 60
+46;MARTIN           ; 37
+47;MEEKER           ; 30
+48;MILLE LACS       ; 25
+49;MORRISON         ; 49
+50;MOWER            ; 39
+51;MURRAY           ; 29
+52;NICOLLET         ; 31
+53;NOBLES           ; 40
+54;NORMAN           ; 33
+55;OLMSTED          ; 65
+56;OTTER TAIL       ; 91
+57;PENNINGTON       ; 34
+58;PINE             ; 48
+59;PIPESTONE        ; 24
+60;POLK             ; 85
+61;POPE             ; 30
+62;RAMSEY           ;193
+63;RED LAKE         ; 20
+64;REDWOOD          ; 43
+65;RENVILLE         ; 37
+66;RICE             ; 33
+67;ROCK             ; 23
+68;ROSEAU           ; 44
+69;SAINT LOUIS      ;191
+70;SCOTT            ; 35
+71;SHERBURNE        ; 24
+72;SIBLEY           ; 24
+73;STEARNS          ; 97
+74;STEELE           ; 26
+75;STEVENS          ; 25
+76;SWIFT            ; 30
+77;TODD             ; 38
+78;TRAVERSE         ; 19
+79;WABASHA          ; 33
+80;WADENA           ; 26
+81;WASECA           ; 22
+82;WASHINGTON       ; 78
+83;WATONWAN         ; 22
+84;WILKIN           ; 31
+85;WINONA           ; 47
+86;WRIGHT           ; 39
+87;YELLOW MEDICINE  ; 34

@@ -7,7 +7,7 @@ output: html_document
 
 ```{r, message = F}
 
-# Loading necessary packages...
+## Loading necessary packages...
 
 library(geojsonio)
 library(rgdal)
@@ -20,8 +20,28 @@ library(broom)
 library(sf)
 library(janitor)
 
+# `tidyverse` last...
 library(tidyverse)
+
 ```
+
+```{r}
+
+## Important recycled objects:
+
+elec.col.names <- c("state", "county_id", "precinct_name",
+                    "office_id", "office_name", "district", 
+                    "candidate_order_code", "candidate_name",
+                    "suffix", "incumbent_code", "party_affiliation",
+                    "num_precincts_reporting", "total_num_precincts_voting",
+                    "candidate_votes", "candidate_percent_vote", "total_race_votes")
+
+county_ids <- read.delim("county_races_datasets/county_ids.txt", 
+  sep = ";", header = FALSE, col.names = c("county_id", "county_name", "county_num_precincts"))
+
+```
+
+
 
 ```{r}
 
@@ -50,14 +70,8 @@ sb_2018 %>%
 
 
 ```{r}
-## Practicing with the 2018 dataset
 
-elec.col.names <- c("state", "county_id", "precinct_name",
-                    "office_id", "office_name", "district", 
-                    "candidate_order_code", "candidate_name",
-                    "suffix", "incumbent_code", "party_affiliation",
-                    "num_precincts_reporting", "total_num_precincts_voting",
-                    "candidate_votes", "candidate_percent_vote", "total_race_votes")
+## Practicing with the 2018 dataset
 
 sb_2018 <- read.delim("board_races_datasets/2018_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names)
@@ -98,11 +112,11 @@ sb_2018_clean_grouped <- sb_2018_clean %>%
   summarise(num_candidates = n()) %>% 
   ungroup()
 
-sb_2018_clean_grouped
-
 ```
 
 ```{r}
+
+## Practice map with oversimplified variable
 
 school_dist <- readOGR( 
   dsn = paste0(getwd(),"/shp_bdry_school_district_2010s/"), 
@@ -123,17 +137,40 @@ school_dist_new2 <- st_as_sf(school_dist_new1) %>%
 school_dist_elections <- school_dist_new2 %>% 
   full_join(sb_2018_clean_grouped, by = c("sd_code", "sd_num"))
 
-ggplot(school_dist_elections, aes(fill = num_candidates/total_num_precincts_voting)) + 
+ggplot(school_dist_elections, aes(fill = num_candidates)) + 
   geom_sf(color = "grey30", lwd = 0.25) + 
   theme_void() + scale_fill_gradient(low = "white", high = "red")
 
-
-
-glimpse(school_dist_new2)
-
-
 ```
 
+```{r}
+
+## Inspecting and cleaning county races
+
+county_gen_2018 <- read.delim("county_races_datasets/2018_county_gen.txt", 
+  sep = ";", header = FALSE, col.names = elec.col.names)
+
+View(county_ids)
+
+counties_map_raw <- readOGR( 
+  dsn = paste0(getwd(),"/shp_bdry_counties/"), 
+  layer = "mn_county_boundaries",
+  verbose = FALSE) 
+
+counties_map_messy <- spTransform(counties_map_raw, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+counties_map <- st_as_sf(counties_map_messy) %>% 
+  rename(county_id = COUN,
+         county_name = CTY_NAME) %>% clean_names() %>%
+  select(county_id, county_name, cty_abbr, geometry) 
+
+
+ggplot(counties_map, aes()) + 
+  geom_sf(fill = "blue", color = "black", lwd = 0.25) + 
+  theme_void()
+
+```
 
 
 

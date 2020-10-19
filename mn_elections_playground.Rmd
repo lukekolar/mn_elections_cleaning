@@ -149,17 +149,44 @@ ggplot(school_dist_elections_18, aes(fill = num_candidates)) +
 ```
 
 ```{r}
-
 ## Inspecting and cleaning county races
 
-county_gen_2018 <- read.delim("county_races_datasets/2018_county_gen.txt", 
+clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
+  
+  election <- if(type == "general"){"gen"}else{if(type == "primary"){"primary"}else{
+    stop("Variable \`type\` must be \"general\" or \"primary\" (note quotations)")}}
+  
+  read.delim(paste0("county_races_datasets/", year, "_county_", election, ".txt"), 
   sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
   select(county_id, office_id:candidate_name,
          total_num_precincts_voting:total_race_votes) %>% 
-  mutate(candidate_name = recode(candidate_name, "WRITE-IN**" = "WI"))
+  mutate(office_name = str_to_title(office_name)) %>%
+  filter(!grepl(c("Question"), office_name)) %>% 
+  filter(grepl(c("Soil|County"), office_name)) %>% 
+  mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
+  mutate(office_name = str_remove(office_name, "Special Election For ")) %>% 
+  mutate(district = as.numeric(ifelse(grepl("District [[:digit:]]", office_name), 
+                           str_match(office_name, "(?<=District )[:digit:]*"), 
+                           ifelse(grepl("District", office_name), 
+                                  str_match(office_name, 
+                                            "(?<=Member ).*(?= District)"), NA)))) %>% 
+  mutate(office_name = str_remove(office_name, "County ")) %>% 
+  mutate(office_name = str_remove(office_name, " District.*$")) %>% 
+  mutate(office_name = str_replace(office_name, " And ", " and ")) %>% 
+  mutate(office_name = str_replace(office_name, "Auditor - Treasurer",
+                                   "Auditor/Treasurer")) %>% 
+  mutate(other_county_id = ifelse(grepl("Marshall-Beltrami", office_name),
+                               ifelse(county_id == 4, 45, 4), NA)) %>% 
+  mutate(office_name = str_remove(office_name, "Marshall-Beltrami "))
+  
+}
 
-county_gen_2018 %>% distinct(office_name)
+clean_county(2018, "general") %>% View
 
+```
+
+
+```{r}
 counties_map_raw <- readOGR( 
   dsn = paste0(getwd(),"/shp_bdry_counties/"), 
   layer = "mn_county_boundaries",
@@ -182,12 +209,40 @@ ggplot(counties_map, aes()) +
 
 ```{r}
 
+county_gen_2006 <- read.delim("county_races_datasets/2006_county_gen.txt", 
+  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
+  select(county_id, office_id:candidate_name,
+         total_num_precincts_voting:total_race_votes) %>% 
+  mutate(office_name = str_to_title(office_name)) %>%
+  filter(grepl(c("Soil|County"), office_name)) %>% 
+  mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
+  mutate(office_name = str_remove(office_name, "Special Election for ")) %>% 
+  mutate(district = as.numeric(ifelse(grepl("District [[:digit:]]", office_name), 
+                           str_match(office_name, "(?<=District )[:digit:]*"), 
+                           ifelse(grepl("District", office_name), 
+                                  str_match(office_name, 
+                                            "(?<=Member ).*(?= District)"), NA)))) %>% 
+  mutate(office_name = str_remove(office_name, "County ")) %>% 
+  mutate(office_name = str_remove(office_name, " District.*$")) %>% 
+  mutate(office_name = str_replace(office_name, " And ", " and ")) %>% 
+  mutate(office_name = str_replace(office_name, "Auditor - Treasurer",
+                                   "Auditor/Treasurer"))
+
+
+county_gen_2006 %>% View()
+
+```
+
+
+
+```{r}
 county_gen_2014 <- read.delim("county_races_datasets/2014_county_gen.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
   select(county_id, office_id:candidate_name,
          total_num_precincts_voting:total_race_votes) %>% 
   mutate(candidate_name = recode(candidate_name, "WRITE-IN**" = "WI")) %>% 
-  filter(!office_name == )
+  filter(!grepl("COUNTY QUESTION", office_name)) %>% 
+  mutate(office_name = )
 
 county_gen_2014 %>% distinct(office_name)
 

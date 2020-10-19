@@ -39,11 +39,18 @@ elec.col.names <- c("state", "county_id", "precinct_name",
 county_ids <- read.delim("county_races_datasets/county_ids.txt", 
   sep = ";", header = FALSE, col.names = c("county_id", "county_name", "county_num_precincts"))
 
+county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer", 
+                                     "Auditor/Treasurer", "Recorder", "Sheriff", "Attorney", 
+                                     "Soil and Water Supervisor", "Surveyor", 
+                                     "Park Commissioner", "Coroner"),
+                           code = c("COM", "AUD", "TRS", "A&T", "REC", "SHF", "ATR",
+                                    "S&W", "SRV", "PCM", "COR"))
+
 ```
 
 
 
-```{r}
+```{r, eval = F}
 
 # all precincts reporting?
 sb_2018 %>% 
@@ -74,9 +81,7 @@ sb_2018 %>%
 ## Practicing with the 2018 dataset
 
 sb_2018 <- read.delim("board_races_datasets/2018_schoolboard.txt", 
-  sep = ";", header = FALSE, col.names = elec.col.names)
-
-sb_2018_clean <- sb_2018 %>% 
+  sep = ";", header = FALSE, col.names = elec.col.names) %>% 
   select(office_name, candidate_name, total_num_precincts_voting,
          candidate_votes, candidate_percent_vote, total_race_votes) %>% 
   mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
@@ -107,7 +112,7 @@ sb_2018_clean <- sb_2018 %>%
   select(candidate_name, sd_num, sd_code, sd_type, total_num_precincts_voting, elect, 
          position, district, special, office_name)
   
-sb_2018_clean_grouped <- sb_2018_clean %>% 
+sb_2018_grouped <- sb_2018 %>% 
   group_by(sd_num, sd_code, total_num_precincts_voting) %>% 
   summarise(num_candidates = n()) %>% 
   ungroup()
@@ -118,15 +123,15 @@ sb_2018_clean_grouped <- sb_2018_clean %>%
 
 ## Practice map with oversimplified variable
 
-school_dist <- readOGR( 
+schooldist_map_18_19_raw <- readOGR( 
   dsn = paste0(getwd(),"/shp_bdry_school_district_2010s/"), 
   layer = "school_district_boundaries_2018_19",
   verbose = FALSE) 
 
-school_dist_new1 <- spTransform(school_dist, 
+schooldist_map_18_19_messy <- spTransform(schooldist_map_18_19_raw, 
             CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
-school_dist_new2 <- st_as_sf(school_dist_new1) %>% 
+schooldist_map_18_19 <- st_as_sf(schooldist_map_18_19_messy) %>% 
   rename(sd_code = UNI_TYP,
          sd_num = UNI_MAJ,
          dist_name = UNI_NAM) %>% clean_names() %>%
@@ -134,10 +139,10 @@ school_dist_new2 <- st_as_sf(school_dist_new1) %>%
          sd_code = sprintf("%02d", sd_code)) %>% 
   select(sd_code, sd_num, dist_name, sqmiles, acres, geometry) 
   
-school_dist_elections <- school_dist_new2 %>% 
-  full_join(sb_2018_clean_grouped, by = c("sd_code", "sd_num"))
+school_dist_elections_18 <- schooldist_map_18_19 %>% 
+  full_join(sb_2018_grouped, by = c("sd_code", "sd_num"))
 
-ggplot(school_dist_elections, aes(fill = num_candidates)) + 
+ggplot(school_dist_elections_18, aes(fill = num_candidates)) + 
   geom_sf(color = "grey30", lwd = 0.25) + 
   theme_void() + scale_fill_gradient(low = "white", high = "red")
 
@@ -148,9 +153,12 @@ ggplot(school_dist_elections, aes(fill = num_candidates)) +
 ## Inspecting and cleaning county races
 
 county_gen_2018 <- read.delim("county_races_datasets/2018_county_gen.txt", 
-  sep = ";", header = FALSE, col.names = elec.col.names)
+  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
+  select(county_id, office_id:candidate_name,
+         total_num_precincts_voting:total_race_votes) %>% 
+  mutate(candidate_name = recode(candidate_name, "WRITE-IN**" = "WI"))
 
-View(county_ids)
+county_gen_2018 %>% distinct(office_name)
 
 counties_map_raw <- readOGR( 
   dsn = paste0(getwd(),"/shp_bdry_counties/"), 
@@ -172,5 +180,17 @@ ggplot(counties_map, aes()) +
 
 ```
 
+```{r}
+
+county_gen_2014 <- read.delim("county_races_datasets/2014_county_gen.txt", 
+  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
+  select(county_id, office_id:candidate_name,
+         total_num_precincts_voting:total_race_votes) %>% 
+  mutate(candidate_name = recode(candidate_name, "WRITE-IN**" = "WI")) %>% 
+  filter(!office_name == )
+
+county_gen_2014 %>% distinct(office_name)
+
+```
 
 

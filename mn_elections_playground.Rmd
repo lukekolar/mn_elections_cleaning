@@ -19,6 +19,7 @@ library(zipcodeR)
 library(broom)
 library(sf)
 library(janitor)
+library(readxl)
 
 # `tidyverse` last...
 library(tidyverse)
@@ -193,6 +194,7 @@ clean_county(2014, "general") %>% filter(county_id == 18) %>%
 
 
 ```{r}
+
 counties_map_raw <- readOGR( 
   dsn = paste0(getwd(),"/relevant_county_data/shp_bdry_counties/"), 
   layer = "mn_county_boundaries",
@@ -201,19 +203,47 @@ counties_map_raw <- readOGR(
 counties_map_messy <- spTransform(counties_map_raw, 
             CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
+counties_map_messy %>% View
+
 counties_map <- st_as_sf(counties_map_messy) %>% 
   rename(county_id = COUN,
          county_name = CTY_NAME) %>% clean_names() %>%
-  select(county_id, county_name, cty_abbr, geometry) 
+  select(county_id, county_name, cty_abbr, geometry) %>% 
+  mutate(county_name = as.character(county_name),
+         county_id = as.integer(county_id)) %>% 
+  group_by(county_name) %>% 
+  summarize(geometry = st_union(geometry))
 
-?readxl
+county_pop_2019 <- read_xlsx("relevant_county_data/county_pop_estimates_2019.xlsx",
+                             skip = 1,
+                             col_names = c("county_id", "county_name", "total_pop",
+                                           "pop_in_households", "pop_in_group_quarters",
+                                           "num_households", "persons_per_household")) %>% 
+                   mutate(county_id = as.numeric(str_remove(county_id, "^0+"))) %>% 
+                   filter(!is.na(county_id)) %>% 
+                   mutate(county_id = as.integer(county_id))
 
-county_pop_2019 <- readxl("relevant_county_data/county_pop_estimates_2019.xlsx", 
-                          col.names = c("county_id", "county_name", "county_num_precincts"))
+county_demo_2010 <- read_xlsx("general_data/2010_census_demographics.xlsx", sheet = "Counties",
+                              skip = 3, col_names = c("county_name", "total_pop",
+                                                      "num_0.17", "perc_0.17", "perc_fem_0.17",
+                                                      "num_18.24", "perc_18.24", "perc_fem_18.24",
+                                                      "num_25.44", "perc_25.44", "perc_fem_25.44",
+                                                      "num_45.64", "perc_45.64", "perc_fem_45.64",
+                                                      "num_65p", "perc_65p", "perc_fem_65p")) %>% 
+                    mutate(county_name = str_remove(county_name, " County"))
 
-ggplot(counties_map, aes()) + 
-  geom_sf(fill = "blue", color = "black", lwd = 0.25) + 
-  theme_void()
+counties_pop_map_2019 <- counties_map %>% 
+  full_join(county_pop_2019, by = c("county_name"))
+  
+counties_demo_map_2010 <- counties_map %>% 
+  full_join(county_demo_2010, by = c("county_name"))
+
+ggplot(counties_demo_map_2010, aes(fill = (100 - perc_fem_18.24)/perc_fem_18.24)) + 
+  geom_sf(color = "black", lwd = 0.25) + 
+  theme_void() + scale_fill_gradient(low = "blue", high = "pink",
+                                     position = "right", name = NULL,
+                                     ) +
+  labs(title = "Ratio of guys to girls, by county")
 
 ```
 

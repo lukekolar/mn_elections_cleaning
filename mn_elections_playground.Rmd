@@ -14,6 +14,7 @@ library(rgdal)
 library(raster)
 library(rgeos)
 library(cowplot)
+library(gridExtra)
 library(rcartocolor)
 library(zipcodeR)
 library(broom)
@@ -203,8 +204,6 @@ counties_map_raw <- readOGR(
 counties_map_messy <- spTransform(counties_map_raw, 
             CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
-counties_map_messy %>% View
-
 counties_map <- st_as_sf(counties_map_messy) %>% 
   rename(county_id = COUN,
          county_name = CTY_NAME) %>% clean_names() %>%
@@ -238,12 +237,34 @@ counties_pop_map_2019 <- counties_map %>%
 counties_demo_map_2010 <- counties_map %>% 
   full_join(county_demo_2010, by = c("county_name"))
 
-ggplot(counties_demo_map_2010, aes(fill = (100 - perc_fem_18.24)/perc_fem_18.24)) + 
+p1 <- ggplot(counties_demo_map_2010, aes(fill = (perc_25.44 + perc_45.64) / 
+                                                   (perc_0.17 + perc_18.24))) + 
   geom_sf(color = "black", lwd = 0.25) + 
-  theme_void() + scale_fill_gradient(low = "blue", high = "pink",
-                                     position = "right", name = NULL,
-                                     ) +
-  labs(title = "Ratio of guys to girls, by county")
+  theme_void() + scale_fill_gradient(low = "white", high = "blue",
+                                     position = "right", name = NULL) +
+  labs(title = "% Ratio: 25-64 to 0-24") + 
+  theme(plot.subtitle = element_text(face = "italic"),
+        plot.title = element_text(face = "bold"),
+        plot.margin = margin(l = 7, r = 7))
+
+p2 <- ggplot(counties_demo_map_2010, 
+            aes(fill = (perc_25.44 + perc_45.64) / (perc_65p))) + 
+  geom_sf(color = "black", lwd = 0.25) + 
+  theme_void() + scale_fill_gradient(low = "white", high = "blue",
+                                     position = "right", name = NULL) +
+  labs(title = "% Ratio: 25-64 to 65+") + 
+  theme(plot.subtitle = element_text(face = "italic"),
+        plot.title = element_text(face = "bold"),
+        plot.margin = margin(l = 7, r = 7))
+
+grid.arrange(p1, p2, nrow = 1)
+
+ggplot(counties_pop_map_2019, aes(fill = persons_per_household)) + 
+  geom_sf(color = "black", lwd = 0.25) + 
+  theme_void() + scale_fill_gradient(low = "orange", high = "blue",
+                                     position = "right", name = NULL) +
+  labs(title = "Number of persons per household, by county") + 
+  theme(plot.title = element_text(face = "bold"))
 
 ```
 

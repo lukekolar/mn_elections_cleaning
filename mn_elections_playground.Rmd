@@ -36,8 +36,12 @@ elec.col.names <- c("state", "county_id", "precinct_name",
                     "num_precincts_reporting", "total_num_precincts_voting",
                     "candidate_votes", "candidate_percent_vote", "total_race_votes")
 
-county_ids <- read.delim("county_races_datasets/county_ids.txt", 
-  sep = ";", header = FALSE, col.names = c("county_id", "county_name", "county_num_precincts"))
+county_ids <- read.delim("relevant_county_data/county_ids.txt", 
+  sep = ";", header = FALSE, col.names = c("county_id", "county_name", 
+                                           "county_num_precincts")) %>% 
+  mutate(county_name = str_to_title(county_name)) %>% 
+  mutate(county_name = str_replace(county_name, " Of The ", " of the ")) %>% 
+  mutate(county_name = str_replace(county_name, " Qui ", " qui "))
 
 county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer", 
                                      "Auditor/Treasurer", "Recorder", "Sheriff", "Attorney", 
@@ -47,8 +51,6 @@ county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer",
                                     "S&W", "SRV", "PCM", "COR"))
 
 ```
-
-
 
 ```{r, eval = F}
 
@@ -80,7 +82,7 @@ sb_2018 %>%
 
 ## Practicing with the 2018 dataset
 
-sb_2018 <- read.delim("board_races_datasets/2018_schoolboard.txt", 
+sb_2018 <- read.delim("relevant_schooldist_data/schooldist_races_datasets/2018_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names) %>% 
   select(office_name, candidate_name, total_num_precincts_voting,
          candidate_votes, candidate_percent_vote, total_race_votes) %>% 
@@ -124,7 +126,7 @@ sb_2018_grouped <- sb_2018 %>%
 ## Practice map with oversimplified variable
 
 schooldist_map_18_19_raw <- readOGR( 
-  dsn = paste0(getwd(),"/shp_bdry_school_district_2010s/"), 
+  dsn = paste0(getwd(),"/relevant_schooldist_data/shp_bdry_school_district_2010s/"), 
   layer = "school_district_boundaries_2018_19",
   verbose = FALSE) 
 
@@ -156,7 +158,8 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
   election <- if(type == "general"){"gen"}else{if(type == "primary"){"primary"}else{
     stop("Variable \`type\` must be \"general\" or \"primary\" (note quotations)")}}
   
-  read.delim(paste0("county_races_datasets/", year, "_county_", election, ".txt"), 
+  read.delim(paste0("relevant_county_data/county_races_datasets/", 
+                    year, "_county_", election, ".txt"), 
   sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
   select(county_id, office_id:candidate_name,
          total_num_precincts_voting:total_race_votes) %>% 
@@ -177,13 +180,12 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
                                    "Auditor/Treasurer")) %>% 
   mutate(other_county_id = ifelse(grepl("Marshall-Beltrami", office_name),
                                ifelse(county_id == 4, 45, 4), NA)) %>% 
-  mutate(office_name = str_remove(office_name, "Marshall-Beltrami "))
+  mutate(office_name = str_remove(office_name, "Marshall-Beltrami ")) %>% 
+  mutate(candidate_name = str_to_title(candidate_name))
   
 }
 
-View(county_ids)
-
-clean_county(2010, "general") %>% filter(county_id == 18) %>% 
+clean_county(2014, "general") %>% filter(county_id == 18) %>% 
   select(office_name, district, candidate_name, candidate_votes, 
          candidate_percent_vote, special) %>% View
 
@@ -192,7 +194,7 @@ clean_county(2010, "general") %>% filter(county_id == 18) %>%
 
 ```{r}
 counties_map_raw <- readOGR( 
-  dsn = paste0(getwd(),"/shp_bdry_counties/"), 
+  dsn = paste0(getwd(),"/relevant_county_data/shp_bdry_counties/"), 
   layer = "mn_county_boundaries",
   verbose = FALSE) 
 
@@ -204,6 +206,10 @@ counties_map <- st_as_sf(counties_map_messy) %>%
          county_name = CTY_NAME) %>% clean_names() %>%
   select(county_id, county_name, cty_abbr, geometry) 
 
+?readxl
+
+county_pop_2019 <- readxl("relevant_county_data/county_pop_estimates_2019.xlsx", 
+                          col.names = c("county_id", "county_name", "county_num_precincts"))
 
 ggplot(counties_map, aes()) + 
   geom_sf(fill = "blue", color = "black", lwd = 0.25) + 
@@ -211,45 +217,5 @@ ggplot(counties_map, aes()) +
 
 ```
 
-```{r}
-
-county_gen_2006 <- read.delim("county_races_datasets/2006_county_gen.txt", 
-  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
-  select(county_id, office_id:candidate_name,
-         total_num_precincts_voting:total_race_votes) %>% 
-  mutate(office_name = str_to_title(office_name)) %>%
-  filter(grepl(c("Soil|County"), office_name)) %>% 
-  mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
-  mutate(office_name = str_remove(office_name, "Special Election for ")) %>% 
-  mutate(district = as.numeric(ifelse(grepl("District [[:digit:]]", office_name), 
-                           str_match(office_name, "(?<=District )[:digit:]*"), 
-                           ifelse(grepl("District", office_name), 
-                                  str_match(office_name, 
-                                            "(?<=Member ).*(?= District)"), NA)))) %>% 
-  mutate(office_name = str_remove(office_name, "County ")) %>% 
-  mutate(office_name = str_remove(office_name, " District.*$")) %>% 
-  mutate(office_name = str_replace(office_name, " And ", " and ")) %>% 
-  mutate(office_name = str_replace(office_name, "Auditor - Treasurer",
-                                   "Auditor/Treasurer"))
-
-
-county_gen_2006 %>% View()
-
-```
-
-
-
-```{r}
-county_gen_2014 <- read.delim("county_races_datasets/2014_county_gen.txt", 
-  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
-  select(county_id, office_id:candidate_name,
-         total_num_precincts_voting:total_race_votes) %>% 
-  mutate(candidate_name = recode(candidate_name, "WRITE-IN**" = "WI")) %>% 
-  filter(!grepl("COUNTY QUESTION", office_name)) %>% 
-  mutate(office_name = )
-
-county_gen_2014 %>% distinct(office_name)
-
-```
 
 

@@ -54,31 +54,6 @@ county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer",
 
 ```
 
-```{r, eval = F}
-
-# all precincts reporting?
-sb_2018 %>% 
-  mutate(test = num_precincts_reporting - total_num_precincts_voting) %>% 
-  group_by(test) %>% 
-  summarize(n = n())
-
-# all non-partisan?
-sb_2018 %>% 
-  group_by(party_affiliation) %>% 
-  summarize(n = n())
-
-# no suffixes?
-sb_2018 %>% 
-  group_by(suffix) %>% 
-  summarize(n = n())
-
-# incumbent codes?
-sb_2018 %>% 
-  group_by(incumbent_code) %>% 
-  summarize(n = n())
-
-```
-
 
 ```{r}
 
@@ -86,8 +61,8 @@ sb_2018 %>%
 
 sb_2018 <- read.delim("relevant_schooldist_data/schooldist_races_datasets/2018_schoolboard.txt", 
   sep = ";", header = FALSE, col.names = elec.col.names) %>% 
-  select(office_name, candidate_name, total_num_precincts_voting,
-         candidate_votes, candidate_percent_vote, total_race_votes) %>% 
+  select(office_name, candidate_name, total_num_precincts_voting, candidate_votes, 
+         candidate_percent_vote, total_race_votes) %>% 
   mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
   mutate(position = ifelse(grepl("Position", office_name), 
                            str_match(office_name, "(?<=Position )[:digit:]*"), 
@@ -113,13 +88,46 @@ sb_2018 <- read.delim("relevant_schooldist_data/schooldist_races_datasets/2018_s
   mutate(sd_num = as.numeric(sd_num)) %>% 
   mutate(sd_num = sprintf("%04d", sd_num)) %>% 
   mutate(elect = as.numeric(elect)) %>% 
-  select(candidate_name, sd_num, sd_code, sd_type, total_num_precincts_voting, elect, 
+  select(candidate_name, sd_num, sd_code, sd_type,
+         total_num_precincts_voting, elect, 
          position, district, special, office_name)
   
 sb_2018_grouped <- sb_2018 %>% 
   group_by(sd_num, sd_code, total_num_precincts_voting) %>% 
   summarise(num_candidates = n()) %>% 
   ungroup()
+
+```
+
+```{r, eval = F}
+
+## Potentially important tests for school board data:
+
+test_year <- 2018
+sb_tests <- read.delim(paste0("relevant_schooldist_data/schooldist_races_datasets/",
+                              test_year, "_schoolboard.txt"), 
+                       sep = ";", header = FALSE, col.names = elec.col.names)
+
+# all precincts reporting?
+sb_tests %>% 
+  mutate(test = num_precincts_reporting - total_num_precincts_voting) %>% 
+  group_by(test) %>% 
+  summarize(n = n())
+
+# all non-partisan?
+sb_tests %>% 
+  group_by(party_affiliation) %>% 
+  summarize(n = n())
+
+# no suffixes?
+sb_tests %>% 
+  group_by(suffix) %>% 
+  summarize(n = n())
+
+# incumbent codes?
+sb_tests %>% 
+  group_by(incumbent_code) %>% 
+  summarize(n = n())
 
 ```
 
@@ -153,6 +161,7 @@ ggplot(school_dist_elections_18, aes(fill = num_candidates)) +
 ```
 
 ```{r}
+
 ## Inspecting and cleaning county races
 
 clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
@@ -189,12 +198,22 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
 
 clean_county(2014, "general") %>% filter(county_id == 18) %>% 
   select(office_name, district, candidate_name, candidate_votes, 
-         candidate_percent_vote, special) %>% View
+         candidate_percent_vote, special)
+
+```
+
+```{r}
+
+
+
 
 ```
 
 
+
 ```{r}
+
+## Practicing with county maps
 
 counties_map_raw <- readOGR( 
   dsn = paste0(getwd(),"/relevant_county_data/shp_bdry_counties/"), 
@@ -244,7 +263,7 @@ p1 <- ggplot(counties_demo_map_2010, aes(fill = (perc_25.44 + perc_45.64) /
                                      position = "right", name = NULL) +
   labs(title = "% Ratio: 25-64 to 0-24") + 
   theme(plot.subtitle = element_text(face = "italic"),
-        plot.title = element_text(face = "bold"),
+        plot.title = element_text(face = "bold", hjust = 0),
         plot.margin = margin(l = 7, r = 7))
 
 p2 <- ggplot(counties_demo_map_2010, 
@@ -254,7 +273,7 @@ p2 <- ggplot(counties_demo_map_2010,
                                      position = "right", name = NULL) +
   labs(title = "% Ratio: 25-64 to 65+") + 
   theme(plot.subtitle = element_text(face = "italic"),
-        plot.title = element_text(face = "bold"),
+        plot.title = element_text(face = "bold", hjust = 0),
         plot.margin = margin(l = 7, r = 7))
 
 grid.arrange(p1, p2, nrow = 1)

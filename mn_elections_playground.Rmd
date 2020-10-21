@@ -15,14 +15,17 @@ library(raster)
 library(rgeos)
 library(cowplot)
 library(gridExtra)
+library(ggthemes)
 library(rcartocolor)
 library(zipcodeR)
 library(broom)
 library(sf)
+library(lwgeom)
 library(janitor)
 library(readxl)
 
 # `tidyverse` last...
+
 library(tidyverse)
 
 ```
@@ -109,22 +112,26 @@ sb_tests <- read.delim(paste0("relevant_schooldist_data/schooldist_races_dataset
                        sep = ";", header = FALSE, col.names = elec.col.names)
 
 # all precincts reporting?
+
 sb_tests %>% 
   mutate(test = num_precincts_reporting - total_num_precincts_voting) %>% 
   group_by(test) %>% 
   summarize(n = n())
 
 # all non-partisan?
+
 sb_tests %>% 
   group_by(party_affiliation) %>% 
   summarize(n = n())
 
 # no suffixes?
+
 sb_tests %>% 
   group_by(suffix) %>% 
   summarize(n = n())
 
 # incumbent codes?
+
 sb_tests %>% 
   group_by(incumbent_code) %>% 
   summarize(n = n())
@@ -204,12 +211,126 @@ clean_county(2014, "general") %>% filter(county_id == 18) %>%
 
 ```{r}
 
-
+clean_county(2010, "primary") %>% 
+    select(county_id, office_name, district, candidate_name, candidate_votes, 
+           candidate_percent_vote, special) %>% 
+    filter(office_name == "Commissioner") %>% 
+    group_by(county_id, office_name, district) %>% 
+    summarize(num_candidates = n() - 1) %>% 
+    ungroup() %>% View
 
 
 ```
 
 
+```{r}
+
+## Using simple metrics to explore County Commissioner election data
+
+# function for pulling basic commissioner numbers 
+
+comm.elections.info <- function(year, type, pull){
+  summary_df <- clean_county(year, type) %>% 
+    select(county_id, office_name, district, candidate_name, candidate_votes, 
+           candidate_percent_vote, special) %>% 
+    filter(office_name == "Commissioner") %>% 
+    rename(ctycomdist = district) %>% 
+    group_by(county_id, office_name, ctycomdist) %>% 
+    summarize(num_candidates = n() - ifelse(type == "general", 1, 0)) %>% 
+    ungroup() %>% 
+    summarize(avg = mean(num_candidates),
+              num = n())
+  
+  elections <- summary_df$num[[1]]
+  avg.cand <- summary_df$avg[[1]]
+  
+  ifelse(pull == "elections", elections, avg.cand)
+  }
+
+# creating a table to explore change over time
+
+comm_e <- tibble(
+  year = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+  prim.elections = c(rep(NA, 8)),
+  prim.avg.cand = c(rep(NA, 8)),
+  gen.elections = c(rep(NA, 8)),
+  gen.avg.cand = c(rep(NA, 8))
+  ) %>% 
+  mutate(prim.elections = as.numeric(prim.elections),
+         prim.avg.cand = as.numeric(prim.avg.cand),
+         gen.elections = as.numeric(gen.elections),
+         gen.avg.cand = as.numeric(gen.avg.cand))
+
+for(i in 1:nrow(comm_e)){
+  comm_e$prim.elections[[i]] <- comm.elections.info(comm_e$year[[i]], "primary", "elections")
+  comm_e$prim.avg.cand[[i]] <- comm.elections.info(comm_e$year[[i]], "primary", "avg.cand")
+  comm_e$gen.elections[[i]] <- comm.elections.info(comm_e$year[[i]], "general", "elections")
+  comm_e$gen.avg.cand[[i]] <- comm.elections.info(comm_e$year[[i]], "general", "avg.cand")
+}
+
+# creating line plots to visualize
+
+ggplot(comm_e, aes(x = year)) + 
+  geom_line(aes(y = prim.avg.cand, color = "Primary"), size = 0.8, linetype = 1) + 
+  geom_line(aes(y = gen.avg.cand, color = "General"), size = 0.8, linetype = 1) + 
+  scale_x_continuous(breaks = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_y_continuous(breaks = c(1.5, 2, 2.5, 3, 3.5, 4),
+                     labels = c(1.5, 2, 2.5, 3, 3.5, 4), limits = c(1.25, 4.25)) + 
+  scale_colour_manual("", breaks = c("Primary", "General"),
+                        labels = c("Primary", "General"), values = c("blue", "red")) + 
+  labs(x = NULL, y = "average candidates in each election, excluding write-ins",
+       title = "Average MN County Commissioner Candidates in\nPrimary and General Elections",
+       caption = "note: county commissioner elections occur biennally;\ncounty redistricting is effective in years ending in \"2\"") +
+  theme_few() + theme(panel.grid.major = element_line(color = "grey"),
+                      panel.grid.minor = element_line(color = "lightgrey"),
+                      plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+                      plot.caption = element_text(face = "italic", size = 7),
+                      axis.title.y = element_text(size = 8),
+                      axis.text = element_text(face = "bold", color = "black"),
+                      legend.text = element_text(face = "italic", color = "black"),
+                      panel.background = element_rect(fill = "azure"))
+
+ggplot(comm_e, aes(x = year)) + 
+  geom_line(aes(y = gen.elections, color = "General"), size = 0.7, linetype = 1) +
+  geom_line(aes(y = prim.elections, color = "Primary"), size = 0.7, linetype = 1) + 
+  scale_x_continuous(breaks = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_colour_manual("", breaks = c("Primary", "General"),
+                        labels = c("Primary", "General"), values = c("blue", "red")) + 
+  labs(x = NULL, y = "total number of county commissioner elections",
+       title = "Total MN County Commissioner Elections, by Type",
+       caption = "note: county commissioner elections occur biennally;\ncounty redistricting is effective in years ending in \"2\"") +
+  theme_few() + theme(panel.grid.major = element_line(color = "grey"),
+                      panel.grid.minor = element_line(color = "lightgrey"),
+                      plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+                      plot.caption = element_text(face = "italic", size = 7),
+                      axis.title.y = element_text(size = 8),
+                      axis.text = element_text(face = "bold", color = "black"),
+                      legend.text = element_text(face = "italic", color = "black"),
+                      panel.background = element_rect(fill = "azure"))
+
+ggplot(comm_e, aes(x = year)) + 
+  geom_line(aes(y = 100*(prim.elections/gen.elections)), size = 0.7, linetype = 1) + 
+  scale_x_continuous(breaks = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_y_continuous(limits = c(10, 40), breaks = c(10, 15, 20, 25, 30, 35, 40),
+                     labels = c("10%", "15%", "20%", "25%", "30%", "35%", "40%")) + 
+  labs(x = NULL, y = "% of elections beginning with primary contest",
+       title = "Percent of MN County Commissioner Elections Beginning with Primary Contest",
+       subtitle = "May indicate competitiveness of county-level elections",
+       caption = "note: county commissioner elections occur biennally;\ncounty redistricting is effective in years ending in \"2\"") +
+  theme_few() + theme(panel.grid.major = element_line(color = "grey"),
+                      panel.grid.minor = element_line(color = "lightgrey"),
+                      plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
+                      plot.subtitle = element_text(face = "italic", hjust = 0.5, size = 11),
+                      plot.caption = element_text(face = "italic", size = 7),
+                      axis.title.y = element_text(size = 8),
+                      axis.text = element_text(face = "bold", color = "black"),
+                      legend.text = element_text(face = "italic", color = "black"),
+                      panel.background = element_rect(fill = "azure"))
+
+```
 
 ```{r}
 
@@ -239,7 +360,8 @@ county_pop_2019 <- read_xlsx("relevant_county_data/county_pop_estimates_2019.xls
                                            "num_households", "persons_per_household")) %>% 
                    mutate(county_id = as.numeric(str_remove(county_id, "^0+"))) %>% 
                    filter(!is.na(county_id)) %>% 
-                   mutate(county_id = as.integer(county_id))
+                   mutate(county_id = as.integer(county_id)) %>% 
+                   mutate(county_id = (county_id + 1)/2)
 
 county_demo_2010 <- read_xlsx("general_data/2010_census_demographics.xlsx", sheet = "Counties",
                               skip = 3, col_names = c("county_name", "total_pop",
@@ -286,6 +408,103 @@ ggplot(counties_pop_map_2019, aes(fill = persons_per_household)) +
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
 ```
+
+```{r}
+
+## Creating county commissioner district polygons
+
+voting_dists_19_raw <- readOGR( 
+  dsn = paste0(getwd(),"/general_data/shp_bdry_votingdistricts/"), 
+  layer = "bdry_votingdistricts",
+  verbose = FALSE) 
+
+voting_dists_19_messy <- spTransform(voting_dists_19_raw, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+comm_dists_19 <- st_as_sf(voting_dists_19_messy) %>% 
+  clean_names() %>%
+  st_make_valid() %>% 
+  group_by(countyname, countycode, ctycomdist) %>%
+  summarize(geometry = st_union(geometry)) %>% 
+  ungroup() %>% 
+  mutate(countyname = fct_explicit_na(countyname)) %>%
+  rename(county_name = countyname) %>% 
+  mutate(county_name = as.character(county_name)) %>% 
+  rename(county_id = countycode)
+
+comm_dists_19
+
+# creating map (showing off...)
+
+ggplot(comm_dists_19, aes(fill = ctycomdist)) + 
+  geom_sf(color = "grey30", lwd = 0.25) + theme_void() +
+  scale_fill_viridis_d() + 
+  labs(subtitle = "Only six counties have 7 county commissioner districts (7th dist. in yellow):\nAnoka, Dakota, Hennepin, Olmsted, Ramsey, and St. Louis") + 
+  theme(legend.position = "none",
+        plot.subtitle = element_text(face = "italic", size = 8, hjust = 0.5))
+
+```
+
+```{r}
+
+comm.elections.df <- function(year, type){
+  clean_county(year, type) %>% 
+      select(county_id, office_name, district, candidate_name, candidate_votes, 
+             candidate_percent_vote, special) %>% 
+      filter(office_name == "Commissioner") %>% 
+      rename(ctycomdist = district) %>% 
+      group_by(county_id, office_name, ctycomdist) %>% 
+      summarize(num_candidates = n() - ifelse(type == "general", 1, 0)) %>% 
+      ungroup() %>% 
+      mutate(ctycomdist = as.factor(ctycomdist)) %>% 
+      mutate(county_id = as.factor(county_id))
+  }
+
+plot_com_elections <- function(year, type, county){
+  test <- comm_dists_19 %>% 
+    full_join(comm.elections.df(year, type), by = c("county_id", "ctycomdist")) %>% 
+    select(county_name, county_id, ctycomdist, office_name, num_candidates, geometry) %>% 
+    mutate(num_candidates = as.factor(num_candidates))
+
+  ggplot(test %>% filter(county_name == county), aes(fill = num_candidates)) + 
+    geom_sf(color = "grey30", lwd = 0.25) + theme_void() +
+    scale_fill_viridis_d() + 
+    labs(title = paste0(county, " County:"), 
+         subtitle = paste0("Number of Candidates in County ", str_to_title(type), ", ", year)) +
+    theme(plot.title = element_text(face = "bold", size = 11, hjust = 0.5),
+          plot.subtitle = element_text(face = "italic", size = 8, hjust = 0.5),
+          legend.position = "bottom",
+          legend.title = element_text(size = 6),
+          plot.margin = margin(t = 5, l = 5, b = 10))
+  }
+
+side_by_side <- function(year, county){
+  grid.arrange(plot_com_elections(year, "primary", county), 
+               plot_com_elections(year, "general", county), nrow = 1)
+  }
+
+plot_com_elections(2016, "general", "Hennepin")
+
+side_by_side(2012, "Hennepin")
+
+comm.elections.df(2016, "general") %>% filter(county_id == 27)
+
+clean_county(2016, "general") %>% filter(county_id == 27)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

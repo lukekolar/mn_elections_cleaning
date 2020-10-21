@@ -471,7 +471,7 @@ plot_com_elections <- function(year, type, county){
     scale_fill_viridis_d() + 
     labs(title = paste0(county, " County:"), 
          subtitle = paste0("Number of Candidates in County ", str_to_title(type), ", ", year)) +
-    theme(plot.title = element_text(face = "bold", size = 11, hjust = 0.5),
+    theme(plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
           plot.subtitle = element_text(face = "italic", size = 8, hjust = 0.5),
           legend.position = "bottom",
           legend.title = element_text(size = 6),
@@ -483,13 +483,8 @@ side_by_side <- function(year, county){
                plot_com_elections(year, "general", county), nrow = 1)
   }
 
-plot_com_elections(2016, "general", "Hennepin")
-
-side_by_side(2012, "Hennepin")
-
-comm.elections.df(2016, "general") %>% filter(county_id == 27)
-
-clean_county(2016, "general") %>% filter(county_id == 27)
+p <- side_by_side(2016, "St. Louis")
+p
 
 
 ```

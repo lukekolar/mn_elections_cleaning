@@ -203,25 +203,7 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
   
 }
 
-clean_county(2014, "general") %>% filter(county_id == 18) %>% 
-  select(office_name, district, candidate_name, candidate_votes, 
-         candidate_percent_vote, special)
-
 ```
-
-```{r}
-
-clean_county(2010, "primary") %>% 
-    select(county_id, office_name, district, candidate_name, candidate_votes, 
-           candidate_percent_vote, special) %>% 
-    filter(office_name == "Commissioner") %>% 
-    group_by(county_id, office_name, district) %>% 
-    summarize(num_candidates = n() - 1) %>% 
-    ungroup() %>% View
-
-
-```
-
 
 ```{r}
 
@@ -411,7 +393,7 @@ ggplot(counties_pop_map_2019, aes(fill = persons_per_household)) +
 
 ```{r}
 
-## Creating county commissioner district polygons
+## Creating county commissioner district polygons: 2012-2021
 
 voting_dists_19_raw <- readOGR( 
   dsn = paste0(getwd(),"/general_data/shp_bdry_votingdistricts/"), 
@@ -432,16 +414,60 @@ comm_dists_19 <- st_as_sf(voting_dists_19_messy) %>%
   mutate(county_name = as.character(county_name)) %>% 
   rename(county_id = countycode)
 
-comm_dists_19
-
 # creating map (showing off...)
 
 ggplot(comm_dists_19, aes(fill = ctycomdist)) + 
   geom_sf(color = "grey30", lwd = 0.25) + theme_void() +
   scale_fill_viridis_d() + 
-  labs(subtitle = "Only six counties have 7 county commissioner districts (7th dist. in yellow):\nAnoka, Dakota, Hennepin, Olmsted, Ramsey, and St. Louis") + 
-  theme(legend.position = "none",
+  labs(title = "Only six counties have 7 county commissioner districts:",
+       subtitle = "Anoka, Dakota, Hennepin, Olmsted, Ramsey, and St. Louis") + 
+  theme(legend.position = "right",
+        legend.title = element_blank(),
+        legend.text = element_text(face = "bold", size = 7),
+        legend.key.size = unit(12, "pt"),
+        legend.direction = "vertical",
+        plot.margin = margin(b = 10, t = 5),
+        plot.title = element_text(face = "bold", size = 9, hjust = 0.5),
         plot.subtitle = element_text(face = "italic", size = 8, hjust = 0.5))
+
+```
+
+```{r, eval = F, include = F}
+## Creating county commissioner district polygons: 2002-2011 ... DO NOT RUN
+
+# note: data has since been deleted from local folder...
+
+### voting_dists_11_raw <- readOGR( 
+###   dsn = paste0(getwd(),"/general_data/shp_society_redistricting_2010_large/"), 
+###   layer = "blk2010",
+###   verbose = FALSE)
+
+### save(voting_dists_11_raw, file="general_data/voting_dists_11_raw_blk.rdata")
+
+### voting_dists_11_messy <- spTransform(voting_dists_11_raw, 
+###             CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+### save(voting_dists_11_messy, file="general_data/voting_dists_11_messy_blk.rdata")
+
+### voting_dists_11 <- st_as_sf(voting_dists_11_messy) %>% clean_names()
+
+### save(voting_dists_11, file="general_data/voting_dists_11_blk.rdata")
+
+```
+
+
+```{r}
+
+test <- voting_dists_11 %>%
+  st_make_valid() %>% 
+  group_by(county, countyld) %>%
+  summarize(geometry = st_union(geometry)) %>% 
+  ungroup()
+head(test, 5)
+  mutate(countyname = fct_explicit_na(countyname)) %>%
+  rename(county_name = countyname) %>% 
+  mutate(county_name = as.character(county_name)) %>% 
+  rename(county_id = countycode)
 
 ```
 
@@ -483,9 +509,7 @@ side_by_side <- function(year, county){
                plot_com_elections(year, "general", county), nrow = 1)
   }
 
-p <- side_by_side(2016, "St. Louis")
-p
-
+side_by_side(2016, "St. Louis") 
 
 ```
 

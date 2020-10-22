@@ -1,6 +1,6 @@
 # MN Elections Data Play
 
-This repository exists as storage for my experimentation with Minnesota local and statewide elections data, both in cleaning / scraping the data and in visualizing it with `ggplot`.
+This repository exists as storage for my experimentation with Minnesota local and statewide elections data, both in cleaning / scraping the data and in visualizing it with `sf` and `ggplot`.
 
 ### State Legislative Districts and Elections:
 

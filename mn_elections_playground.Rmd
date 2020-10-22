@@ -50,7 +50,8 @@ county_ids <- read.delim("relevant_county_data/county_ids.txt",
                                            "county_num_precincts")) %>% 
   mutate(county_name = str_to_title(county_name)) %>% 
   mutate(county_name = str_replace(county_name, " Of The ", " of the ")) %>% 
-  mutate(county_name = str_replace(county_name, " Qui ", " qui "))
+  mutate(county_name = str_replace(county_name, " Qui ", " qui ")) %>% 
+  mutate(county_name = trimws(county_name, which = c("right")))
 
 county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer", 
                                      "Auditor/Treasurer", "Recorder", "Sheriff", "Attorney", 
@@ -536,17 +537,90 @@ side_by_side <- function(year, county){
                plot_com_elections(year, "general", county), nrow = 1)
   }
 
-class(clean_county(2016, "general"))
+grid.arrange(plot_com_elections(2010, "general", "Dakota"), 
+             plot_com_elections(2012, "general", "Dakota"), nrow = 1)
 
-side_by_side(2006, "Hennepin") 
-side_by_side(2006, "Hennepin") 
-side_by_side(2006, "Hennepin") 
-side_by_side(2006, "Hennepin") 
-side_by_side(2006, "Hennepin") 
-side_by_side(2018, "Hennepin") 
+# randomly distribute dots as idea? see: https://www.co.dakota.mn.us/HomeProperty/MappingServices/Maps/Documents/Census2010/PopulationDensityCommissioner.pdf
+
+
 
 ```
 
+```{r, warning = F}
+
+##
+
+#
+
+pres_elections_01 <- read_xls("general_data/01_precincts/2000_general_results.xls") %>% 
+  clean_names() %>% 
+  mutate(precinct_name = str_to_title(precinct_name)) %>% 
+  rename(ctycomdist = cm,
+         county_id = cc,
+         precinct_id = prct) %>% 
+  select(precinct_name, county_id, ctycomdist, precinct_id) %>% 
+  full_join(county_ids, by = "county_id")
+
+#
+
+vtd_01_raw <- readOGR( 
+  dsn = paste0(getwd(),"/general_data/01_precincts/"), 
+  layer = "Precincts_DD",
+  verbose = FALSE)
+
+proj4string(vtd_01_raw) <- CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
+
+vtd_01_messy <- spTransform(vtd_01_raw, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+vtd_01 <- st_as_sf(vtd_01_messy) %>% 
+  clean_names()
+
+vtd_01 %>% 
+  select(id:name, index_vote) %>% 
+  filter(!name == "Lake Superior") %>%
+  mutate(null_votes = ifelse(index_vote %in% c(0.0000, NA), TRUE, FALSE)) %>% 
+  rename(precinct_id = number,
+         county_num = county,
+         county_name = county_nam,
+         precinct_name = name) %>% 
+  select(precinct_id, county_num, county_name, precinct_name, geometry, null_votes) %>%
+  mutate(precinct_id = str_remove(precinct_id, "^0+")) %>%
+  mutate(precinct_id = as.numeric(precinct_id)) %>% 
+  arrange(county_name, precinct_id) %>% 
+  full_join(pres_elections_01, by = c("precinct_id", "county_name")) %>% 
+  mutate(ctycomdist = ifelse(is.na(ctycomdist), 8, ctycomdist)) %>% 
+  select(!precinct_name.y) %>% 
+  rename(precinct_name = precinct_name.x)
+
+  
+  st_make_valid() %>%
+
+ggplot(aes(fill = blue)) + geom_sf()
+
+
+```
+
+```{r}
+
+cny_94_raw <- readOGR( 
+  dsn = paste0(getwd(),"/general_data/94_precincts/"), 
+  layer = "Counties_DD",
+  verbose = FALSE)
+
+proj4string(cny_94_raw) <- CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
+
+cny_94_messy <- spTransform(cny_94_raw, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+cny_94 <- st_as_sf(cny_94_messy) %>% 
+  clean_names()
+
+cny_94 %>% head(40) %>% View
+
+ggplot(cny_94) + geom_sf()
+
+```
 
 
 

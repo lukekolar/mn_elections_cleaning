@@ -51,7 +51,9 @@ county_ids <- read.delim("relevant_county_data/county_ids.txt",
   mutate(county_name = str_to_title(county_name)) %>% 
   mutate(county_name = str_replace(county_name, " Of The ", " of the ")) %>% 
   mutate(county_name = str_replace(county_name, " Qui ", " qui ")) %>% 
-  mutate(county_name = trimws(county_name, which = c("right")))
+  mutate(county_name = trimws(county_name, which = c("right"))) %>% 
+  mutate(county_name = str_replace(county_name, "Saint Louis", "St. Louis")) %>% 
+  mutate(county_name = str_replace(county_name, "Mcleod", "McLeod"))
 
 county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer", 
                                      "Auditor/Treasurer", "Recorder", "Sheriff", "Attorney", 
@@ -469,7 +471,8 @@ comm_dists_10 <- results_10 %>%
   summarize(geometry = st_union(geometry)) %>% 
   ungroup() %>% 
   fill_holes(threshold = units::set_units(25, miles^2)) %>% 
-  mutate(ctycomdist = as.factor(ctycomdist))
+  mutate(ctycomdist = as.factor(ctycomdist)) %>% 
+  mutate(county_id = as.factor(county_id))
 
 # creating another map (showing off, again...)
 
@@ -547,7 +550,6 @@ grid.arrange(plot_com_elections(2010, "general", "Dakota"),
 ```
 
 ```{r, warning = F}
-
 ##
 
 #
@@ -561,6 +563,8 @@ pres_elections_01 <- read_xls("general_data/01_precincts/2000_general_results.xl
   select(precinct_name, county_id, ctycomdist, precinct_id) %>% 
   full_join(county_ids, by = "county_id")
 
+
+pres_elections_01 %>% filter(county_name == "Saint Louis")
 #
 
 vtd_01_raw <- readOGR( 
@@ -576,29 +580,153 @@ vtd_01_messy <- spTransform(vtd_01_raw,
 vtd_01 <- st_as_sf(vtd_01_messy) %>% 
   clean_names()
 
-vtd_01 %>% 
+comm_dists_01 <- vtd_01 %>% 
   select(id:name, index_vote) %>% 
   filter(!name == "Lake Superior") %>%
-  mutate(null_votes = ifelse(index_vote %in% c(0.0000, NA), TRUE, FALSE)) %>% 
+  mutate(null_votes = ifelse(index_vote %in% c(0.0000, NA), 
+                             TRUE, FALSE)) %>% 
   rename(precinct_id = number,
          county_num = county,
          county_name = county_nam,
          precinct_name = name) %>% 
-  select(precinct_id, county_num, county_name, precinct_name, geometry, null_votes) %>%
+  select(precinct_id, county_num, county_name, precinct_name, 
+         geometry, null_votes) %>%
   mutate(precinct_id = str_remove(precinct_id, "^0+")) %>%
   mutate(precinct_id = as.numeric(precinct_id)) %>% 
-  arrange(county_name, precinct_id) %>% 
+  arrange(county_name, precinct_id) %>%
   full_join(pres_elections_01, by = c("precinct_id", "county_name")) %>% 
   mutate(ctycomdist = ifelse(is.na(ctycomdist), 8, ctycomdist)) %>% 
   select(!precinct_name.y) %>% 
-  rename(precinct_name = precinct_name.x)
-
-  
+  select(!county_id) %>% 
+  select(!county_num_precincts) %>% 
+  full_join(county_ids %>% select(!county_num_precincts), 
+            by = "county_name") %>% 
+  rename(precinct_name = precinct_name.x) %>% 
+  mutate(ctycomdist = ifelse(ctycomdist == 8, 
+                             case_when(county_name == "Aitkin" ~ 8, #complex...
+                                       county_name == "Becker" ~ 2,
+                                       county_name == "Beltrami" ~ 4, #also a zero!!
+                                       county_name == "Benton" ~ 2,
+                                       county_name == "Blue Earth" ~ 8, #correction needed.
+                                       county_name == "Carlton" ~ 4,
+                                       county_name == "Carver" ~ 3,
+                                       county_name == "Cook" ~ 8, #complex...
+                                       county_name == "Crow Wing" ~ 5,
+                                       county_name == "Dodge" ~ 3,
+                                       county_name == "Hennepin" ~ 8, #complex...
+                                       county_name == "Itasca" ~ 5,
+                                       county_name == "Koochiching" ~ 5,
+                                       county_name == "Lake of the Woods" ~ 8, #complex,lake zero!!
+                                       county_name == "Le Sueur" ~ 5,
+                                       county_name == "Marshall" ~ 5,
+                                       county_name == "Mower" ~ 8, #correction needed
+                                       county_name == "Pope" ~ 3,
+                                       county_name == "Renville" ~ 3,
+                                       county_name == "Sibley" ~ 1,
+                                       county_name == "St. Louis" ~ 8, #complex
+                                       county_name == "Stearns" ~ 4,
+                                       county_name == "Todd" ~ 5,
+                                       county_name == "Traverse" ~ 2,
+                                       county_name == "Watonwan" ~ 4,
+                                       county_name == "Wilkin" ~ 1,
+                                       county_name == "Winona" ~ 8, #complex
+                                       TRUE ~ 8),
+                             ctycomdist)) %>% 
   st_make_valid() %>%
+  group_by(county_name, county_id, ctycomdist) %>%
+  summarize(geometry = st_union(geometry)) %>% 
+  ungroup() %>% 
+  mutate(ctycomdist = as.factor(ctycomdist))
+  
+# 
 
-ggplot(aes(fill = blue)) + geom_sf()
+
+comm_dists_01 %>% filter(ctycomdist %in% c(0, 8))
 
 
+grid.arrange(plot_com_elections(2004, "general", "Aitkin"), 
+             plot_com_elections(2012, "general", "Aitkin"), nrow = 1)
+```
+
+
+```{r}
+
+unique(comm_dists_01_mod$precinct_name) %>% distinct(precinct_name) %>% nrow()
+
+comm_dists_01_mod %>% 
+  filter(county_name == "Aitkin") %>% 
+#  filter(ctycomdist == 8)
+  mutate(ctycomdist = ifelse(ctycomdist == 8, 
+                             case_when(county_name == "Aitkin" ~
+                                case_when(precinct_name == "Northeast Aitkin Unorg." ~ 5,
+                                          precinct_name == "Northwest Aitkin Unorg." ~ 5,
+                                          precinct_name == "Davidson Unorg." ~ 3,
+                                          precinct_name == "Jewett Unorg." ~ 3,
+                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
+                                          TRUE ~ 8),
+                                       county_name == "Beltrami" ~
+                                case_when(precinct_name == "Northeast Aitkin Unorg." ~ 5,
+                                          precinct_name == "Northwest Aitkin Unorg." ~ 5,
+        !!                                  precinct_name == "Davidson Unorg." ~ 3,
+                                          precinct_name == "Jewett Unorg." ~ 3,
+                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
+                                          TRUE ~ 8),
+                                       county_name == "Blue Earth" ~
+                                case_when(precinct_name == "Northeast Aitkin Unorg." ~ 5,
+        !!                                  precinct_name == "Northwest Aitkin Unorg." ~ 5,
+                                          precinct_name == "Davidson Unorg." ~ 3,
+                                          precinct_name == "Jewett Unorg." ~ 3,
+                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
+                                          TRUE ~ 8),
+                                       county_name == "Cook" ~
+                                case_when(precinct_name == "Maple Hill P-4" ~ 4,
+                                          precinct_name == "Grand Marais East P-5" ~ 2,
+                                          precinct_name == "Colvill P-3" ~ 1,
+                                          precinct_name == "Lutsen P-8" ~ 5,
+                                          TRUE ~ 8),
+                                       TRUE ~ 8
+                                      ),
+                             ctycomdist)) %>% 
+  mutate(ctycomdist = as.factor(ctycomdist)) %>% 
+  ggplot(aes(fill = ctycomdist)) + geom_sf()
+
+
+comm_dists_01_mod %>% 
+  filter(county_name == "Cook", precinct_name == "Lutsen P-8"
+         ) %>% 
+# filter(ctycomdist == 8) 
+#   filter(!precinct_name %in% c("Maple Hill P-4", "Grand Marais East P-5")) %>% 
+  mutate(ctycomdist = as.factor(ctycomdist)) %>% 
+  ggplot(aes(fill = ctycomdist)) + geom_sf()
+
+grid.arrange(plot_com_elections(2006, "general", "Cook"), 
+             plot_com_elections(2012, "general", "Cook"), nrow = 1)
+
+```
+
+
+```{r, warning = F}
+countynam <- "Wilkin"
+
+grid.arrange(
+  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(1)), 
+         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
+    theme(legend.position = "none"),
+  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(2)), 
+         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
+    theme(legend.position = "none"),
+  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(3)), 
+         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
+    theme(legend.position = "none"),
+  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(4)), 
+         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
+    theme(legend.position = "none"),
+  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(5)), 
+         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
+    theme(legend.position = "none"), 
+  ggplot(comm_dists_01 %>% filter(county_name == countynam), 
+         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
+    theme(legend.position = "none"), nrow = 2)
 ```
 
 ```{r}

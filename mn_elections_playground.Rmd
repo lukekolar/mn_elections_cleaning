@@ -641,8 +641,8 @@ comm_dists_01 <- vtd_01 %>%
                                           precinct_name == "Southeast Aitkin Unorg." ~ 3,
                                           TRUE ~ 8),
                                        county_name == "Beltrami" ~ case_when(
-                                          precinct_name == "Grant Valley Twp." ~ 1,
-                                          precinct_name == "Turtle River Twp." ~ 3,
+                                          precinct_name == "Grant Valley Twp." ~ 3,
+                                          precinct_name == "Turtle River Twp." ~ 1,
                                           TRUE ~ 8),
                                        county_name == "Blue Earth" ~ case_when(
                                           precinct_name == "Mankato P-21" ~ 4,
@@ -725,20 +725,20 @@ ggplot(comm_dists_01, aes(fill = ctycomdist)) +
 
 ```{r}
 
+## Side-by-side county redistricting visualizer
+
 ctycomdists_time <- rbind(comm_dists_01 %>% mutate(year = 1991), 
                           comm_dists_10 %>% mutate(year = 2001), 
                           comm_dists_19 %>% mutate(year = 2011))
-
-
 
 cty_redistricting <- function(countynam){
   ctycomdists_time %>% filter(county_name == countynam) %>% 
     ggplot(aes(fill = ctycomdist)) + geom_sf() + facet_grid(~ year) + 
     theme_void() + labs(fill = "County Comm. Dist.",
                         title = paste0("30 Years of ", countynam, 
-                                       " County Commissioner Redistricting"),
+                                       " County Redistricting"),
       subtitle = "County commissioner districts are reassessed decennially with the U.S. Census") +
-    theme(plot.title = element_text(face = "bold", size = 15, 
+    theme(plot.title = element_text(face = "bold", size = 16, 
                                     hjust = 0.5, margin = margin(b = 6)),
           plot.subtitle = element_text(face = "italic", size = 10, 
                                        hjust = 0.5, margin = margin(b = 12)),
@@ -754,10 +754,9 @@ cty_redistricting <- function(countynam){
                                title.position = "bottom", title.hjust = 0.5))
   }
 
-cty_redistricting("Cass")
+cty_redistricting("Sherburne")
 
 ```
-
 
 
 

@@ -496,6 +496,8 @@ ggplot(comm_dists_10, aes(fill = ctycomdist)) +
 
 ```{r, warning = F}
 
+## Visualizing side-by-side county primary and general elections
+
 comm.elections.df <- function(year, type){
   clean_county(year, type) %>% 
       select(county_id, office_name, district, candidate_name, candidate_votes, 
@@ -545,14 +547,11 @@ grid.arrange(plot_com_elections(2010, "general", "Dakota"),
 
 # randomly distribute dots as idea? see: https://www.co.dakota.mn.us/HomeProperty/MappingServices/Maps/Documents/Census2010/PopulationDensityCommissioner.pdf
 
-
-
 ```
 
 ```{r, warning = F}
-##
 
-#
+## Creating county commissioner district polygons: 1992-2001
 
 pres_elections_01 <- read_xls("general_data/01_precincts/2000_general_results.xls") %>% 
   clean_names() %>% 
@@ -565,7 +564,8 @@ pres_elections_01 <- read_xls("general_data/01_precincts/2000_general_results.xl
 
 
 pres_elections_01 %>% filter(county_name == "Saint Louis")
-#
+
+# cleaning 2001 voting district data, and tweaking based on MNLL maps
 
 vtd_01_raw <- readOGR( 
   dsn = paste0(getwd(),"/general_data/01_precincts/"), 
@@ -603,34 +603,98 @@ comm_dists_01 <- vtd_01 %>%
             by = "county_name") %>% 
   rename(precinct_name = precinct_name.x) %>% 
   mutate(ctycomdist = ifelse(ctycomdist == 8, 
-                             case_when(county_name == "Aitkin" ~ 8, #complex...
+                             case_when(county_name == "Aitkin" ~ 8, # complex
                                        county_name == "Becker" ~ 2,
-                                       county_name == "Beltrami" ~ 4, #also a zero!!
+                                       county_name == "Beltrami" ~ 4, # has "0"
                                        county_name == "Benton" ~ 2,
-                                       county_name == "Blue Earth" ~ 8, #correction needed.
+                                       county_name == "Blue Earth" ~ 8, # complex
                                        county_name == "Carlton" ~ 4,
                                        county_name == "Carver" ~ 3,
-                                       county_name == "Cook" ~ 8, #complex...
+                                       county_name == "Cook" ~ 8, # complex
                                        county_name == "Crow Wing" ~ 5,
                                        county_name == "Dodge" ~ 3,
-                                       county_name == "Hennepin" ~ 8, #complex...
+                                       county_name == "Hennepin" ~ 8, # complex
                                        county_name == "Itasca" ~ 5,
                                        county_name == "Koochiching" ~ 5,
-                                       county_name == "Lake of the Woods" ~ 8, #complex,lake zero!!
+                                       county_name == "Lake of the Woods" ~ 8, # complex; has "0"
                                        county_name == "Le Sueur" ~ 5,
                                        county_name == "Marshall" ~ 5,
-                                       county_name == "Mower" ~ 8, #correction needed
+                                       county_name == "Mower" ~ 8, # complex
                                        county_name == "Pope" ~ 3,
                                        county_name == "Renville" ~ 3,
                                        county_name == "Sibley" ~ 1,
-                                       county_name == "St. Louis" ~ 8, #complex
+                                       county_name == "St. Louis" ~ 8, # complex
                                        county_name == "Stearns" ~ 4,
                                        county_name == "Todd" ~ 5,
                                        county_name == "Traverse" ~ 2,
                                        county_name == "Watonwan" ~ 4,
                                        county_name == "Wilkin" ~ 1,
-                                       county_name == "Winona" ~ 8, #complex
+                                       county_name == "Winona" ~ 8, # complex
                                        TRUE ~ 8),
+                             ctycomdist)) %>% 
+  mutate(ctycomdist = ifelse(ctycomdist %in% c(0, 8), 
+                             case_when(county_name == "Aitkin" ~ case_when(
+                                          precinct_name == "Northeast Aitkin Unorg." ~ 5,
+                                          precinct_name == "Northwest Aitkin Unorg." ~ 5,
+                                          precinct_name == "Davidson Unorg." ~ 3,
+                                          precinct_name == "Jewett Unorg." ~ 3,
+                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
+                                          TRUE ~ 8),
+                                       county_name == "Beltrami" ~ case_when(
+                                          precinct_name == "Grant Valley Twp." ~ 1,
+                                          precinct_name == "Turtle River Twp." ~ 3,
+                                          TRUE ~ 8),
+                                       county_name == "Blue Earth" ~ case_when(
+                                          precinct_name == "Mankato P-21" ~ 4,
+                                          precinct_name == "North Mankato" ~ 2,
+                                          TRUE ~ 8),
+                                       county_name == "Cook" ~ case_when(
+                                          precinct_name == "Maple Hill P-4" ~ 4,
+                                          precinct_name == "Grand Marais East P-5" ~ 2,
+                                          precinct_name == "Colvill P-3" ~ 1,
+                                          precinct_name == "Lutsen P-8" ~ 5,
+                                          TRUE ~ 8),
+                                       county_name == "Hennepin" ~ case_when(
+                                          precinct_name == "Chanhassen P-5" ~ 7,
+                                          precinct_name == "Crystal W-2 P-4" ~ 1,
+                                          precinct_name == "Hopkins P-9" ~ 6,
+                                          TRUE ~ 8),
+                                       county_name == "Lake" ~ case_when(
+                                          precinct_name == "Beaver Bay" ~ 2,
+                                          TRUE ~ 8),
+                                       county_name == "Lake of the Woods" ~ case_when(
+                                          precinct_name == "Prosper Unorg. P-5A" ~ 4,
+                                          precinct_name == "Lakewood Unorg. P-5A" ~ 5,
+                                          precinct_name == "McDougald Unorg. P-4B" ~ 4,
+                                          precinct_name == "Wheeler Unorg. P-4A" ~ 4,
+                                          precinct_name == "Potamo Unorg. P-3C" ~ 3,
+                                          precinct_name == "McDougald Unorg. P-3C" ~ 5,
+                                          precinct_name == "Spooner Unorg. P-3B" ~ 3,
+                                          precinct_name == "Walhalla Unorg. P-3B" ~ 3,
+                                          precinct_name == "Victory Unorg. P-3B" ~ 3,
+                                          precinct_name == "Rulien Unorg. P-3B" ~ 3,
+                                          precinct_name == "Unorg. 158-30 P-2C" ~ 2,
+                                          precinct_name == "Unorg. 157-30 P-2C" ~ 2,
+                                          precinct_name == "Swiftwater Unorg. P-2C" ~ 2,
+                                          precinct_name == "Kiel Unorg. P-2C" ~ 2,
+                                          precinct_name == "Rapid River Unorg. P-2A" ~ 2,
+                                          TRUE ~ 8),
+                                       county_name == "Mower" ~ case_when(
+                                          precinct_name == "Austin W-2 P-3" ~ 5,
+                                          precinct_name == "Austin W-3 P-3" ~ 4,
+                                          TRUE ~ 8),
+                                       county_name == "St. Louis" ~ case_when(
+                                          precinct_name == "Meadowlands Twp." ~ 7,
+                                          precinct_name == "Marion Lake" ~ 6,
+                                          precinct_name == "Sunday Lake Unorg." ~ 4,
+                                          precinct_name == "Angleworm Lake Unorg." ~ 4,
+                                          TRUE ~ 8),
+                                       county_name == "Winona" ~ case_when(
+                                          precinct_name == "Winona W-4 P-5" ~ 2,
+                                          precinct_name == "La Crescent" ~ 5,
+                                          TRUE ~ 8),
+                                       TRUE ~ 8
+                                      ),
                              ctycomdist)) %>% 
   st_make_valid() %>%
   group_by(county_name, county_id, ctycomdist) %>%
@@ -638,115 +702,59 @@ comm_dists_01 <- vtd_01 %>%
   ungroup() %>% 
   mutate(ctycomdist = as.factor(ctycomdist))
   
-# 
+# creating yet another map (the hardest one yet...)
 
+ggplot(comm_dists_01, aes(fill = ctycomdist)) + 
+  geom_sf(color = "grey30", lwd = 0.25) + theme_void() +
+  scale_fill_viridis_d() + 
+  labs(title = "Only six counties have 7 county commissioner districts:",
+       subtitle = "Anoka, Dakota, Hennepin, Olmsted, Ramsey, and St. Louis",
+       caption = "map accurate from 1992-2001") + 
+  theme(legend.position = "right",
+        legend.title = element_blank(),
+        legend.text = element_text(face = "bold", size = 7),
+        legend.key.size = unit(12, "pt"),
+        legend.direction = "vertical",
+        plot.margin = margin(b = 10, t = 5),
+        plot.title = element_text(face = "bold", size = 9, hjust = 0.5),
+        plot.subtitle = element_text(face = "italic", size = 8, hjust = 0.5),
+        plot.caption = element_text(face = "italic", size = 6))
 
-comm_dists_01 %>% filter(ctycomdist %in% c(0, 8))
-
-
-grid.arrange(plot_com_elections(2004, "general", "Aitkin"), 
-             plot_com_elections(2012, "general", "Aitkin"), nrow = 1)
 ```
 
 
 ```{r}
 
-unique(comm_dists_01_mod$precinct_name) %>% distinct(precinct_name) %>% nrow()
-
-comm_dists_01_mod %>% 
-  filter(county_name == "Aitkin") %>% 
-#  filter(ctycomdist == 8)
-  mutate(ctycomdist = ifelse(ctycomdist == 8, 
-                             case_when(county_name == "Aitkin" ~
-                                case_when(precinct_name == "Northeast Aitkin Unorg." ~ 5,
-                                          precinct_name == "Northwest Aitkin Unorg." ~ 5,
-                                          precinct_name == "Davidson Unorg." ~ 3,
-                                          precinct_name == "Jewett Unorg." ~ 3,
-                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
-                                          TRUE ~ 8),
-                                       county_name == "Beltrami" ~
-                                case_when(precinct_name == "Northeast Aitkin Unorg." ~ 5,
-                                          precinct_name == "Northwest Aitkin Unorg." ~ 5,
-        !!                                  precinct_name == "Davidson Unorg." ~ 3,
-                                          precinct_name == "Jewett Unorg." ~ 3,
-                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
-                                          TRUE ~ 8),
-                                       county_name == "Blue Earth" ~
-                                case_when(precinct_name == "Northeast Aitkin Unorg." ~ 5,
-        !!                                  precinct_name == "Northwest Aitkin Unorg." ~ 5,
-                                          precinct_name == "Davidson Unorg." ~ 3,
-                                          precinct_name == "Jewett Unorg." ~ 3,
-                                          precinct_name == "Southeast Aitkin Unorg." ~ 3,
-                                          TRUE ~ 8),
-                                       county_name == "Cook" ~
-                                case_when(precinct_name == "Maple Hill P-4" ~ 4,
-                                          precinct_name == "Grand Marais East P-5" ~ 2,
-                                          precinct_name == "Colvill P-3" ~ 1,
-                                          precinct_name == "Lutsen P-8" ~ 5,
-                                          TRUE ~ 8),
-                                       TRUE ~ 8
-                                      ),
-                             ctycomdist)) %>% 
-  mutate(ctycomdist = as.factor(ctycomdist)) %>% 
-  ggplot(aes(fill = ctycomdist)) + geom_sf()
+ctycomdists_time <- rbind(comm_dists_01 %>% mutate(year = 1991), 
+                          comm_dists_10 %>% mutate(year = 2001), 
+                          comm_dists_19 %>% mutate(year = 2011))
 
 
-comm_dists_01_mod %>% 
-  filter(county_name == "Cook", precinct_name == "Lutsen P-8"
-         ) %>% 
-# filter(ctycomdist == 8) 
-#   filter(!precinct_name %in% c("Maple Hill P-4", "Grand Marais East P-5")) %>% 
-  mutate(ctycomdist = as.factor(ctycomdist)) %>% 
-  ggplot(aes(fill = ctycomdist)) + geom_sf()
 
-grid.arrange(plot_com_elections(2006, "general", "Cook"), 
-             plot_com_elections(2012, "general", "Cook"), nrow = 1)
+cty_redistricting <- function(countynam){
+  ctycomdists_time %>% filter(county_name == countynam) %>% 
+    ggplot(aes(fill = ctycomdist)) + geom_sf() + facet_grid(~ year) + 
+    theme_void() + labs(fill = "County Comm. Dist.",
+                        title = paste0("30 Years of ", countynam, 
+                                       " County Commissioner Redistricting"),
+      subtitle = "County commissioner districts are reassessed decennially with the U.S. Census") +
+    theme(plot.title = element_text(face = "bold", size = 15, 
+                                    hjust = 0.5, margin = margin(b = 6)),
+          plot.subtitle = element_text(face = "italic", size = 10, 
+                                       hjust = 0.5, margin = margin(b = 12)),
+          legend.position = "bottom",
+          legend.title = element_text(face = "bold.italic", size = 8),
+          strip.text = element_text(face = "bold", size = 10),
+          plot.margin = margin(t = 8, l = 5, r = 5, b = 5),
+          legend.text = element_text(face = "bold", size = 7),
+          legend.key.size = unit(12, "pt"),
+          legend.direction = "horizontal") + 
+    scale_fill_brewer(palette = "Set2") +
+    guides(fill = guide_legend(nrow = 1, byrow = TRUE, 
+                               title.position = "bottom", title.hjust = 0.5))
+  }
 
-```
-
-
-```{r, warning = F}
-countynam <- "Wilkin"
-
-grid.arrange(
-  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(1)), 
-         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
-    theme(legend.position = "none"),
-  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(2)), 
-         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
-    theme(legend.position = "none"),
-  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(3)), 
-         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
-    theme(legend.position = "none"),
-  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(4)), 
-         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
-    theme(legend.position = "none"),
-  ggplot(comm_dists_01 %>% filter(county_name == countynam, ctycomdist %in% c(5)), 
-         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
-    theme(legend.position = "none"), 
-  ggplot(comm_dists_01 %>% filter(county_name == countynam), 
-         aes(fill = ctycomdist)) + geom_sf() + scale_fill_viridis_d() + 
-    theme(legend.position = "none"), nrow = 2)
-```
-
-```{r}
-
-cny_94_raw <- readOGR( 
-  dsn = paste0(getwd(),"/general_data/94_precincts/"), 
-  layer = "Counties_DD",
-  verbose = FALSE)
-
-proj4string(cny_94_raw) <- CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
-
-cny_94_messy <- spTransform(cny_94_raw, 
-            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-
-cny_94 <- st_as_sf(cny_94_messy) %>% 
-  clean_names()
-
-cny_94 %>% head(40) %>% View
-
-ggplot(cny_94) + geom_sf()
+cty_redistricting("Cass")
 
 ```
 

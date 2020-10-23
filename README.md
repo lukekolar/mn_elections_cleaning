@@ -8,5 +8,5 @@ Historic statewide elections found on the [MN Elections Archive](https://mn.elec
 
 ### County Commissioner Districts and Elections:
 
-Recent elections and GIS data downloaded locally from the MN Secretary of State's [results page](https://www.sos.state.mn.us/elections-voting/election-results) and modified extensively. Historic local GIS data from 1992-2001 combined from various sources, including the MNHS Governor Ventura redistricting [archive](http://www2.mnhs.org/library/findaids/gr00558.xml) and MN SoS precinct results [spreadsheets](https://www.sos.state.mn.us/elections-voting/election-results/2000/2000-general-election-results/2000-precinct-results-spreadsheet/). 
+Recent elections and GIS data downloaded locally from the MN Secretary of State's [results page](https://www.sos.state.mn.us/elections-voting/election-results) and modified extensively. Historic local GIS data from 1992-2001 combined from various sources, including the MNHS Governor Ventura redistricting [archive](http://www2.mnhs.org/library/findaids/gr00558.xml) and MN SoS precinct results [spreadsheets](https://www.sos.state.mn.us/elections-voting/election-results/2000/2000-general-election-results/2000-precinct-results-spreadsheet/). Maps designed according the MN Legislative Library's 1992 [map](https://www.leg.mn.gov/docs/2014/other/140830.pdf) of county commissioner districts.
 

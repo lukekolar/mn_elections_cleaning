@@ -903,6 +903,9 @@ comm_dists_01_mod %>% filter(county_name == "Yellow Medicine") %>%
 ```
 
 ```{r}
+
+## Functions for collecting 2002 general election county data
+
 county_stats_2002 <- function(county_id){
   url <- paste0("https://electionresults.sos.state.mn.us/results/Index?ErsElectionId=32&scenario=LocalCounty&CountyId=", county_id)
 
@@ -923,14 +926,13 @@ county_stats_2002 <- function(county_id){
   
 }
 
-county_stats_2002(1)
-
-
 county_unclean_2002_general <- function(county_id){
   url <- paste0("https://electionresults.sos.state.mn.us/results/Index?ErsElectionId=32&scenario=LocalCounty&CountyId=", county_id)
 
   data <- tibble(numbers_filler = as.vector(html_text(html_nodes(read_html(url), 
                                                'td.col-md-2.col-sm-2.col-xs-2.text-right'))))
+  
+  leng <- length(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))))
   
   repeat_this <- nrow(data)
   
@@ -948,22 +950,43 @@ county_unclean_2002_general <- function(county_id){
     mutate(candidate_name = as.vector(html_text(html_nodes(read_html(url), 
                                           'td.col-md-3.col-sm-3.col-xs-3'))),
            county_id = rep(county_id, repeat_this/2)) %>% 
-    mutate(party_affiliation = ifelse(grepl("WRITE-IN", candidate_name), "WI", "NP")) %>% 
+    mutate(party_affiliation = 
+             ifelse(grepl("WRITE-IN|\\bNO\\b|\\bAGAINST\\b", 
+                                            candidate_name), "WI", "NP")) %>% 
     select(county_id, candidate_name, party_affiliation, num_precincts_reporting,
            total_num_precincts_voting, candidate_votes, candidate_percent_vote, unique_num) 
     
-  differ <- diff(sort(append(as.vector(unlist(as.vector(table_draft %>% 
-                                                          filter(party_affiliation == "WI") %>% 
-                                                          select(unique_num)))), 0)))
+  table_draft <- if(county_id == 45){
+    table_draft %>% 
+      filter(!unique_num %in% c(21, 22)) %>% 
+      select(!unique_num) %>% rowid_to_column() %>% 
+      rename(unique_num = rowid)
+    }else{
+          table_draft
+    }
   
-  leng <- length(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))))
+  differ <- diff(sort(append(as.vector(unlist(as.vector(table_draft %>% 
+                                                          filter(party_affiliation =="WI") %>% 
+                                                          select(unique_num)))), 0))) 
+  
+  if(county_id == 56){
+    cand <- append(tail(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))), 
+                        leng - 6), "SOIL AND WATER SUPERVISOR DISTRICT 2 (2)",
+                   after = 9)
+      }else{
+        if(county_id == 45){
+          cand <- tail(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))), 
+                     leng - 6)[-9:-10]
+          }else{
+        cand <- tail(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))), 
+                     leng - 6)
+    }}
   
   allocate <- tibble(count = differ,
-                     cand = tail(as.vector(html_text(html_nodes(read_html(url), 
-                                                                'span.boldFont'))), leng - 6))
+                     cand = cand)
   allo_column <- as.tibble(as.vector(unlist(mapply(rep, allocate$cand, allocate$count))))
   
-  cbind(allo_column, table_draft)
+  cbind(allo_column, table_draft) %>% select(!unique_num)
     
 }
 
@@ -973,58 +996,19 @@ test_for_errors <- function(county_id){
   
 }
   
-county_id_numbers <- tibble(county_id = 21:25) %>% 
+county_id_numbers <- tibble(county_id = 61:87) %>% 
   mutate(error = map_lgl(county_id, test_for_errors))
 county_id_numbers
 
-
-county_unclean_2002_general(25)
+county_unclean_2002_general(4)
 
 ```
 
 ```{r}
 
-county_id <- 2
-
-  url <- paste0("https://electionresults.sos.state.mn.us/results/Index?ErsElectionId=32&scenario=LocalCounty&CountyId=", county_id)
-
-  data <- tibble(numbers_filler = as.vector(html_text(html_nodes(read_html(url), 
-                                               'td.col-md-2.col-sm-2.col-xs-2.text-right'))))
-  
-  repeat_this <- nrow(data)
-  
-  table_draft <- data %>% mutate(every_other = rep(c("candidate_votes", "candidate_percent_vote"), 
-                                    repeat_this/2),
-                  num_precincts_reporting = 
-                    rep(county_stats_2002(county_id)$num_precincts_reporting[1],
-                                                repeat_this),
-                  total_num_precincts_voting = 
-                    rep(county_stats_2002(county_id)$total_num_precincts_voting[1],
-                                                repeat_this)) %>% 
-    mutate(numbers_filler = as.numeric(str_remove_all(numbers_filler, "%|,")),
-           unique_num = rep(1:(repeat_this/2), each = 2)) %>% 
-    pivot_wider(names_from = "every_other", values_from = "numbers_filler") %>% 
-    mutate(candidate_name = as.vector(html_text(html_nodes(read_html(url), 
-                                          'td.col-md-3.col-sm-3.col-xs-3'))),
-           county_id = rep(county_id, repeat_this/2)) %>% 
-    mutate(party_affiliation = ifelse(grepl("WRITE-IN", candidate_name), "WI", "NP")) %>% 
-    select(county_id, candidate_name, party_affiliation, num_precincts_reporting,
-           total_num_precincts_voting, candidate_votes, candidate_percent_vote, unique_num) 
-    
-  differ <- diff(sort(append(as.vector(unlist(as.vector(table_draft %>% 
-                                                          filter(party_affiliation == "WI") %>% 
-                                                          select(unique_num)))), 0)))
-  
-  leng <- length(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))))
-  
-  allocate <- tibble(count = differ,
-                     cand = tail(as.vector(html_text(html_nodes(read_html(url), 
-                                                                'span.boldFont'))), leng - 6))
-  allo_column <- as.tibble(as.vector(unlist(mapply(rep, allocate$cand, allocate$count))))
-  
-  cbind(allo_column, table_draft)
 
 
+  
 ```
 
 

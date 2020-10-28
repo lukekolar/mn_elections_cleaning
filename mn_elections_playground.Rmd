@@ -185,32 +185,43 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
   election <- if(type == "general"){"gen"}else{if(type == "primary"){"primary"}else{
     stop("Variable \`type\` must be \"general\" or \"primary\" (note quotations)")}}
   
-  read.delim(paste0("relevant_county_data/county_races_datasets/", 
-                    year, "_county_", election, ".txt"), 
-  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
-  select(county_id, office_id:candidate_name,
-         total_num_precincts_voting:total_race_votes) %>% 
-  mutate(office_name = str_to_title(office_name)) %>%
-  filter(!grepl(c("Question"), office_name)) %>% 
-  filter(grepl(c("Soil|County"), office_name)) %>% 
-  mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
-  mutate(office_name = str_remove(office_name, "Special Election For ")) %>% 
-  mutate(district = as.numeric(ifelse(grepl("District [[:digit:]]", office_name), 
-                           str_match(office_name, "(?<=District )[:digit:]*"), 
-                           ifelse(grepl("District", office_name), 
-                                  str_match(office_name, 
-                                            "(?<=Member ).*(?= District)"), NA)))) %>% 
-  mutate(office_name = str_remove(office_name, "County ")) %>% 
-  mutate(office_name = str_remove(office_name, " District.*$")) %>% 
-  mutate(office_name = str_replace(office_name, " And ", " and ")) %>% 
-  mutate(office_name = str_replace(office_name, "Auditor - Treasurer",
-                                   "Auditor/Treasurer")) %>% 
-  mutate(other_county_id = ifelse(grepl("Marshall-Beltrami", office_name),
-                               ifelse(county_id == 4, 45, 4), NA)) %>% 
-  mutate(office_name = str_remove(office_name, "Marshall-Beltrami ")) %>% 
-  mutate(candidate_name = str_to_title(candidate_name))
+  if(year %in% c(2000, 2002)){
+    read.txt <- read.delim(paste0("relevant_county_data/county_races_datasets/", 
+                      year, "_county_", election, ".txt"), 
+                      sep = ";", skip = 1,
+                      header = FALSE, col.names = elec.col.names)
+  }else{
+    read.txt <- read.delim(paste0("relevant_county_data/county_races_datasets/", 
+                      year, "_county_", election, ".txt"), 
+                      sep = ";", header = FALSE, col.names = elec.col.names)    
+  }
+  read.txt %>% 
+    clean_names() %>% 
+    select(county_id, office_id:candidate_name,
+           candidate_votes:total_race_votes) %>% 
+    mutate(office_name = str_to_title(office_name)) %>%
+    filter(!grepl(c("Question"), office_name)) %>% 
+    filter(grepl(c("Soil|County"), office_name)) %>% 
+    mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
+    mutate(office_name = str_remove(office_name, "Special Election For ")) %>% 
+    mutate(district = as.numeric(ifelse(grepl("District [[:digit:]]", office_name), 
+                             str_match(office_name, "(?<=District )[:digit:]*"), 
+                             ifelse(grepl("District", office_name), 
+                                    str_match(office_name, 
+                                              "(?<=Member ).*(?= District)"), NA)))) %>% 
+    mutate(office_name = str_remove(office_name, "County ")) %>% 
+    mutate(office_name = str_remove(office_name, " District.*$")) %>% 
+    mutate(office_name = str_replace(office_name, " And ", " and ")) %>% 
+    mutate(office_name = str_replace(office_name, "Auditor - Treasurer",
+                                     "Auditor/Treasurer")) %>% 
+    mutate(other_county_id = ifelse(grepl("Marshall-Beltrami", office_name),
+                                 ifelse(county_id == 4, 45, 4), NA)) %>% 
+    mutate(office_name = str_remove(office_name, "Marshall-Beltrami ")) %>% 
+    mutate(candidate_name = str_to_title(candidate_name))
   
 }
+
+clean_county(2002, "general")
 
 ```
 
@@ -241,11 +252,11 @@ comm.elections.info <- function(year, type, pull){
 # creating a table to explore change over time
 
 comm_e <- tibble(
-  year = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-  prim.elections = c(rep(NA, 8)),
-  prim.avg.cand = c(rep(NA, 8)),
-  gen.elections = c(rep(NA, 8)),
-  gen.avg.cand = c(rep(NA, 8))
+  year = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+  prim.elections = c(rep(NA, 9)),
+  prim.avg.cand = c(rep(NA, 9)),
+  gen.elections = c(rep(NA, 9)),
+  gen.avg.cand = c(rep(NA, 9))
   ) %>% 
   mutate(prim.elections = as.numeric(prim.elections),
          prim.avg.cand = as.numeric(prim.avg.cand),
@@ -264,8 +275,8 @@ for(i in 1:nrow(comm_e)){
 ggplot(comm_e, aes(x = year)) + 
   geom_line(aes(y = prim.avg.cand, color = "Primary"), size = 0.8, linetype = 1) + 
   geom_line(aes(y = gen.avg.cand, color = "General"), size = 0.8, linetype = 1) + 
-  scale_x_continuous(breaks = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-                     labels = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
   scale_y_continuous(breaks = c(1.5, 2, 2.5, 3, 3.5, 4),
                      labels = c(1.5, 2, 2.5, 3, 3.5, 4), limits = c(1.25, 4.25)) + 
   scale_colour_manual("", breaks = c("Primary", "General"),
@@ -303,8 +314,8 @@ ggplot(comm_e, aes(x = year)) +
 
 ggplot(comm_e, aes(x = year)) + 
   geom_line(aes(y = 100*(prim.elections/gen.elections)), size = 0.7, linetype = 1) + 
-  scale_x_continuous(breaks = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-                     labels = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
   scale_y_continuous(limits = c(10, 40), breaks = c(10, 15, 20, 25, 30, 35, 40),
                      labels = c("10%", "15%", "20%", "25%", "30%", "35%", "40%")) + 
   labs(x = NULL, y = "% of elections beginning with primary contest",

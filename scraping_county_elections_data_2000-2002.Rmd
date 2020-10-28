@@ -117,6 +117,7 @@ county_unclean_2002_general <- function(county_id){
 ```
 
 ```{r}
+
 ## Functions for collecting 2000 general election county data
 
 county_stats_2000 <- function(county_id){
@@ -276,9 +277,25 @@ for(i in 1:87){
 
 county_gen_2002 <- do.call(rbind, datalist2002)
 
-write.table(county_gen_2002, 
+county_gen_2002_clean <- county_gen_2002 %>% 
+  mutate(state = "MN",
+         county_id = sprintf("%02d", county_id),
+         precinct_name = NA,
+         office_id = NA,
+         district = NA,
+         candidate_order_code = NA,
+         suffix = NA,
+         incumbent_code = NA,
+         total_race_votes = NA) %>% 
+  select(state, county_id, precinct_name, office_id, office_name, district,
+         candidate_order_code, candidate_name, suffix, incumbent_code, 
+         party_affiliation, county_num_precincts_reporting,
+         county_total_num_precincts_voting, candidate_votes, candidate_percent_vote,
+         total_race_votes)
+
+write.table(county_gen_2002_clean, 
             file = "relevant_county_data/county_races_datasets/2002_county_gen.txt", 
-            sep = ";", col.names = NA, quote = FALSE)
+            sep = ";", col.names = TRUE, quote = FALSE, row.names = FALSE)
 
 ```
 
@@ -295,16 +312,32 @@ for(i in 1:87){
 
 county_gen_2000 <- do.call(rbind, datalist2000)
 
-county_gen_2000
+county_gen_2000_clean <- county_gen_2000 %>% 
+  mutate(state = "MN",
+         county_id = sprintf("%02d", county_id),
+         precinct_name = NA,
+         office_id = NA,
+         district = NA,
+         candidate_order_code = NA,
+         suffix = NA,
+         incumbent_code = NA,
+         total_race_votes = NA) %>% 
+  mutate(candidate_name = str_trim(candidate_name, side = "right")) %>% 
+  select(state, county_id, precinct_name, office_id, office_name, district,
+         candidate_order_code, candidate_name, suffix, incumbent_code, 
+         party_affiliation, county_num_precincts_reporting,
+         county_total_num_precincts_voting, candidate_votes, candidate_percent_vote,
+         total_race_votes)
 
-write.table(county_gen_2000, 
+write.table(county_gen_2000_clean, 
             file = "relevant_county_data/county_races_datasets/2000_county_gen.txt", 
-            sep = ";", col.names = NA, quote = FALSE)
+            sep = ";", col.names = TRUE, quote = FALSE, row.names = FALSE)
 
 ```
 
 
 ```{r}
+## Working with primary elections data
 
 grab_2000_primary_counties <- function(){
   url <- paste0("https://electionresults.sos.state.mn.us/21")
@@ -325,6 +358,142 @@ grab_2000_primary_counties <- function(){
 }
 
 grab_2000_primary_counties()
+
+```
+
+
+```{r}
+
+## Functions for collecting 2000 general election county data
+
+county_stats_2000_primary <- function(county_id){
+  url <- paste0("https://electionresults.sos.state.mn.us",
+                "/results/Index?ErsElectionId=21&scenario=LocalCounty&CountyId=", 
+                county_id, "&show=Go")
+
+  numbers <- tibble(data = head(as.vector(html_text(html_nodes(read_html(url), 
+                                                    'div.flex-container div'))), 1)) %>% 
+    mutate(data = str_remove_all(data, "Last Updated:.*")) %>% 
+    mutate(data = str_remove_all(data, "\r\n")) %>% 
+    mutate(data = str_trim(str_remove(data, ".*%"), side = "both"))
+  
+  numbers %>% separate(data, sep = "of",
+           into = c("num_precincts_reporting", "total_num_precincts_voting")) %>% 
+    mutate(num_precincts_reporting = 
+             as.numeric(str_trim(num_precincts_reporting)),
+           total_num_precincts_voting = 
+             as.numeric(str_trim(total_num_precincts_voting))) 
+  
+}
+
+check.integer <- function(x) {
+    x == round(x)
+}
+
+county_unclean_2000_primary <- function(county_id){
+    url <- paste0("https://electionresults.sos.state.mn.us",
+                "/results/Index?ErsElectionId=21&scenario=LocalCounty&CountyId=", 
+                county_id, "&show=Go")
+    
+  data <- tibble(numbers_filler = as.vector(html_text(html_nodes(read_html(url), 
+                                               'td.col-md-2.col-sm-2.col-xs-2.text-right'))))
+  
+  leng <- length(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))))
+  
+  repeat_this <- nrow(data)
+  
+  table_draft <- data %>% mutate(every_other = rep(c("candidate_votes", 
+                                                     "candidate_percent_vote"), 
+                                                   repeat_this/2),
+                  county_num_precincts_reporting = 
+                    rep(county_stats_2000_primary(county_id)$num_precincts_reporting[1],
+                                                repeat_this),
+                  county_total_num_precincts_voting = 
+                    rep(county_stats_2000_primary(county_id)$total_num_precincts_voting[1],
+                                                repeat_this)) %>% 
+    mutate(numbers_filler = as.numeric(str_remove_all(numbers_filler, "%|,")),
+           unique_num = rep(1:(repeat_this/2), each = 2)) %>% 
+    pivot_wider(names_from = "every_other", values_from = "numbers_filler") %>% 
+    mutate(candidate_name = as.vector(html_text(html_nodes(read_html(url), 
+                                          'td.col-md-3'))),
+           county_id = rep(county_id, repeat_this/2)) %>% 
+    mutate(party_affiliation = 
+             ifelse(grepl("WRITE.*IN|\\bNO\\b|\\bAGAINST\\b", 
+                                            candidate_name), "WI", "NP")) %>% 
+    select(county_id, candidate_name, party_affiliation, 
+           county_num_precincts_reporting, county_total_num_precincts_voting, 
+           candidate_votes, candidate_percent_vote, unique_num) 
+  
+  table_draft <- table_draft %>% 
+    mutate(perc_tot = cumsum(candidate_percent_vote)) %>% 
+    mutate(end.key = check.integer(perc_tot/100))
+  
+  if(county_id == 7){
+      table_draft <- table_draft %>% 
+        mutate(end.key = ifelse(perc_tot == 99.99, TRUE, end.key))
+    }else{
+      table_draft <- table_draft
+    }
+  
+  differ <- diff(sort(append(as.vector(unlist(as.vector(table_draft %>% 
+                                                          filter(end.key == TRUE) %>% 
+                                                          select(unique_num)))), 0))) 
+
+  if(length(differ) == 0){}
+  
+  cand <- tail(as.vector(html_text(html_nodes(read_html(url), 'span.boldFont'))), 
+                        leng - 4)
+
+  allocate <- tibble(count = differ,
+                     cand = cand)
+  allo_column <- as.tibble(as.vector(unlist(mapply(rep, allocate$cand, allocate$count))))
+  
+  cbind(allo_column, table_draft) %>% select(!unique_num) %>% 
+    select(!end.key) %>% 
+    select(!perc_tot) %>% 
+    rename(office_name = value) %>% 
+    mutate(party_affiliation = ifelse(grepl("\\bNO\\b|\\bAGAINST\\b", 
+                                            candidate_name), "NP", party_affiliation))
+
+}
+
+```
+
+
+
+
+
+```{r}
+test_for_errors_00_prim <- function(county_id){
+  is.error(county_unclean_2000_primary(county_id))
+}
+
+
+```
+
+```{r}
+
+datalist2000_prim = list()
+
+vector <- grab_2000_primary_counties()
+
+vector[2]
+
+for(i in 1:2){
+  dat <- county_unclean_2000_primary(vector[i])
+  datalist2000_prim[[i]] <- dat
+}
+
+county_prim_2000 <- do.call(rbind, datalist2000_prim)
+
+
+```
+
+
+```{r}
+length(grab_2000_primary_counties())
+
+county_unclean_2000_primary(7)
 
 ```
 

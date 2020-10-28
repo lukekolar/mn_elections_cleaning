@@ -24,6 +24,7 @@ library(sf)
 library(lwgeom)
 library(janitor)
 library(readxl)
+library(rvest)
 
 # `tidyverse` last...
 
@@ -903,6 +904,49 @@ comm_dists_01_mod %>% filter(county_name == "Yellow Medicine") %>%
  #
 
 ```
+
+```{r}
+
+county_2002 <- function(county_id){
+  url <- paste0("https://electionresults.sos.state.mn.us/results/Index?ErsElectionId=32&scenario=LocalCounty&CountyId=", county_id)
+  
+  as.vector(html_text(html_nodes(read_html(url), 'span.boldFont')))
+  
+}
+
+county_2002(6)
+
+
+read.delim(paste0("relevant_county_data/county_races_datasets/", 
+                    "2006", "_county_", "gen", ".txt"), 
+  sep = ";", header = FALSE, col.names = elec.col.names) %>% clean_names() %>% 
+  select(county_id, office_id:candidate_name,
+         total_num_precincts_voting:total_race_votes) %>% 
+  filter(county_id == 1) %>% View
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

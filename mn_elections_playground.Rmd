@@ -890,7 +890,7 @@ comm_dists_01_mod <- vtd_01 %>%
                              ctycomdist) %>% 
   mutate(ctycomdist = as.factor(ctycomdist))
 
-comm_dists_01_mod %>% filter(county_name == "Roseau") %>% 
+comm_dists_01_mod %>% filter(county_name == "Yellow Medicine") %>% 
     ggplot(aes(fill = ctycomdist)) + geom_sf() + #geom_sf_label(aes(label = precinct_name)) +
   scale_fill_brewer(palette = "Set2")
 
@@ -898,7 +898,9 @@ comm_dists_01_mod %>% filter(county_name == "Roseau") %>%
 # advanced fixes needed: Aitkin, Becker, Beltrami, Big Stone, Brown, Carlton, Cass, Chisago,
  # Cook, Freeborn, Goodhue, Isanti, Itasca, Kittson, Koochiching, Lac qui Parle, 
  # Lake of the Woods, Mahnomen, Marshall, Martin, Meeker, Mower, Nicollet, Nobles, 
- # Olmsted, Otter Tail, Pipestone, Polk, Pope, Ramsey, Redwood, 
+ # Olmsted, Otter Tail, Pipestone, Polk, Pope, Ramsey, Redwood, St. Louis, Scott, 
+ # Stearns, Steele, Stevens, Traverse, Wadena, Washington, Wilkin, Winona, Wright, 
+ #
 
 ```
 

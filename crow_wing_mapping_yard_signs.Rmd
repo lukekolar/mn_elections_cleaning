@@ -66,7 +66,6 @@ map_precinct <- function(code, zoom_fix = 0){
 
 ```{r, message = F, warning = F}
  
-
 map_precinct("0240", zoom_fix = -1)
 
 ```

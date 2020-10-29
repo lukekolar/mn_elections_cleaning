@@ -1,0 +1,100 @@
+---
+title: "mapping_signs"
+author: "Luke Kolar"
+date: "10/28/2020"
+output: html_document
+---
+
+```{r}
+
+library(osmdata)
+library(sf)
+library(ggmap)
+library(tidyverse)
+
+```
+
+```{r, message = F, warning = F}
+
+register_google(key = Sys.getenv("GOOGLE_API_KEY"))
+
+precincts_20_raw <- readOGR( 
+  dsn = paste0(getwd(),"/general_data/shp_bdry_votingdistricts/"), 
+  layer = "bdry_votingdistricts",
+  verbose = FALSE) 
+
+precincts_20_messy <- spTransform(precincts_20_raw, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+precincts_20 <- st_as_sf(precincts_20_messy) %>%
+  filter(COUNTYCODE == 18)
+
+```
+
+```{r, message = F, warning = F}
+
+## Function for mappind precinct over Google Map image:
+
+map_precinct <- function(code){
+  filtered <- precincts_20 %>% filter(PCTCODE == code)
+
+  coords <- tibble(coords = bbox_to_string(st_bbox(filtered$geometry[1]))) %>% 
+    separate(coords, sep = ",", into = c("bottom", "left", "top", "right")) %>% 
+    mutate(bottom = as.numeric(bottom), left = as.numeric(left), 
+           top = as.numeric(top), right = as.numeric(right))
+
+  map <- get_map(c(lat = (coords$top + coords$bottom)/2, 
+                   lon = (coords$right + coords$left)/2), 
+                 source = "google", maptype = "roadmap", zoom = calc_zoom(n) - 2)
+
+  matrix.for.bbox <- data.matrix(coords)
+
+  make.bbox <- c(left = m[2], bottom = m[1],
+         right = m[4], top = m[3])
+    
+  map %>% ggmap() +
+    geom_sf(data = filtered, fill = NA, aes(), inherit.aes = FALSE)  
+}
+```
+
+
+```{r, message = F, warning = F}
+
+map_precinct("0200")
+
+```
+
+
+
+
+```{r, message = F, warning = F}
+
+code <- 
+  filtered <- precincts_20 %>% filter(PCTCODE == code)
+
+  coords <- tibble(coords = bbox_to_string(st_bbox(filtered$geometry[1]))) %>% 
+    separate(coords, sep = ",", into = c("bottom", "left", "top", "right")) %>% 
+    mutate(bottom = as.numeric(bottom), left = as.numeric(left), 
+           top = as.numeric(top), right = as.numeric(right))
+
+  map <- get_map(c(lat = (coords$top + coords$bottom)/2, 
+                   lon = (coords$right + coords$left)/2), 
+                 source = "google", maptype = "roadmap", zoom = calc_zoom(n))
+
+  matrix.for.bbox <- data.matrix(coords)
+
+  make.bbox <- c(left = m[2], bottom = m[1],
+         right = m[4], top = m[3])
+    
+  map %>% ggmap() +
+    geom_sf(data = filtered, fill = NA, aes(), inherit.aes = FALSE) 
+
+```
+
+
+```{r}
+coords$bottom
+```
+
+
+

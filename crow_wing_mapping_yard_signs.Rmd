@@ -7,6 +7,8 @@ output: html_document
 
 ```{r}
 
+## Loading necessary packages...
+
 library(osmdata)
 library(sf)
 library(ggmap)
@@ -15,6 +17,8 @@ library(tidyverse)
 ```
 
 ```{r, message = F, warning = F}
+
+## Loading in data, API keys...
 
 register_google(key = Sys.getenv("GOOGLE_API_KEY"))
 
@@ -33,9 +37,9 @@ precincts_20 <- st_as_sf(precincts_20_messy) %>%
 
 ```{r, message = F, warning = F}
 
-## Function for mappind precinct over Google Map image:
+## Function for mappind precinct over Google Map image
 
-map_precinct <- function(code){
+map_precinct <- function(code, zoom_fix = 0){
   filtered <- precincts_20 %>% filter(PCTCODE == code)
 
   coords <- tibble(coords = bbox_to_string(st_bbox(filtered$geometry[1]))) %>% 
@@ -43,24 +47,27 @@ map_precinct <- function(code){
     mutate(bottom = as.numeric(bottom), left = as.numeric(left), 
            top = as.numeric(top), right = as.numeric(right))
 
-  map <- get_map(c(lat = (coords$top + coords$bottom)/2, 
-                   lon = (coords$right + coords$left)/2), 
-                 source = "google", maptype = "roadmap", zoom = calc_zoom(n) - 2)
-
   matrix.for.bbox <- data.matrix(coords)
 
-  make.bbox <- c(left = m[2], bottom = m[1],
-         right = m[4], top = m[3])
+  make.bbox <- c(left = matrix.for.bbox[2], bottom = matrix.for.bbox[1],
+                 right = matrix.for.bbox[4], top = matrix.for.bbox[3])
+  
+  map <- get_map(c(lat = (coords$top + coords$bottom)/2, 
+                   lon = (coords$right + coords$left)/2), 
+                 source = "google", maptype = "roadmap", 
+                 zoom = calc_zoom(make.bbox) - 1 + zoom_fix)
     
   map %>% ggmap() +
     geom_sf(data = filtered, fill = NA, aes(), inherit.aes = FALSE)  
 }
+
 ```
 
 
 ```{r, message = F, warning = F}
+ 
 
-map_precinct("0200")
+map_precinct("0240", zoom_fix = -1)
 
 ```
 

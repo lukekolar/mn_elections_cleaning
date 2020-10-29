@@ -39,7 +39,7 @@ precincts_20 <- st_as_sf(precincts_20_messy) %>%
 
 ## Function for mappind precinct over Google Map image
 
-map_precinct <- function(code, zoom_fix = 0){
+map_cw_precinct <- function(code, zoom_fix = 0){
   filtered <- precincts_20 %>% filter(PCTCODE == code)
 
   coords <- tibble(coords = bbox_to_string(st_bbox(filtered$geometry[1]))) %>% 
@@ -66,7 +66,7 @@ map_precinct <- function(code, zoom_fix = 0){
 
 ```{r, message = F, warning = F}
  
-map_precinct("0240", zoom_fix = -1)
+map_cw_precinct("0240", zoom_fix = -1)
 
 ```
 

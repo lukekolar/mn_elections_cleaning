@@ -419,6 +419,23 @@ summary {
 </table>
 <p><br /></p>
 <p>The URL of this results page follows a pattern helpful to scrapers as well; Minnesota county IDs (<code>county_id</code>) are coded from 1 to 87, alphabetically, and fall at the end of the URL pattern.</p>
+<p>Functions for scraping this data involve the R packages <code>BBmisc</code>, <code>rvest</code>, <code>janitor</code>, and <code>tidyverse</code>. Code chunks are found in an appendix <a href="https://github.com/lukekolar/mn_elections_cleaning/blob/main/scraping_county_elections/scraping_county_elections_data_appendix.Rmd">here</a> on my Github. Appendix will be referenced but only replicated in a simplified manner. Code function tested last on 28 October, 2020.</p>
+</div>
+<div id="scraping-general-election-results" class="section level3">
+<h3>Scraping general election results</h3>
+<p>This section will dissect the functions <code>county_stats_2002</code>, <code>county_unclean_2002_general</code>, and their 2000 counterparts.</p>
+<p>The former, <code>county_stats_2002</code>, accepts one input, <code>county_id</code>, and assigns a <code>url</code> based on this county. Then, using html commands, it feeds all selectors matching “span.boldFont” and “div.flex-container div” into two tibble (<code>numbers</code>) columns, respectively. Again, using Aitkin County as an example, the tibble will look something like this:</p>
+<pre><code>## # A tibble: 3 x 2
+##   headers                 data                                                  
+##   &lt;chr&gt;                   &lt;chr&gt;                                                 
+## 1 Precincts Reporting in… &quot;\r\n                                        Precinct…
+## 2 Last Updated:           &quot;\r\n                                            Last…
+## 3 Voters Registered at 7… &quot;\r\n                                            Vote…</code></pre>
+<p>The second column of this tibble is quite messy, containing unecessary characters and spaces, distracting from the variables (<code>county_num_precincts_reporting</code> and <code>county_total_num_precincts_voting</code>) the code seeks to extract. So, using <code>tidyverse</code> string functions, the function cleans and reshapes <code>numbers</code> into a new tibble, the result of <code>county_stats_2002</code>:</p>
+<pre><code>## # A tibble: 1 x 2
+##   num_precincts_reporting total_num_precincts_voting
+##                     &lt;dbl&gt;                      &lt;dbl&gt;
+## 1                      NA                         61</code></pre>
 </div>
 </div>
 

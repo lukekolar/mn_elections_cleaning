@@ -5,7 +5,7 @@ date: "10/3/2020"
 output: html_document
 ---
 
-```{r, message = F}
+```{r, }
 
 ## Loading necessary packages...
 
@@ -177,7 +177,6 @@ ggplot(school_dist_elections_18, aes(fill = num_candidates)) +
 ```
 
 ```{r}
-
 ## Inspecting and cleaning county races
 
 clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
@@ -221,11 +220,25 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
   
 }
 
-clean_county(2002, "general")
+```
+
+
+```{r}
+
+#2006, 2010, 2018
+
+county_ids
+clean_county(2006, "general") %>% 
+  filter(office_name == "Commissioner") %>%
+  filter(special == TRUE)
+
+# 2006: county_id = 28, dist. 2 (4) -> write-in campaign
+# 2010: county_id = 78, dist. 3 (5) -> no primary...
+# 2018: county_id = 28, dist. 3 (4) -> special
 
 ```
 
-```{r}
+```{r, message = F}
 
 ## Using simple metrics to explore County Commissioner election data
 
@@ -252,11 +265,11 @@ comm.elections.info <- function(year, type, pull){
 # creating a table to explore change over time
 
 comm_e <- tibble(
-  year = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-  prim.elections = c(rep(NA, 9)),
-  prim.avg.cand = c(rep(NA, 9)),
-  gen.elections = c(rep(NA, 9)),
-  gen.avg.cand = c(rep(NA, 9))
+  year = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+  prim.elections = c(rep(NA, 10)),
+  prim.avg.cand = c(rep(NA, 10)),
+  gen.elections = c(rep(NA, 10)),
+  gen.avg.cand = c(rep(NA, 10))
   ) %>% 
   mutate(prim.elections = as.numeric(prim.elections),
          prim.avg.cand = as.numeric(prim.avg.cand),
@@ -275,8 +288,8 @@ for(i in 1:nrow(comm_e)){
 ggplot(comm_e, aes(x = year)) + 
   geom_line(aes(y = prim.avg.cand, color = "Primary"), size = 0.8, linetype = 1) + 
   geom_line(aes(y = gen.avg.cand, color = "General"), size = 0.8, linetype = 1) + 
-  scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-                     labels = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_x_continuous(breaks = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
   scale_y_continuous(breaks = c(1.5, 2, 2.5, 3, 3.5, 4),
                      labels = c(1.5, 2, 2.5, 3, 3.5, 4), limits = c(1.25, 4.25)) + 
   scale_colour_manual("", breaks = c("Primary", "General"),
@@ -296,8 +309,8 @@ ggplot(comm_e, aes(x = year)) +
 ggplot(comm_e, aes(x = year)) + 
   geom_line(aes(y = gen.elections, color = "General"), size = 0.7, linetype = 1) +
   geom_line(aes(y = prim.elections, color = "Primary"), size = 0.7, linetype = 1) + 
-  scale_x_continuous(breaks = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-                     labels = c(2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_x_continuous(breaks = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
   scale_colour_manual("", breaks = c("Primary", "General"),
                         labels = c("Primary", "General"), values = c("blue", "red")) + 
   labs(x = NULL, y = "total number of county commissioner elections",
@@ -314,8 +327,8 @@ ggplot(comm_e, aes(x = year)) +
 
 ggplot(comm_e, aes(x = year)) + 
   geom_line(aes(y = 100*(prim.elections/gen.elections)), size = 0.7, linetype = 1) + 
-  scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
-                     labels = c(2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
+  scale_x_continuous(breaks = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018),
+                     labels = c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)) + 
   scale_y_continuous(limits = c(10, 40), breaks = c(10, 15, 20, 25, 30, 35, 40),
                      labels = c("10%", "15%", "20%", "25%", "30%", "35%", "40%")) + 
   labs(x = NULL, y = "% of elections beginning with primary contest",
@@ -332,7 +345,20 @@ ggplot(comm_e, aes(x = year)) +
                       legend.text = element_text(face = "italic", color = "black"),
                       panel.background = element_rect(fill = "azure"))
 
+# note: special elections included
+
 ```
+
+```{r}
+
+
+clean_county(2000, "general")
+
+
+```
+
+
+
 
 ```{r}
 

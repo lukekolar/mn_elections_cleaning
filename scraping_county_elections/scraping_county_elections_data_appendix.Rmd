@@ -27,8 +27,8 @@ county_stats_2002 <- function(county_id){
                                                     'div.flex-container div'))), 4), 3)) %>% 
     filter(!headers == "Last Updated:") %>% 
     mutate(data = str_remove_all(data, "\r\n")) %>% 
-    mutate(data = str_remove(data, " Precincts Reporting in County: ")) %>% 
-    mutate(data = str_remove(data, " Voters Registered at 7AM: "))
+    mutate(data = str_remove(data, "Precincts Reporting in County:")) %>% 
+    mutate(data = str_remove(data, "Voters Registered at 7AM:"))
   
   tibble(num_precincts_reporting = 
            round((as.numeric(str_trim(str_extract(numbers$data[1], "[^%]+")))/100)*
@@ -126,8 +126,8 @@ county_stats_2000 <- function(county_id){
                                                     'div.flex-container div'))), 4), 3)) %>% 
     filter(!headers == "Last Updated:") %>% 
     mutate(data = str_remove_all(data, "\r\n")) %>% 
-    mutate(data = str_remove(data, " Precincts Reporting in County: ")) %>% 
-    mutate(data = str_remove(data, " Voters Registered at 7AM: "))
+    mutate(data = str_remove(data, "Precincts Reporting in County:")) %>% 
+    mutate(data = str_remove(data, "Voters Registered at 7AM:"))
   
   tibble(num_precincts_reporting = 
            round((as.numeric(str_trim(str_extract(numbers$data[1], "[^%]+")))/100)*

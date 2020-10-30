@@ -28,6 +28,55 @@ Term example                | Variable name                      | CSS selector
 
 The URL of this results page follows a pattern helpful to scrapers as well; Minnesota county IDs (`county_id`) are coded from 1 to 87, alphabetically, and fall at the end of the URL pattern.
 
+Functions for scraping this data involve the R packages `BBmisc`, `rvest`, `janitor`, and `tidyverse`. Code chunks are found in an appendix [here](https://github.com/lukekolar/mn_elections_cleaning/blob/main/scraping_county_elections/scraping_county_elections_data_appendix.Rmd) on my Github. Appendix will be referenced but only replicated in a simplified manner. Code function tested last on 28 October, 2020.
+
+
+### Scraping general election results
+
+This section will dissect the functions `county_stats_2002`, `county_unclean_2002_general`, and their 2000 counterparts.
+
+The former, `county_stats_2002`, accepts one input, `county_id`, and assigns a `url` based on this county. Then, using html commands, it feeds all selectors matching "span.boldFont" and "div.flex-container div" into two tibble (`numbers`) columns, respectively. Again, using Aitkin County as an example, the tibble will look something like this:
+
+```{r, echo = F, message = F, warning = F}
+
+library(BBmisc)
+library(rvest)
+library(janitor)
+library(tidyverse)
+
+url <- paste0("https://electionresults.sos.state.mn.us",
+              "/results/Index?ErsElectionId=32&scenario=LocalCounty&CountyId=", 
+              1)
+
+numbers <- tibble(headers = head(as.vector(html_text(html_nodes(read_html(url), 
+                                                            'span.boldFont'))), 3),
+                  data = tail(head(as.vector(html_text(html_nodes(read_html(url), 
+                                                   'div.flex-container div'))), 4), 3))
+
+numbers
+
+```
+
+The second column of this tibble is quite messy, containing unecessary characters and spaces, distracting from the variables (`county_num_precincts_reporting` and `county_total_num_precincts_voting`) the code seeks to extract. So, using `tidyverse` string functions, the function cleans and reshapes `numbers` into a new tibble, the result of `county_stats_2002`:
+
+```{r, echo = F, message = F, warning = F}
+
+numbers2 <- numbers %>% 
+    filter(!headers == "Last Updated:") %>% 
+    mutate(data = str_remove_all(data, "\r\n")) %>% 
+    mutate(data = str_remove(data, "Precincts Reporting in County:")) %>% 
+    mutate(data = str_remove(data, "Voters Registered at 7AM:"))
+  
+tibble(num_precincts_reporting = 
+         round((as.numeric(str_trim(str_extract(numbers2$data[1], "[^%]+")))/100)*
+                as.numeric(str_extract(str_trim(numbers2$data[1]), "[0-9]+$"))), 
+       total_num_precincts_voting = 
+         as.numeric(str_extract(str_trim(numbers2$data[1]), "[0-9]+$")))
+
+```
+
+This didn't work perfectly for every county, but these two variables aren't as important as others, being that many county-level elected positions are elected by a fraction of the county's total precincts. This data must come from somewhere else. These variables will be renamed `county_num_precincts_reporting` and `county_total_num_precincts_voting` down the line, though note that these are separate from the 
+
 
 ```{r, include = F, eval = F}
 
@@ -37,6 +86,8 @@ library(BBmisc)
 library(rvest)
 library(janitor)
 library(tidyverse)
+
+county_stats_2002(1)
 
 ```
 
@@ -55,8 +106,8 @@ county_stats_2002 <- function(county_id){
                                                     'div.flex-container div'))), 4), 3)) %>% 
     filter(!headers == "Last Updated:") %>% 
     mutate(data = str_remove_all(data, "\r\n")) %>% 
-    mutate(data = str_remove(data, " Precincts Reporting in County: ")) %>% 
-    mutate(data = str_remove(data, " Voters Registered at 7AM: "))
+    mutate(data = str_remove(data, "Precincts Reporting in County:")) %>% 
+    mutate(data = str_remove(data, "Voters Registered at 7AM:"))
   
   tibble(num_precincts_reporting = 
            round((as.numeric(str_trim(str_extract(numbers$data[1], "[^%]+")))/100)*

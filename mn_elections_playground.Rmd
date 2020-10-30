@@ -225,16 +225,252 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
 
 ```{r}
 
-#2006, 2010, 2018
+# DRAFT 
 
-county_ids
-clean_county(2006, "general") %>% 
+years.vector <- c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)
+
+datalist2000.2018 = list()
+
+for(i in 1:10){
+  dat <- clean_county(years.vector[i], "general") %>% 
+    mutate(year = years.vector[i])
+  datalist2000.2018[[i]] <- dat
+}
+
+data2000.2018 <- do.call(rbind, datalist2000.2018)
+
+data2000.2018 %>% 
+  filter(county_id == 85, office_name == "Commissioner") %>%
+#  filter(year == 2010)
+  mutate(candidate_name = str_remove_all(candidate_name, "[.]")) %>% 
+  mutate(candidate_name = str_replace_all(candidate_name, "  ", " ")) %>%
+  mutate(candidate_name = str_replace_all(candidate_name, "   ", " ")) %>%
+  mutate(candidate_name = str_remove_all(candidate_name, "[.]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " Jr")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Jr[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Jr.[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, ", Jr.")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " Sr.")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Sr[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Sr.[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, ", Sr.")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Tweet[)]")) %>% 
+  mutate(candidate_name = str_trim(candidate_name, "both")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, "(?<= ).* ")) %>%
+  mutate(last_name = str_extract(candidate_name, "(?<= ).*$")) %>%
+  filter(last_name == "Meyer")
+
+```
+
+
+```{r}
+
+# DRAFT 
+
+data2000.2018 %>% 
+  filter(office_name == "Commissioner") %>% 
+  select(candidate_name, county_id, district) %>%
+  mutate(candidate_name = str_remove_all(candidate_name, "[.]")) %>% 
+  mutate(candidate_name = str_replace_all(candidate_name, "  ", " ")) %>%
+  mutate(candidate_name = str_replace_all(candidate_name, "   ", " ")) %>%
+  mutate(candidate_name = str_remove_all(candidate_name, "[.]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " Jr")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Jr[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Jr.[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, ", Jr.")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " Sr.")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Sr[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Sr.[)]")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, ", Sr.")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, " [(]Tweet[)]")) %>% 
+  mutate(candidate_name = str_trim(candidate_name, "both")) %>% 
+  mutate(candidate_name = str_remove_all(candidate_name, "(?<= ).* ")) %>%
+  mutate(last_name = str_extract(candidate_name, "(?<= ).*$")) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Michael Ankeny", "Mike Ankeny",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Ronald Antony", "Ron Antony",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Chris Arnold", "Christopher Arnold",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Debbie Barber", "Deb Barber",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Steve Bauer", "Steven Bauer",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Mike Beard", "Michael Beard",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "James Bier", "Jim Bier",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Thomas Bjerke", "Tom Bjerke",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Jerry Boler", "Gerald Boler",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Jim Booth", "James Booth",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Jerome Bottelberghe", "Jerry Bottelberghe",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Joseph Bouvette", "Joe Bouvette",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "R Brenner", "R.J. Brenner",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Rj Brenner", "R.J. Brenner",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Steven Chaffee", "Steve Chaffee",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Richard Collins", "Rich Collins",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Joseph Connolly", "Joe Connolly",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Randall Dahl", "Randy Dahl",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Christopher Dahlberg", "Chris Dahlberg",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Erv Danielowski", "Raeanne Danielowski",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "James Demgen", "Jim Demgen",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Dick Devine", "Richard Devine",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Joseph Drietz", "Joe Drietz",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "John Dudycha", "Delane Dudycha",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Tom Dwelle", "Thomas Dwelle",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Robert Ecklund", "Rob Ecklund",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Tom Egan", "Thomas Egan",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Fay Fay", "Joanne Fay",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Robert Fenske", "Bob Fenske",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Chuck Flage", "Anthony Flage",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Dan Freeman", "Daniel Freeman",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Ray Friedl", "Raymond Friedl",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "David Gabrielson", "Dave Gabrielson",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Richard Greene", "Rick Greene",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Richard Hall", "Rich Hall",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Michael Haney", "Mike Haney",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Dave Harms", "David Harms",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Anthony Heim", "Jerry Heim",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Beverly Hewitt", "Bev Hewitt",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Kenneth Hoime", "Ken Hoime",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Norman Holmen", "Norm Holmen",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Mike Huberty", "Michael Huberty",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Douglas Huebsch", "Doug Huebsch",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Gerald Jacobson", "Jerry Jacobson",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "David Johnson", "Dave Johnson",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Philip Kinnunen", "Phil Kinnunen",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Daniel Kuhns", "Dan Kuhns",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Michael Lee", "Mike Lee",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Tom Mahoney", "Thomas Mahoney",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Vern Massie", "Vernon Massie",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Charlie Meyer", "Charles Meyer",
+                                 candidate_name)) %>%
+  mutate(candidate_name = ifelse(candidate_name == "Walter Mianowski", "Walt Mianowski",
+                                 candidate_name)) %>%
+  distinct(candidate_name, county_id, last_name) %>% 
+  filter(!last_name == "(Total)") %>% 
+  filter(!candidate_name == "Write In") %>% 
+  get_dupes(last_name) %>% 
+  arrange(last_name, county_id) %>% View
+  
+# Notes: Alan G Rogalla running in two counties?
+  # Nile and Gary Kriesel, brothers, handing it down...
+  # Carol and Scott Ledoux (husband died, wife took spot) 
+
+```
+
+
+```{r}
+
+# DRAFT 
+
+years <- c(2000, 2004)
+county <- 1
+
+  one <- clean_county(years[1], "general") %>% 
+    filter(county_id == county) %>% 
+    mutate(candidate_name = str_remove_all(candidate_name, "[.]")) %>% 
+    rename(candidate_name_pre = candidate_name,
+           candidate_votes_pre = candidate_votes,
+           candidate_percent_vote_pre = candidate_percent_vote) %>% 
+    select(district, candidate_name_pre, candidate_votes_pre, 
+           candidate_percent_vote_pre) 
+  
+  two <- clean_county(years[2], "general") %>% 
+    filter(county_id == county) %>% 
+    mutate(candidate_name = str_remove_all(candidate_name, "[.]")) %>% 
+    rename(candidate_name_post = candidate_name,
+           candidate_votes_post = candidate_votes,
+           candidate_percent_vote_post = candidate_percent_vote) %>% 
+    select(district, candidate_name_post, candidate_votes_post, 
+           candidate_percent_vote_post)
+  
+  one.vect <- one %>% 
+    arrange(district) %>% 
+    distinct(district) %>% unlist() %>% as.vector()
+    
+  two.vect <- two %>% 
+    arrange(district) %>% 
+    distinct(district) %>% unlist() %>% as.vector()
+  
+  if(all.equal(one.vect, two.vect) == FALSE){
+    print("idk")
+  }
+  
+  inner_join(one, two, by = c("candidate_name_pre" = "candidate_name_post", "district"))
+
+
+```
+
+
+```{r}
+
+# DRAFT 
+compare_county_candidates <- function(county_id, years){
+  
+  
+  
+}
+
+```
+
+
+```{r}
+
+clean_county(2018, "general") %>% 
   filter(office_name == "Commissioner") %>%
   filter(special == TRUE)
 
 # 2006: county_id = 28, dist. 2 (4) -> write-in campaign
 # 2010: county_id = 78, dist. 3 (5) -> no primary...
 # 2018: county_id = 28, dist. 3 (4) -> special
+
+# special elections: 2010-id_2-dist_5, 2012-id_27-dist_2, 2012-id_76-dist_2, 2012-id_76-dist_4, 
+  # 2012-id_87-dist_2, 2014-id_23-dist_3, 2012-id_30-dist_2, 2012-id_69-dist_7, 
+  # 2016-id_82-dist_2, 2018-id_6-dist_5, 2018-id_28-dist_3, 
 
 ```
 

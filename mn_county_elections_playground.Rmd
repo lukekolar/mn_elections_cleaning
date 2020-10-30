@@ -1,5 +1,5 @@
 ---
-title: "mn_elections_playground"
+title: "mn_county_elections_playground"
 author: "Luke Kolar"
 date: "10/3/2020"
 output: html_document
@@ -63,116 +63,6 @@ county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer",
                                      "Park Commissioner", "Coroner"),
                            code = c("COM", "AUD", "TRS", "A&T", "REC", "SHF", "ATR",
                                     "S&W", "SRV", "PCM", "COR"))
-
-```
-
-
-```{r}
-
-## Practicing with the 2018 dataset
-
-sb_2018 <- read.delim("relevant_schooldist_data/schooldist_races_datasets/2018_schoolboard.txt", 
-  sep = ";", header = FALSE, col.names = elec.col.names) %>% 
-  select(office_name, candidate_name, total_num_precincts_voting, candidate_votes, 
-         candidate_percent_vote, total_race_votes) %>% 
-  mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
-  mutate(position = ifelse(grepl("Position", office_name), 
-                           str_match(office_name, "(?<=Position )[:digit:]*"), 
-                           "at-large")) %>% 
-  mutate(district = ifelse(grepl("District [[:digit:]]", office_name), 
-                           str_match(office_name, "(?<=District )[:digit:]*"), 
-                           ifelse(grepl("District", office_name), 
-                                  str_match(office_name, 
-                                            "(?<=Member ).*(?= District)"), NA))) %>% 
-  mutate(elect = ifelse(grepl("Elect [[:digit:]]", office_name), 
-                        str_match(office_name, "(?<=Elect )[:digit:]*"),
-                        1)) %>% 
-  mutate(sd_type = ifelse(grepl("ISD", office_name), "ISD",
-                          ifelse(grepl("SDD", office_name), "SSD", "CSD"))) %>% 
-  mutate(sd_code = ifelse(sd_type == "ISD", 1,
-                          ifelse(sd_type == "SSD", 3, 2))) %>% 
-  mutate(sd_code = sprintf("%02d", sd_code)) %>% 
-  mutate(sd_num = ifelse(grepl("ISD", office_name), 
-                     str_extract(office_name, "(?<=ISD #)[:digit:]*"),
-                     ifelse(grepl("SSD", office_name), 
-                            str_extract(office_name, "(?<=SSD #)[:digit:]*"),
-                            "none"))) %>% 
-  mutate(sd_num = as.numeric(sd_num)) %>% 
-  mutate(sd_num = sprintf("%04d", sd_num)) %>% 
-  mutate(elect = as.numeric(elect)) %>% 
-  select(candidate_name, sd_num, sd_code, sd_type,
-         total_num_precincts_voting, elect, 
-         position, district, special, office_name)
-  
-sb_2018_grouped <- sb_2018 %>% 
-  group_by(sd_num, sd_code, total_num_precincts_voting) %>% 
-  summarise(num_candidates = n()) %>% 
-  ungroup()
-
-```
-
-```{r, eval = F}
-
-## Potentially important tests for school board data:
-
-test_year <- 2018
-sb_tests <- read.delim(paste0("relevant_schooldist_data/schooldist_races_datasets/",
-                              test_year, "_schoolboard.txt"), 
-                       sep = ";", header = FALSE, col.names = elec.col.names)
-
-# all precincts reporting?
-
-sb_tests %>% 
-  mutate(test = num_precincts_reporting - total_num_precincts_voting) %>% 
-  group_by(test) %>% 
-  summarize(n = n())
-
-# all non-partisan?
-
-sb_tests %>% 
-  group_by(party_affiliation) %>% 
-  summarize(n = n())
-
-# no suffixes?
-
-sb_tests %>% 
-  group_by(suffix) %>% 
-  summarize(n = n())
-
-# incumbent codes?
-
-sb_tests %>% 
-  group_by(incumbent_code) %>% 
-  summarize(n = n())
-
-```
-
-```{r}
-
-## Practice map with oversimplified variable
-
-schooldist_map_18_19_raw <- readOGR( 
-  dsn = paste0(getwd(),"/relevant_schooldist_data/shp_bdry_school_district_2010s/"), 
-  layer = "school_district_boundaries_2018_19",
-  verbose = FALSE) 
-
-schooldist_map_18_19_messy <- spTransform(schooldist_map_18_19_raw, 
-            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-
-schooldist_map_18_19 <- st_as_sf(schooldist_map_18_19_messy) %>% 
-  rename(sd_code = UNI_TYP,
-         sd_num = UNI_MAJ,
-         dist_name = UNI_NAM) %>% clean_names() %>%
-  mutate(sd_num = sprintf("%04d", sd_num),
-         sd_code = sprintf("%02d", sd_code)) %>% 
-  select(sd_code, sd_num, dist_name, sqmiles, acres, geometry) 
-  
-school_dist_elections_18 <- schooldist_map_18_19 %>% 
-  full_join(sb_2018_grouped, by = c("sd_code", "sd_num"))
-
-ggplot(school_dist_elections_18, aes(fill = num_candidates)) + 
-  geom_sf(color = "grey30", lwd = 0.25) + 
-  theme_void() + scale_fill_gradient(low = "white", high = "red")
 
 ```
 
@@ -241,7 +131,6 @@ for(i in 1:10){
 data2000.2018 <- do.call(rbind, datalist2000.2018)
 
 ```
-
 
 ```{r}
 
@@ -579,7 +468,7 @@ clean_county(2018, "general") %>%
 
 ```
 
-```{r, message = F}
+```{r, message = F, warning = F}
 
 ## Using simple metrics to explore County Commissioner election data
 
@@ -689,17 +578,6 @@ ggplot(comm_e, aes(x = year)) +
 # note: special elections included
 
 ```
-
-```{r}
-
-
-clean_county(2000, "general")
-
-
-```
-
-
-
 
 ```{r}
 

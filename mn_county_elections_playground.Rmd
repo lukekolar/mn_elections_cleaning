@@ -114,7 +114,7 @@ clean_county <- function(year = c(2000:2020), type = c("general", "primary")){
 ```
 
 
-```{r, eval = F}
+```{r, eval = F, message = F}
 
 ## Creating massive dataset with all county-level general election returns
 
@@ -149,7 +149,27 @@ data2000.2018 %>%
 
 # Write-in wins: id15 2002, id32 2008, id44 2008, id64 2014, id78 2000, id78 2014
 
+was.comm.election <- do.call(rbind, datalist2000.2018) %>% 
+  filter(office_name == "Commissioner") %>% 
+  group_by(county_id, district, year) %>% 
+  summarize(n = n()) %>%
+  mutate(n = ifelse(is.na(n), FALSE, TRUE)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = year, names_prefix = "e", values_from = n) %>% 
+  select(county_id, district, e2000, e2002, e2004, e2006, 
+         e2008, e2010, e2012, e2014, e2016, e2018) %>% 
+  replace(is.na(.), FALSE) %>% 
+  mutate(number_total = e2000 + e2002 + e2004 + e2006 + e2008 + 
+                  e2010 + e2012 + e2014 + e2016 + e2018) %>%  
+  mutate(number_odd = e2000 + e2004 + e2008 + e2012 + e2016) %>%  
+  mutate(number_even = e2002 + e2006 + e2010 + e2014 + e2018) %>% 
+  mutate(equal_nums = ifelse(number_total == number_odd | number_total == number_even,
+                             TRUE, FALSE)) %>% 
+  mutate(candidate_name = "ELECTION?")
+
 ```
+
+
 
 ```{r}
 
@@ -474,8 +494,6 @@ county_repeats_all %>% View
 
 years.vector <- c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)
 
-
-
 comm_candidate_gen_repeats <- function(county){
   list2000.2018_county = list()
   
@@ -500,23 +518,74 @@ comm_candidate_gen_repeats <- function(county){
       select(!other_county_id) %>% 
       select(!office_id)
 
-      list2000.2018_county[[i]] <- dat
+    list2000.2018_county[[i]] <- dat
   }
 
   do.call(rbind, list2000.2018_county) %>% 
     get_dupes(candidate_name)
 }
 
+comm_candidate_gen_repeats_table <- function(county){
+  comm_candidate_gen_repeats(county) %>% 
+    select(district, candidate_name, candidate_percent_vote, 
+          candidates, winner, year) %>% 
+    filter(!candidate_name == "WRITE-IN") %>%
+    pivot_wider(names_from = year, 
+                values_from = c(candidate_percent_vote, candidates, winner)) %>% 
+    mutate(county_id = county)
+  
+}
 
-crow_win <- comm_candidate_gen_repeats(18) 
 
-crow_win %>% 
-  select(district, candidate_name, candidate_percent_vote, 
-         candidates, winner, year) %>% 
-  filter(!candidate_name == "WRITE-IN") %>% 
-  View
+table_county_repeats.list = list()
 
+for(i in 1:87){
+  dat <- comm_candidate_gen_repeats_table(i)
+  table_county_repeats.list[[i]] <- dat
+}
 
+table_county_repeats <- do.call(bind_rows, table_county_repeats.list)
+
+table_county_repeats.save <- table_county_repeats %>% 
+  select(county_id, district, candidate_name, 
+         winner_2000, winner_2002, winner_2004, winner_2006, winner_2008, 
+         winner_2010, winner_2012, winner_2014, winner_2016, winner_2018, 
+         candidates_2000, candidates_2002, candidates_2004, candidates_2006, candidates_2008, 
+         candidates_2010, candidates_2012, candidates_2014, candidates_2016, candidates_2018, 
+         candidate_percent_vote_2000, candidate_percent_vote_2002, candidate_percent_vote_2004, 
+         candidate_percent_vote_2006, candidate_percent_vote_2008, candidate_percent_vote_2010, 
+         candidate_percent_vote_2012, candidate_percent_vote_2014, candidate_percent_vote_2016, 
+         candidate_percent_vote_2018)
+
+saveRDS(table_county_repeats.save, file = "relevant_county_data/table_county_repeats.rds")
+
+```
+
+```{r}
+
+table_county_repeats.save <- readRDS("relevant_county_data/table_county_repeats.rds")
+
+was.comm.election_edit <- was.comm.election %>% 
+  rename(winner_2000 = e2000,
+         winner_2002 = e2002,
+         winner_2004 = e2004,
+         winner_2006 = e2006,
+         winner_2008 = e2008,
+         winner_2010 = e2010,
+         winner_2012 = e2012,
+         winner_2014 = e2014,
+         winner_2016 = e2016,
+         winner_2018 = e2018) %>%
+  arrange(county_id, district) %>% 
+  select(county_id:district, candidate_name, winner_2000:winner_2018)
+
+table_county_repeats.save_edit <- table_county_repeats.save %>% 
+  arrange(county_id, district) %>%
+  select(county_id:winner_2018)
+
+bind_rows(was.comm.election_edit, table_county_repeats.save_edit) %>% 
+  arrange(county_id, district) %>% 
+  replace(is.na(.), FALSE) %>% View
 
 ```
 

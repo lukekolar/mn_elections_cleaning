@@ -128,7 +128,26 @@ for(i in 1:10){
   datalist2000.2018[[i]] <- dat
 }
 
-data2000.2018 <- do.call(rbind, datalist2000.2018)
+data2000.2018 <- do.call(rbind, datalist2000.2018) %>% 
+  filter(office_name == "Commissioner") %>%
+      full_join(do.call(rbind, datalist2000.2018) %>% 
+                filter(office_name == "Commissioner") %>%
+                group_by(district, county_id, year) %>% 
+                top_n(1, candidate_percent_vote) %>% 
+                mutate(winner = TRUE) %>% 
+                ungroup(), by = c("county_id", "office_id", "office_name", "district",
+                                  "candidate_order_code", "candidate_name", 
+                                  "candidate_votes", "candidate_percent_vote", 
+                                  "total_race_votes", "special", 
+                                  "other_county_id", "year")) %>% 
+  mutate(winner = ifelse(is.na(winner), FALSE, winner)) %>%
+  filter(candidate_name %in% c("Write-In (Total)", "Write In", "Write-In**"))
+
+data2000.2018 %>% 
+  filter(winner == TRUE) %>% 
+  select(county_id, year)
+
+# Write-in wins: id15 2002, id32 2008, id44 2008, id64 2014, id78 2000, id78 2014
 
 ```
 
@@ -448,6 +467,56 @@ for(i in 1:45){
 county_repeats_all <- do.call(rbind, county_repeats)
 
 county_repeats_all %>% View
+
+```
+
+```{r}
+
+years.vector <- c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)
+
+
+
+comm_candidate_gen_repeats <- function(county){
+  list2000.2018_county = list()
+  
+  for(i in 1:10){
+    dat <- clean_gen_comm_candidates(years.vector[i]) %>%
+      filter(county_id == county) %>% 
+      filter(office_name == "Commissioner") %>% 
+      mutate(year = years.vector[i]) %>%
+      group_by(district, year) %>% 
+      mutate(candidates = n() - 1) %>% 
+      ungroup() %>% 
+      full_join(clean_gen_comm_candidates(years.vector[i]) %>% 
+                  filter(county_id == county) %>% 
+                  group_by(district) %>% 
+                  top_n(1, candidate_votes) %>% 
+                  mutate(winner = TRUE),
+                by = c("county_id", "office_id", "office_name", 
+                      "district", "candidate_order_code", "candidate_name", 
+                      "candidate_votes", "candidate_percent_vote", "total_race_votes", 
+                      "special", "other_county_id", "last_name")) %>%
+      mutate(winner = ifelse(is.na(winner), FALSE, winner)) %>% 
+      select(!other_county_id) %>% 
+      select(!office_id)
+
+      list2000.2018_county[[i]] <- dat
+  }
+
+  do.call(rbind, list2000.2018_county) %>% 
+    get_dupes(candidate_name)
+}
+
+
+crow_win <- comm_candidate_gen_repeats(18) 
+
+crow_win %>% 
+  select(district, candidate_name, candidate_percent_vote, 
+         candidates, winner, year) %>% 
+  filter(!candidate_name == "WRITE-IN") %>% 
+  View
+
+
 
 ```
 

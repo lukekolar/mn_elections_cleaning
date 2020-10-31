@@ -638,16 +638,16 @@ comm_candidate_gen_repeats_table <- function(county){
   
 }
 
-table_county_repeats.list = list()
+table_county_repeats.list2 = list()
 
 for(i in 1:87){
   dat <- comm_candidate_gen_repeats_table(i)
-  table_county_repeats.list[[i]] <- dat
+  table_county_repeats.list2[[i]] <- dat
 }
 
-table_county_repeats <- do.call(bind_rows, table_county_repeats.list)
+table_county_repeats2 <- do.call(bind_rows, table_county_repeats.list2)
 
-table_county_repeats.save <- table_county_repeats %>% 
+table_county_repeats.save2 <- table_county_repeats2 %>% 
   select(county_id, district, candidate_name, 
          winner_2000, winner_2002, winner_2004, winner_2006, winner_2008, 
          winner_2010, winner_2012, winner_2014, winner_2016, winner_2018, 
@@ -658,13 +658,14 @@ table_county_repeats.save <- table_county_repeats %>%
          candidate_percent_vote_2012, candidate_percent_vote_2014, candidate_percent_vote_2016, 
          candidate_percent_vote_2018)
 
-saveRDS(table_county_repeats.save, file = "relevant_county_data/table_county_repeats.rds")
+saveRDS(table_county_repeats.save2, file = "relevant_county_data/table_county_repeats_all.rds")
 
 ```
 
+
 ```{r}
 
-table_county_repeats.save <- readRDS("relevant_county_data/table_county_repeats.rds")
+table_county_repeats.save2 <- readRDS("relevant_county_data/table_county_repeats_all.rds")
 
 was.comm.election_edit <- was.comm.election %>% 
   rename(winner_2000 = e2000,
@@ -680,32 +681,114 @@ was.comm.election_edit <- was.comm.election %>%
   arrange(county_id, district) %>% 
   select(county_id:district, candidate_name, winner_2000:winner_2018)
 
-table_county_repeats.save_edit <- table_county_repeats.save %>% 
+table_county_repeats.save_edit2 <- table_county_repeats.save2 %>% 
   arrange(county_id, district) %>%
   select(county_id:winner_2018)
 
-table_county_repeats.save_elections <- 
-  bind_rows(was.comm.election_edit, table_county_repeats.save_edit) %>% 
+table_county_repeats.save_elections2 <- 
+  bind_rows(was.comm.election_edit, table_county_repeats.save_edit2) %>% 
   arrange(county_id, district)
 
+matrix.please<-function(x) {
+    m <- data.matrix(x[,-1:-2])
+    rownames(m) <- as.vector(unlist(x[,1]))
+    m
+}
 
+  county <- 30
 
-  county <- 2
-
-  dists <- unlist(table_county_repeats.save_elections %>% 
+  dists <- unlist(table_county_repeats.save_elections2 %>% 
                     filter(county_id == county) %>% 
                     distinct(district))
 
-  length(dists)
-
-    table_county_repeats.save_elections %>% 
+    df <- table_county_repeats.save_elections2 %>% 
       filter(county_id == county) %>%
-      filter(district == dists[6]) %>% 
+      filter(district == dists[5]) %>% 
       pivot_longer(!c(county_id, district, candidate_name), names_to = "years") %>% 
       pivot_wider(names_from = candidate_name, values_from = value) %>% 
       mutate(years = as.numeric(str_remove_all(years, "winner_"))) %>% 
-      filter(ELECTION == TRUE)
-  
+      filter(ELECTION == TRUE) %>% 
+      select(!district) %>% 
+      select(!county_id)
+    df2 <- df[, (colSums(df, na.rm = TRUE) != 0)]
+    
+    if(ncol(df2) - 2 == 1){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]))
+    }else{if(ncol(df2) - 2 == 2){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   )
+    }else{if(ncol(df2) - 2 == 3){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   "three" = colnames(df2[,2 + 3]),
+                   )
+    }else{if(ncol(df2) - 2 == 4){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   "three" = colnames(df2[,2 + 3]),
+                   "four" = colnames(df2[,2 + 4]),
+                   )
+    }else{if(ncol(df2) - 2 == 5){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   "three" = colnames(df2[,2 + 3]),
+                   "four" = colnames(df2[,2 + 4]),
+                   "five" = colnames(df2[,2 + 5]),
+                   )
+    }else{if(ncol(df2) - 2 == 5){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   "three" = colnames(df2[,2 + 3]),
+                   "four" = colnames(df2[,2 + 4]),
+                   "five" = colnames(df2[,2 + 5]),
+                   "six" = colnames(df2[,2 + 6]),
+                   )
+    }else{if(ncol(df2) - 2 == 5){
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   "three" = colnames(df2[,2 + 3]),
+                   "four" = colnames(df2[,2 + 4]),
+                   "five" = colnames(df2[,2 + 5]),
+                   "six" = colnames(df2[,2 + 6]),
+                   "seven" = colnames(df2[,2 + 7]),
+                   )
+    }else{
+          df3 <- df2 %>% 
+            rename("one" = colnames(df2[,2 + 1]),
+                   "two" = colnames(df2[,2 + 2]),
+                   "three" = colnames(df2[,2 + 3]),
+                   "four" = colnames(df2[,2 + 4]),
+                   "five" = colnames(df2[,2 + 5]),
+                   "six" = colnames(df2[,2 + 6]),
+                   "seven" = colnames(df2[,2 + 7]),
+                   "eight" = colnames(df2[,2 + 8]),
+                   )      
+    }}}}}}}
+    
+    dm <- matrix.please(df3)
+    
+    ncol(dm)
+    nrow(dm)
+
+    for(i in 1:1){
+        smry <- summary(dm[,i])      
+        
+    }
+    
+    dm_smry <- data.matrix(summary(dm[,2]))
+    ran <- nrow(dm) - dm_smry[[7,1]] #times ran
+    won <- (nrow(dm) - dm_smry[[7,1]])*dm_smry[[4,1]] #times won
+    lost <- nrow(dm) - dm_smry[[7,1]] - won #times lost
+    tibble(ran = ran, won = won, lost = lost)
+
   county_ids
 
 ```

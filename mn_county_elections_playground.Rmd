@@ -10,6 +10,7 @@ output: html_document
 ## Loading necessary packages...
 
 library(geojsonio)
+library(BAMMtools)
 library(rgdal)
 library(BBmisc)
 library(raster)
@@ -47,6 +48,14 @@ elec.col.names <- c("state", "county_id", "precinct_name",
 prec.col.names <- c("county_id", "precinct_id", "precinct_name", "cong_dist",
                     "leg_dist", "ctycomdist", "jud_dist", "sw_dist", "mcd_code", "sd_num")
 
+northwest <- c(35, 68, 39, 45, 4, 57, 60, 63, 15, 54, 44, 14, 3, 29)
+northeast <- c(36, 69, 38, 16, 31, 1, 9, 58, 33, 11, 18)
+central <- c(6, 76, 34, 47, 86, 73, 5, 48, 61, 75, 78, 84, 56, 26, 21, 80, 77, 49)
+metro <- c(71, 30, 13, 2, 82, 62, 27, 10, 70, 19)
+southwest <- c(12, 65, 64, 17, 32, 53, 67, 59, 51, 41, 42, 87, 37)
+south_central <- c(43, 72, 52, 8, 83, 46, 22, 7, 40, 81)
+southeast <- c(66, 25, 79, 74, 24, 20, 50, 55, 85, 23, 28)
+
 county_ids <- read.delim("relevant_county_data/county_ids.txt", 
   sep = ";", header = FALSE, col.names = c("county_id", "county_name", 
                                            "county_num_precincts")) %>% 
@@ -55,7 +64,16 @@ county_ids <- read.delim("relevant_county_data/county_ids.txt",
   mutate(county_name = str_replace(county_name, " Qui ", " qui ")) %>% 
   mutate(county_name = trimws(county_name, which = c("right"))) %>% 
   mutate(county_name = str_replace(county_name, "Saint Louis", "St. Louis")) %>% 
-  mutate(county_name = str_replace(county_name, "Mcleod", "McLeod"))
+  mutate(county_name = str_replace(county_name, "Mcleod", "McLeod")) %>% 
+  mutate(region = case_when(county_id %in% northwest ~ "Northwest",
+                            county_id %in% northeast ~ "Northeast",
+                            county_id %in% central ~ "Central",
+                            county_id %in% metro ~ "Metro",
+                            county_id %in% southwest ~ "Southwest",
+                            county_id %in% south_central ~ "South Central",
+                            county_id %in% southeast ~ "Southeast",
+                            TRUE ~ "other"
+                            ))
 
 county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer", 
                                      "Auditor/Treasurer", "Recorder", "Sheriff", "Attorney", 
@@ -63,6 +81,23 @@ county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer",
                                      "Park Commissioner", "Coroner"),
                            code = c("COM", "AUD", "TRS", "A&T", "REC", "SHF", "ATR",
                                     "S&W", "SRV", "PCM", "COR"))
+
+counties_map_raw <- readOGR( 
+  dsn = paste0(getwd(),"/relevant_county_data/shp_bdry_counties/"), 
+  layer = "mn_county_boundaries",
+  verbose = FALSE) 
+
+counties_map_messy <- spTransform(counties_map_raw, 
+            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
+counties_map <- st_as_sf(counties_map_messy) %>% 
+  rename(county_id = COUN,
+         county_name = CTY_NAME) %>% clean_names() %>%
+  select(county_id, county_name, cty_abbr, geometry) %>% 
+  mutate(county_name = as.character(county_name),
+         county_id = as.integer(county_id)) %>% 
+  group_by(county_name) %>% 
+  summarize(geometry = st_union(geometry))
 
 ```
 
@@ -140,14 +175,14 @@ data2000.2018 <- do.call(rbind, datalist2000.2018) %>%
                                   "candidate_votes", "candidate_percent_vote", 
                                   "total_race_votes", "special", 
                                   "other_county_id", "year")) %>% 
-  mutate(winner = ifelse(is.na(winner), FALSE, winner)) %>%
-  filter(candidate_name %in% c("Write-In (Total)", "Write In", "Write-In**"))
+  mutate(winner = ifelse(is.na(winner), FALSE, winner)) #%>%
+  #filter(candidate_name %in% c("Write-In (Total)", "Write In", "Write-In**"))
 
 data2000.2018 %>% 
   filter(winner == TRUE) %>% 
   select(county_id, year)
 
-# Write-in wins: id15 2002, id32 2008, id44 2008, id64 2014, id78 2000, id78 2014
+  # Write-in wins: id15 2002, id32 2008, id44 2008, id64 2014, id78 2000, id78 2014
 
 was.comm.election <- do.call(rbind, datalist2000.2018) %>% 
   filter(office_name == "Commissioner") %>% 
@@ -165,7 +200,23 @@ was.comm.election <- do.call(rbind, datalist2000.2018) %>%
   mutate(number_even = e2002 + e2006 + e2010 + e2014 + e2018) %>% 
   mutate(equal_nums = ifelse(number_total == number_odd | number_total == number_even,
                              TRUE, FALSE)) %>% 
-  mutate(candidate_name = "ELECTION?")
+  mutate(candidate_name = "ELECTION") %>% 
+  mutate(e2000 = ifelse(e2000 == FALSE, NA, e2000),
+         e2002 = ifelse(e2002 == FALSE, NA, e2002),
+         e2004 = ifelse(e2004 == FALSE, NA, e2004),
+         e2006 = ifelse(e2006 == FALSE, NA, e2006),
+         e2008 = ifelse(e2008 == FALSE, NA, e2008),
+         e2010 = ifelse(e2010 == FALSE, NA, e2010),
+         e2012 = ifelse(e2012 == FALSE, NA, e2012),
+         e2014 = ifelse(e2014 == FALSE, NA, e2014),
+         e2016 = ifelse(e2016 == FALSE, NA, e2016),
+         e2018 = ifelse(e2018 == FALSE, NA, e2018))
+
+was.comm.election %>% filter(equal_nums == FALSE) %>% View
+  
+# 
+
+data2000.2018
 
 ```
 
@@ -392,6 +443,57 @@ clean_gen_comm_candidates <- function(year){
 
 ```{r}
 
+years.vector <- c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)
+
+commlist2000.2018 = list()
+
+for(i in 1:10){
+  dat <- clean_gen_comm_candidates(years.vector[i]) %>% 
+    mutate(year = years.vector[i])
+  commlist2000.2018[[i]] <- dat
+}
+
+comm2000.2018 <- do.call(rbind, commlist2000.2018) %>% 
+  filter(office_name == "Commissioner") %>%
+      full_join(do.call(rbind, commlist2000.2018) %>% 
+                filter(office_name == "Commissioner") %>%
+                group_by(district, county_id, year) %>% 
+                top_n(1, candidate_votes) %>% 
+                mutate(winner = TRUE) %>% 
+                ungroup(), by = c("county_id", "office_id", "office_name", "district",
+                                  "candidate_order_code", "candidate_name", 
+                                  "candidate_votes", "candidate_percent_vote", 
+                                  "total_race_votes", "special", 
+                                  "other_county_id", "year")) %>% 
+  mutate(winner = ifelse(is.na(winner), FALSE, winner)) %>%
+  group_by(district, year, county_id) %>% 
+  mutate(candidates = n() - 1) %>% 
+  ungroup() %>%  
+  select(county_id, district, year, candidate_name, candidate_votes,
+         candidate_percent_vote, candidates, winner, special) %>% 
+  filter(winner == TRUE) %>% 
+  select(!winner) %>% 
+  full_join(county_ids, by = "county_id") %>% 
+#  filter(region %in% c("Northeast")) %>%
+#  filter(candidates >= 2) %>% 
+#  filter(district == 1) %>%
+  mutate(county_id = as.factor(county_id),
+         district = as.factor(district), 
+         candidates = as.factor(candidates)) %>% 
+  full_join(comm_dists_19_area_final %>% select(!geometry),
+            by = c("county_id", "county_name", "county_num_precincts", "region")) 
+
+comm2000.2018 %>% 
+  ggplot(aes(x = candidates, y = candidate_percent_vote, color = fifth)) +
+                           geom_jitter()
+
+
+```
+
+
+
+```{r}
+
 # Function for comparing repeat candidates between counties... 
 
 repeat_comm_candidate <- function(years, county){
@@ -528,14 +630,13 @@ comm_candidate_gen_repeats <- function(county){
 comm_candidate_gen_repeats_table <- function(county){
   comm_candidate_gen_repeats(county) %>% 
     select(district, candidate_name, candidate_percent_vote, 
-          candidates, winner, year) %>% 
+           candidates, winner, year) %>% 
     filter(!candidate_name == "WRITE-IN") %>%
     pivot_wider(names_from = year, 
                 values_from = c(candidate_percent_vote, candidates, winner)) %>% 
     mutate(county_id = county)
   
 }
-
 
 table_county_repeats.list = list()
 
@@ -583,9 +684,29 @@ table_county_repeats.save_edit <- table_county_repeats.save %>%
   arrange(county_id, district) %>%
   select(county_id:winner_2018)
 
-bind_rows(was.comm.election_edit, table_county_repeats.save_edit) %>% 
-  arrange(county_id, district) %>% 
-  replace(is.na(.), FALSE) %>% View
+table_county_repeats.save_elections <- 
+  bind_rows(was.comm.election_edit, table_county_repeats.save_edit) %>% 
+  arrange(county_id, district)
+
+
+
+  county <- 2
+
+  dists <- unlist(table_county_repeats.save_elections %>% 
+                    filter(county_id == county) %>% 
+                    distinct(district))
+
+  length(dists)
+
+    table_county_repeats.save_elections %>% 
+      filter(county_id == county) %>%
+      filter(district == dists[6]) %>% 
+      pivot_longer(!c(county_id, district, candidate_name), names_to = "years") %>% 
+      pivot_wider(names_from = candidate_name, values_from = value) %>% 
+      mutate(years = as.numeric(str_remove_all(years, "winner_"))) %>% 
+      filter(ELECTION == TRUE)
+  
+  county_ids
 
 ```
 
@@ -721,23 +842,6 @@ ggplot(comm_e, aes(x = year)) +
 
 ## Practicing with county maps
 
-counties_map_raw <- readOGR( 
-  dsn = paste0(getwd(),"/relevant_county_data/shp_bdry_counties/"), 
-  layer = "mn_county_boundaries",
-  verbose = FALSE) 
-
-counties_map_messy <- spTransform(counties_map_raw, 
-            CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-
-counties_map <- st_as_sf(counties_map_messy) %>% 
-  rename(county_id = COUN,
-         county_name = CTY_NAME) %>% clean_names() %>%
-  select(county_id, county_name, cty_abbr, geometry) %>% 
-  mutate(county_name = as.character(county_name),
-         county_id = as.integer(county_id)) %>% 
-  group_by(county_name) %>% 
-  summarize(geometry = st_union(geometry))
-
 county_pop_2019 <- read_xlsx("relevant_county_data/county_pop_estimates_2019.xlsx",
                              skip = 1,
                              col_names = c("county_id", "county_name", "total_pop",
@@ -795,7 +899,6 @@ ggplot(counties_pop_map_2019, aes(fill = persons_per_household)) +
 ```
 
 ```{r}
-
 ## Creating county commissioner district polygons: 2012-2021
 
 voting_dists_19_raw <- readOGR( 
@@ -837,6 +940,96 @@ ggplot(comm_dists_19, aes(fill = ctycomdist)) +
 
 ```
 
+
+```{r}
+
+
+comm_dists_19_area <- comm_dists_19 %>%
+  mutate(area = as.numeric(st_area(geometry))/2.59e+6) %>% # convert to acres
+  as_tibble()
+
+comm_dists_19_area2 <- comm_dists_19_area %>% 
+  full_join(comm_dists_19_area %>%
+              group_by(county_id) %>% 
+              top_n(1, area) %>% 
+              mutate(density_rank = 1),
+          by = c("county_name", "county_id", "ctycomdist", 
+                 "geometry", "area")) %>% 
+  full_join(comm_dists_19_area %>%
+              group_by(county_id) %>% 
+              top_n(2, area) %>% 
+              top_n(-1, area) %>% 
+              mutate(density_rank = 2),
+          by = c("county_name", "county_id", "ctycomdist", 
+                 "geometry", "area")) %>% 
+  mutate(density_rank = coalesce(density_rank.x, density_rank.y)) %>% 
+  select(county_name, county_id, ctycomdist, geometry, area, density_rank) %>% 
+  full_join(comm_dists_19_area %>%
+              group_by(county_id) %>% 
+              top_n(3, area) %>% 
+              top_n(-1, area) %>% 
+              mutate(density_rank = 3),
+          by = c("county_name", "county_id", "ctycomdist", 
+                 "geometry", "area")) %>% 
+  mutate(density_rank = coalesce(density_rank.x, density_rank.y)) %>% 
+  select(county_name, county_id, ctycomdist, geometry, area, density_rank) %>% 
+  full_join(comm_dists_19_area %>%
+              group_by(county_id) %>% 
+              top_n(4, area) %>% 
+              top_n(-1, area) %>% 
+              mutate(density_rank = 4),
+          by = c("county_name", "county_id", "ctycomdist", 
+                 "geometry", "area")) %>% 
+  mutate(density_rank = coalesce(density_rank.x, density_rank.y)) %>% 
+  select(county_name, county_id, ctycomdist, geometry, area, density_rank) %>% 
+  full_join(comm_dists_19_area %>%
+              group_by(county_id) %>% 
+              top_n(5, area) %>% 
+              top_n(-1, area) %>% 
+              mutate(density_rank = 5),
+          by = c("county_name", "county_id", "ctycomdist", 
+                 "geometry", "area")) %>% 
+  mutate(density_rank = coalesce(density_rank.x, density_rank.y)) %>% 
+  select(county_name, county_id, ctycomdist, geometry, area, density_rank)
+
+comm_dists_19_area_final <- comm_dists_19_area2 %>% 
+  full_join(comm_dists_19_area2 %>%
+              filter(is.na(density_rank)) %>%  
+              group_by(county_id) %>% 
+              top_n(1, area) %>% 
+              mutate(density_rank = 6),
+          by = c("county_name", "county_id", "ctycomdist", 
+                 "geometry", "area")) %>% 
+  mutate(density_rank = coalesce(density_rank.x, density_rank.y)) %>% 
+  select(county_name, county_id, ctycomdist, geometry, area, density_rank) %>% 
+  mutate(density_rank = ifelse(is.na(density_rank), 7, density_rank)) %>% 
+  full_join(county_ids %>% 
+              mutate(county_id = as.factor(county_id)), 
+            by = c("county_id", "county_name")) %>% 
+  mutate(density_rank = as.factor(density_rank)) %>% 
+  mutate(jenks_class = case_when(area < 128.2340398 ~ 1,
+                                 area < 304.7857670 ~ 2,
+                                 area < 596.3743495 ~ 3,
+                                 area < 1108.2014783 ~ 4,
+                                 area < 2136.4647084 ~ 5,
+                                 area < 4319.1657454 ~ 6,
+                                 TRUE ~ 7)) %>% 
+  mutate(jenks_class = as.factor(jenks_class)) %>% 
+  mutate(jenks_class = case_when(area < 128.2340398 ~ 1,
+                                 area < 304.7857670 ~ 2,
+                                 area < 596.3743495 ~ 3,
+                                 area < 1108.2014783 ~ 4,
+                                 area < 2136.4647084 ~ 5,
+                                 area < 4319.1657454 ~ 6,
+                                 TRUE ~ 7)) %>% 
+  mutate(jenks_class = as.factor(jenks_class)) %>% 
+  arrange(area) %>% 
+  mutate(fifth = c(rep(1:5, each = 89), 5, 5)) %>%
+  mutate(fifth = as.factor(fifth)) 
+
+
+```
+
 ```{r}
 
 ## Creating county commissioner district polygons: 2002-2011
@@ -866,7 +1059,7 @@ comm_dists_10 <- results_10 %>%
   group_by(county_name, county_id, ctycomdist) %>%
   summarize(geometry = st_union(geometry)) %>% 
   ungroup() %>% 
-  fill_holes(threshold = units::set_units(25, miles^2)) %>% 
+  fill_holes(threshold = units::set_units(0.68, miles^2)) %>% 
   mutate(ctycomdist = as.factor(ctycomdist)) %>% 
   mutate(county_id = as.factor(county_id))
 
@@ -1153,7 +1346,7 @@ cty_redistricting <- function(countynam){
                                title.position = "bottom", title.hjust = 0.5))
   }
 
-cty_redistricting("Crow Wing")
+cty_redistricting("Watonwan")
 
 ```
 

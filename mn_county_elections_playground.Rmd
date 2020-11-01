@@ -664,7 +664,6 @@ saveRDS(table_county_repeats.save2, file = "relevant_county_data/table_county_re
 
 
 ```{r}
-
 table_county_repeats.save2 <- readRDS("relevant_county_data/table_county_repeats_all.rds")
 
 was.comm.election_edit <- was.comm.election %>% 
@@ -695,7 +694,18 @@ matrix.please<-function(x) {
     m
 }
 
-  county <- 30
+
+table_county_repeats.save_elections2 %>% 
+  filter(county_id == 59, district == 2)
+
+county_ids
+
+```
+
+
+```{r}
+
+county <- 80
 
   dists <- unlist(table_county_repeats.save_elections2 %>% 
                     filter(county_id == county) %>% 
@@ -774,8 +784,21 @@ matrix.please<-function(x) {
     }}}}}}}
     
     dm <- matrix.please(df3)
+    dm
     
-    ncol(dm)
+    df3 %>% 
+      pivot_longer(!years:ELECTION, names_to = "number", values_to = "won") %>% 
+      filter(!is.na(won))
+      rbind(tibble(years = 2002:2020, ELECTION = rep(NA, 19), 
+                   number = rep(NA, 19), won = rep(NA, 19))) %>% 
+      arrange(years)
+    
+    
+```
+
+
+```{r}
+ncol(dm)
     nrow(dm)
 
     for(i in 1:1){

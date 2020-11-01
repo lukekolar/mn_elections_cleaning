@@ -785,13 +785,25 @@ county <- 80
     
     dm <- matrix.please(df3)
     dm
+  
     
+
     df3 %>% 
-      pivot_longer(!years:ELECTION, names_to = "number", values_to = "won") %>% 
-      filter(!is.na(won))
-      rbind(tibble(years = 2002:2020, ELECTION = rep(NA, 19), 
-                   number = rep(NA, 19), won = rep(NA, 19))) %>% 
-      arrange(years)
+      rowwise() %>% 
+      mutate(sum = mean(c(one, two, three, four), na.rm = T))
+      
+      
+      mutate(sum = rowSums(.[3:6], na.rm = T))
+      
+      
+  
+    df3 %>% 
+      rowwise() %>% 
+      mutate(sum = mean(c(one, two, three, four), na.rm = T)) %>%   
+      pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+      filter(!is.na(won)) %>% 
+      arrange(years) #%>% 
+      #filter(!won == FALSE)
     
     
 ```

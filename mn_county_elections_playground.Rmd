@@ -786,24 +786,16 @@ county <- 80
     dm <- matrix.please(df3)
     dm
   
-    
-
-    df3 %>% 
-      rowwise() %>% 
-      mutate(sum = mean(c(one, two, three, four), na.rm = T))
-      
-      
-      mutate(sum = rowSums(.[3:6], na.rm = T))
-      
-      
-  
-    df3 %>% 
+    df_num <- df3 %>% 
       rowwise() %>% 
       mutate(sum = mean(c(one, two, three, four), na.rm = T)) %>%   
       pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
       filter(!is.na(won)) %>% 
-      arrange(years) #%>% 
-      #filter(!won == FALSE)
+      arrange(years)
+    
+    df_num2 <- df_num %>% filter(!won == FALSE)
+    num.elections <- nrow(df_num2)
+    diff.cands <- df_num2 %>% distinct(number) %>% nrow()
     
     
 ```

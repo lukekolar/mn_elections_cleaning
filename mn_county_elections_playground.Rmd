@@ -73,7 +73,10 @@ county_ids <- read.delim("relevant_county_data/county_ids.txt",
                             county_id %in% south_central ~ "South Central",
                             county_id %in% southeast ~ "Southeast",
                             TRUE ~ "other"
-                            ))
+                            )) %>% 
+  mutate(num_ctycomdists = ifelse(county_name %in% c("Anoka", "Dakota", "Hennepin", 
+                                                     "Olmsted", 'Ramsey', "St. Louis"),
+                                  7, 5))
 
 county_positions <- tibble(title = c("Commissioner", "Auditor", "Treasurer", 
                                      "Auditor/Treasurer", "Recorder", "Sheriff", "Attorney", 
@@ -443,6 +446,8 @@ clean_gen_comm_candidates <- function(year){
 
 ```{r}
 
+## Playing with plots from table with all county commissioner candidate data
+
 years.vector <- c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)
 
 commlist2000.2018 = list()
@@ -474,20 +479,46 @@ comm2000.2018 <- do.call(rbind, commlist2000.2018) %>%
   filter(winner == TRUE) %>% 
   select(!winner) %>% 
   full_join(county_ids, by = "county_id") %>% 
-#  filter(region %in% c("Northeast")) %>%
-#  filter(candidates >= 2) %>% 
-#  filter(district == 1) %>%
   mutate(county_id = as.factor(county_id),
          district = as.factor(district), 
          candidates = as.factor(candidates)) %>% 
-  full_join(comm_dists_19_area_final %>% select(!geometry),
-            by = c("county_id", "county_name", "county_num_precincts", "region")) 
+  full_join(comm_dists_19_area_final %>% select(!geometry) %>% rename(district = ctycomdist),
+            by = c("county_id", "district", "county_name", "county_num_precincts", "region")) 
 
-comm2000.2018 %>% 
-  ggplot(aes(x = candidates, y = candidate_percent_vote, color = fifth)) +
-                           geom_jitter()
+comm2000.2018_all <- do.call(rbind, commlist2000.2018) %>% 
+  filter(office_name == "Commissioner") %>%
+      full_join(do.call(rbind, commlist2000.2018) %>% 
+                filter(office_name == "Commissioner") %>%
+                group_by(district, county_id, year) %>% 
+                top_n(1, candidate_votes) %>% 
+                mutate(winner = TRUE) %>% 
+                ungroup(), by = c("county_id", "office_id", "office_name", "district",
+                                  "candidate_order_code", "candidate_name", 
+                                  "candidate_votes", "candidate_percent_vote", 
+                                  "total_race_votes", "special", 
+                                  "other_county_id", "year")) %>% 
+  mutate(winner = ifelse(is.na(winner), FALSE, winner)) %>%
+  group_by(district, year, county_id) %>% 
+  mutate(candidates = n() - 1) %>% 
+  ungroup() %>%  
+  select(county_id, district, year, candidate_name, candidate_votes,
+         candidate_percent_vote, candidates, winner, special) %>% 
+  full_join(county_ids, by = "county_id") %>% 
+  mutate(county_id = as.factor(county_id),
+         district = as.factor(district), 
+         candidates = as.factor(candidates)) %>% 
+  full_join(comm_dists_19_area_final %>% select(!geometry) %>% rename(district = ctycomdist),
+            by = c("county_id", "district", "county_name", "num_ctycomdists",
+                   "county_num_precincts", "region")) 
 
 
+```
+
+
+```{r}
+
+nrow(comm2000.2018_all %>% filter(candidate_percent_vote >= 2))
+sample
 ```
 
 
@@ -566,6 +597,8 @@ repeat_comm_candidate <- function(years, county){
 
 ```{r}
 
+## Creating wide table showing repeat candidates for all counties 
+
 year_combos <- list(c(2000, 2002), c(2000, 2004), c(2000, 2006), c(2000, 2008), 
                     c(2000, 2010), c(2000, 2012), c(2000, 2014), c(2000, 2016), 
                     c(2000, 2018), c(2002, 2004), c(2002, 2006), c(2002, 2008), 
@@ -588,11 +621,11 @@ for(i in 1:45){
 
 county_repeats_all <- do.call(rbind, county_repeats)
 
-county_repeats_all %>% View
-
 ```
 
-```{r}
+```{r, eval = F}
+
+## Gathering winners and candidates for all years, for upcoming table
 
 years.vector <- c(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018)
 
@@ -623,8 +656,8 @@ comm_candidate_gen_repeats <- function(county){
     list2000.2018_county[[i]] <- dat
   }
 
-  do.call(rbind, list2000.2018_county) %>% 
-    get_dupes(candidate_name)
+  do.call(rbind, list2000.2018_county)
+  
 }
 
 comm_candidate_gen_repeats_table <- function(county){
@@ -658,12 +691,15 @@ table_county_repeats.save2 <- table_county_repeats2 %>%
          candidate_percent_vote_2012, candidate_percent_vote_2014, candidate_percent_vote_2016, 
          candidate_percent_vote_2018)
 
-saveRDS(table_county_repeats.save2, file = "relevant_county_data/table_county_repeats_all.rds")
+ # saveRDS(table_county_repeats.save2, file = "relevant_county_data/table_county_repeats_all.rds")
 
 ```
 
 
 ```{r}
+
+## Reshaping table of winners with commmissioner as column
+
 table_county_repeats.save2 <- readRDS("relevant_county_data/table_county_repeats_all.rds")
 
 was.comm.election_edit <- was.comm.election %>% 
@@ -705,15 +741,24 @@ county_ids
 
 ```{r}
 
-county <- 80
+## Gather number of commissioners over time
 
+county_dist_stats = list()
+
+for(k in 1:87){
+
+  county <- k
+  
   dists <- unlist(table_county_repeats.save_elections2 %>% 
                     filter(county_id == county) %>% 
                     distinct(district))
 
+  county_dist_stats_list = list()
+  
+  for(i in 1:length(dists)){
     df <- table_county_repeats.save_elections2 %>% 
       filter(county_id == county) %>%
-      filter(district == dists[5]) %>% 
+      filter(district == dists[i]) %>% 
       pivot_longer(!c(county_id, district, candidate_name), names_to = "years") %>% 
       pivot_wider(names_from = candidate_name, values_from = value) %>% 
       mutate(years = as.numeric(str_remove_all(years, "winner_"))) %>% 
@@ -725,17 +770,41 @@ county <- 80
     if(ncol(df2) - 2 == 1){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]))
+
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+
     }else{if(ncol(df2) - 2 == 2){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
                    "two" = colnames(df2[,2 + 2]),
                    )
+
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+
     }else{if(ncol(df2) - 2 == 3){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
                    "two" = colnames(df2[,2 + 2]),
                    "three" = colnames(df2[,2 + 3]),
                    )
+          
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two, three), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+
     }else{if(ncol(df2) - 2 == 4){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
@@ -743,6 +812,14 @@ county <- 80
                    "three" = colnames(df2[,2 + 3]),
                    "four" = colnames(df2[,2 + 4]),
                    )
+          
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two, three, four), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+
     }else{if(ncol(df2) - 2 == 5){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
@@ -751,6 +828,14 @@ county <- 80
                    "four" = colnames(df2[,2 + 4]),
                    "five" = colnames(df2[,2 + 5]),
                    )
+          
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two, three, four, five), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+          
     }else{if(ncol(df2) - 2 == 5){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
@@ -760,6 +845,14 @@ county <- 80
                    "five" = colnames(df2[,2 + 5]),
                    "six" = colnames(df2[,2 + 6]),
                    )
+          
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two, three, four, five, six), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+          
     }else{if(ncol(df2) - 2 == 5){
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
@@ -770,6 +863,14 @@ county <- 80
                    "six" = colnames(df2[,2 + 6]),
                    "seven" = colnames(df2[,2 + 7]),
                    )
+          
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two, three, four, five, six, seven), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)      
+          
     }else{
           df3 <- df2 %>% 
             rename("one" = colnames(df2[,2 + 1]),
@@ -780,24 +881,184 @@ county <- 80
                    "six" = colnames(df2[,2 + 6]),
                    "seven" = colnames(df2[,2 + 7]),
                    "eight" = colnames(df2[,2 + 8]),
-                   )      
+                   )
+          
+          df_num <- df3 %>% 
+             rowwise() %>% 
+             mutate(sum = mean(c(one, two, three, four, five, six, seven, eight), na.rm = T)) %>%   
+             pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
+             filter(!is.na(won)) %>% 
+             arrange(years)
+          
     }}}}}}}
     
     dm <- matrix.please(df3)
-    dm
+    
+    df_num2 <- df_num %>% 
+      filter(!won == FALSE)
+    
+    comm2000.2018_all_test <- comm2000.2018_all %>% 
+      filter(county_id == county, district == dists[i]) %>% 
+      arrange(year, desc(candidate_percent_vote)) %>% 
+      group_by(year) %>% 
+      mutate(place = ifelse(lag(winner) == TRUE, 2,
+                           ifelse(lag(lag(winner)) == TRUE, 3, 
+                                   ifelse(lag(lag(lag(winner))) == TRUE, 4, 
+                                          ifelse(lag(lag(lag(lag(winner)))) == TRUE, 5, 
+                                                 ifelse(lag(lag(lag(lag(lag(winner))))) == TRUE, 6, 
+                                                        7)))))) %>% 
+      mutate(place = ifelse(is.na(place), 1, place)) %>% 
+      ungroup()
+
+    incumbents <- comm2000.2018_all_test %>% 
+      filter(winner == TRUE) %>%   
+      mutate(incumbent = ifelse(candidate_name == lag(candidate_name), TRUE, FALSE)) %>% 
+      select(county_id, district, year, candidate_name, incumbent) %>% 
+      mutate(prev.inc = ifelse(incumbent == FALSE, lag(candidate_name), NA))
+
+    for.summary <- comm2000.2018_all_test %>% 
+      full_join(incumbents, by = c("county_id", "district", "year", "candidate_name")) %>% 
+      group_by(year) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      mutate(prev.inc = ifelse(is.na(prev.inc), lag(prev.inc), prev.inc)) %>% 
+      ungroup() %>% 
+      mutate(inc.unseated = ifelse(prev.inc == candidate_name, TRUE, FALSE)) %>% 
+      group_by(year) %>% 
+      mutate(inc.unseated = ifelse(any(inc.unseated) == TRUE, TRUE, FALSE)) %>% 
+      ungroup() %>% 
+      filter(winner == TRUE) %>% 
+      mutate(inc.unseated = ifelse(is.na(inc.unseated) & !is.na(prev.inc) == TRUE, FALSE, 
+                                   inc.unseated))
+
+    reelected.num <- nrow(for.summary %>% filter(is.na(inc.unseated))) - 1
+    retired.num <- nrow(for.summary %>% filter(inc.unseated == FALSE)) 
+    incumbent.unseat.num <- nrow(for.summary %>% filter(inc.unseated == TRUE)) 
+    
+    county_dist_stats_list[[i]] <- tibble(county_id = county, district = dists[i],
+           num.elections = nrow(df_num2),
+           diff.cands = df_num2 %>% distinct(number) %>% nrow(),
+           eval.elections = nrow(for.summary),
+           reelected = reelected.num,
+           retired = retired.num,
+           incumbent.unseat = incumbent.unseat.num)
+    
+  }
+    
+  county_dist_stats[[k]] <- do.call(bind_rows, county_dist_stats_list)
   
-    df_num <- df3 %>% 
-      rowwise() %>% 
-      mutate(sum = mean(c(one, two, three, four), na.rm = T)) %>%   
-      pivot_longer(!c(years, ELECTION, sum), names_to = "number", values_to = "won") %>% 
-      filter(!is.na(won)) %>% 
-      arrange(years)
+}
+
+all_county_dist_stats <- do.call(bind_rows, county_dist_stats)
     
-    df_num2 <- df_num %>% filter(!won == FALSE)
-    num.elections <- nrow(df_num2)
-    diff.cands <- df_num2 %>% distinct(number) %>% nrow()
-    
-    
+```
+
+```{r}
+county_pop_90_19 <- read_xlsx("relevant_county_data/county_population_1990-2019.xlsx",
+                              skip = 2,
+                              col_names = c("geo_type", "county_name", "year",
+                                            "population", "num_households",
+                                            "persons_per_household")) %>%
+                        filter(!geo_type %in% c("EDR", "State")) %>% 
+                        select(county_name:persons_per_household) %>% 
+                        full_join(county_ids, by = c("county_name")) %>% 
+                        mutate(county_id = as.factor(county_id))
+
+all_county_dist_stats %>% 
+  mutate(county_id = as.factor(county_id),
+         district = as.factor(district)) %>% 
+  full_join(comm_dists_19_area_final %>% 
+              select(!geometry) %>% 
+              rename(district = ctycomdist), by = c("county_id", "district")) %>% 
+  full_join(county_pop_90_19 %>% filter(year == 2011), by = c("county_id", "county_name",
+                                                              "region", "num_ctycomdists")) %>% 
+  mutate(num.elections = as.factor(num.elections)) %>% 
+  mutate(avg.pop = population/num_ctycomdists) %>%
+  mutate(log.avg.pop = log(avg.pop)) %>% 
+#  filter(num_ctycomdists == 7) %>% 
+#  filter(population <= 600000) %>% 
+#  lm(data = ., diff.cands ~ avg.pop) %>% summary()
+  ggplot(aes(x = log.avg.pop, y = diff.cands)) + 
+  geom_jitter(aes(color = num.elections), width = 0.0, height = 0.15, alpha = 0.85) + 
+  geom_smooth(method = "lm", color = "firebrick2", se = TRUE) +
+  scale_color_viridis(discrete = TRUE, option = "E", name = "Elections") +
+  labs(title = "Unique County Commissioners by District from 2000-2018",
+       #subtitle = "Distributed by Average District Population [excluding counties with 7 districts]",
+       subtitle = "Distributed by Average District Population",
+       x = "Log average county commissioner district population",
+       y = "Unique commissioners 2000-2018") + 
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_line(color = "grey"),
+        axis.text.y = element_text(face = "bold", size = 11),
+        plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
+        plot.subtitle = element_text(face = "italic", size = 12, hjust = 0.5))
+
+ggsave("county_plot.png")
+
+```
+
+
+```{r}
+
+all_county_dist_stats %>% 
+  mutate(county_id = as.factor(county_id),
+         district = as.factor(district)) %>% 
+  full_join(comm_dists_19_area_final %>% 
+              select(!geometry) %>% 
+              rename(district = ctycomdist), by = c("county_id", "district")) %>% 
+  full_join(county_pop_90_19 %>% filter(year == 2011), by = c("county_id", "county_name",
+                                                              "region", "num_ctycomdists")) %>% 
+  mutate(num.elections = as.factor(num.elections)) %>% 
+  group_by(county_id, num_ctycomdists, population, region) %>% 
+  summarize(cands.sum = sum(diff.cands)) %>% 
+  ungroup() %>% 
+  mutate(cands.avg = cands.sum/num_ctycomdists) %>% 
+  mutate(avg.pop = population/num_ctycomdists) %>%
+  mutate(log.avg.pop = log(avg.pop)) %>%  
+#  filter(avg.pop <= 60000) %>% 
+#  filter(num_ctycomdists != 7) %>% 
+#  lm(data = ., cands.avg ~ avg.pop) %>% summary()
+  ggplot(aes(x = log.avg.pop, y = diff.cands)) + 
+  geom_jitter(aes(color = region), width = 0, height = 0, alpha = 0.7) + 
+  geom_smooth(method = "lm", color = "firebrick2", se = TRUE) +
+  scale_color_viridis(discrete = TRUE, option = "D", name = "Region") +
+  labs(title = "Unique County Commissioners by District from 2000-2018",
+       #subtitle = "Distributed by Average District Population [excluding counties with 7 districts]",
+       #subtitle = "Distributed by Average District Population",
+       x = "average county commissioner district population",
+       y = "unique commissioners 2000-2018") + 
+  theme_minimal() +
+  theme(panel.grid.major.y = element_line(color = "grey"),
+        panel.grid.minor.y = element_line(color = "grey"),
+        axis.text.y = element_text(face = "bold", size = 11),
+        plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
+        plot.subtitle = element_text(face = "italic", size = 9, hjust = 0.5))
+  
+all_county_dist_analyze <- all_county_dist_stats %>%
+  mutate(county_id = as.factor(county_id),
+         district = as.factor(district)) %>% 
+  full_join(comm_dists_19_area_final %>% 
+              select(!geometry) %>% 
+              rename(district = ctycomdist), by = c("county_id", "district")) %>% 
+  full_join(county_pop_90_19 %>% filter(year == 2011), by = c("county_id", "county_name",
+                                                              "region", "num_ctycomdists")) %>% 
+#  mutate(num.elections = as.factor(num.elections)) %>% 
+  mutate(avg.pop = population/num_ctycomdists) %>%
+  mutate(log.avg.pop = log(avg.pop)) %>% 
+#  filter(!num.elections == "4") %>% 
+  mutate(avg.dens = avg.pop/area)
+all_county_dist_analyze %>% 
+  ggplot(aes(x = log.avg.pop, y = diff.cands)) + 
+  geom_jitter(height = 0.1, width = 0.05, aes(color = num.elections)) + 
+  geom_smooth(method = "lm")
+
+lm(data = all_county_dist_analyze, diff.cands ~ log.avg.pop + num.elections) %>% summary()
+
 ```
 
 
@@ -1053,6 +1314,7 @@ ggplot(comm_dists_19, aes(fill = ctycomdist)) +
 
 ```{r}
 
+## County areas (must run before above plots)
 
 comm_dists_19_area <- comm_dists_19 %>%
   mutate(area = as.numeric(st_area(geometry))/2.59e+6) %>% # convert to acres

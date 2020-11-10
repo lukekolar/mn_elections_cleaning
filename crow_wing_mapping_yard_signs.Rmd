@@ -71,35 +71,104 @@ map_cw_precinct("0240", zoom_fix = -1)
 ```
 
 
-
-
-```{r, message = F, warning = F}
-
-code <- 
-  filtered <- precincts_20 %>% filter(PCTCODE == code)
-
-  coords <- tibble(coords = bbox_to_string(st_bbox(filtered$geometry[1]))) %>% 
-    separate(coords, sep = ",", into = c("bottom", "left", "top", "right")) %>% 
-    mutate(bottom = as.numeric(bottom), left = as.numeric(left), 
-           top = as.numeric(top), right = as.numeric(right))
-
-  map <- get_map(c(lat = (coords$top + coords$bottom)/2, 
-                   lon = (coords$right + coords$left)/2), 
-                 source = "google", maptype = "roadmap", zoom = calc_zoom(n))
-
-  matrix.for.bbox <- data.matrix(coords)
-
-  make.bbox <- c(left = m[2], bottom = m[1],
-         right = m[4], top = m[3])
-    
-  map %>% ggmap() +
-    geom_sf(data = filtered, fill = NA, aes(), inherit.aes = FALSE) 
-
-```
-
-
 ```{r}
-coords$bottom
+
+elec.col.names <- c("state", "county_id", "precinct_name",
+                    "office_id", "office_name", "mcd_code", 
+                    "candidate_order_code", "candidate_name",
+                    "suffix", "incumbent_code", "party_affiliation",
+                    "num_precincts_reporting", "total_num_precincts_voting",
+                    "candidate_votes", "candidate_percent_vote", "total_race_votes")
+
+mcd_codes <- read.delim("general_data/municipal/mcd_codes.txt", 
+  sep = ";", header = FALSE, col.names = c("county_id", "county_name", 
+                                           "mcd_code", "mun_name"))
+
+crow_wing_codes <- mcd_codes %>% 
+  filter(county_name == "Crow Wing") %>% 
+  select(mcd_code, mun_name)
+  
+clean_county_mun <- function(year){
+  
+  year.code <- ifelse(year == 2010, "2010offices", year)
+  
+  read.delim(paste0("general_data/municipal/", year.code, ".txt"), 
+                            sep = ";", header = FALSE, 
+                            col.names = elec.col.names) %>% 
+    inner_join(crow_wing_codes, by = "mcd_code") %>% 
+    mutate(type = ifelse(grepl("City of ", mun_name), "city",
+                         ifelse(grepl("Township|Twp", mun_name), "twp", "other"))) %>% 
+    mutate(candidate_name = str_to_title(candidate_name)) %>% 
+    mutate(office_name = str_to_title(office_name)) %>% 
+    mutate(mun_name = str_trim(str_remove(mun_name, "City of"))) %>%
+    mutate(mun_name = str_trim(str_remove(mun_name, "Township|Twp"))) %>% 
+    mutate(type = ifelse(mun_name == "Riverton", "city", type)) %>% 
+    select(office_id:mcd_code, candidate_name, 
+           party_affiliation, candidate_votes:type) %>% 
+    mutate(elect = ifelse(grepl("Elect [[:digit:]]", office_name), 
+                          str_match(office_name, "(?<=Elect )[:digit:]*"),
+                          1)) %>% 
+    filter(!office_id == 6003) %>% 
+    mutate(special = ifelse(grepl("Special", office_name), TRUE, FALSE)) %>% 
+    mutate(office_name = str_remove_all(office_name, "Special Election for ")) %>%   
+    mutate(office_name = str_remove_all(office_name, " [(].*")) %>% 
+    mutate(office = ifelse(grepl("Clerk - Treasurer", office_name), "Clerk/Treasurer",
+                      ifelse(grepl("Clerk", office_name), "Clerk", 
+                        ifelse(grepl("Treasurer", office_name), "Treasurer",
+                          ifelse(grepl("Supervisor", office_name), "Supervisor",
+                            ifelse(grepl("Mayor", office_name), "Mayor", 
+                              ifelse(grepl("Council Member", office_name), "Councilor",
+                                ifelse(grepl("Question", office_name), "Q",
+                                  ifelse(grepl("Alderman", office_name), "Alderman", 
+                                         NA))))))))) %>% 
+    mutate(ward = ifelse(grepl("Ward 1|Ward-W-01", office_name), "1", 
+                   ifelse(grepl("Ward 2|Ward-W-02", office_name), "2",
+                    ifelse(grepl("Ward 3|Ward-W-03", office_name), "3",
+                     ifelse(grepl("Ward 4|Ward-W-04", office_name), "4", NA))))) %>% 
+    mutate(seat = ifelse(grepl("Seat 1|Section I", office_name), "1",
+                   ifelse(grepl("Seat 2|Section II", office_name), "2", 
+                    ifelse(grepl("Seat 3|Section III", office_name), "3",
+                     ifelse(grepl("Seat 4|Section IV", office_name), "4",
+                      ifelse(grepl("Seat A", office_name), "A", 
+                       ifelse(grepl("Seat B", office_name), "B", 
+                        ifelse(grepl("Seat C", office_name), "C", 
+                         ifelse(grepl("Seat D", office_name), "D", NA))))))))) %>% 
+    arrange(mcd_code, office_id, party_affiliation) %>% 
+    mutate(year = year)
+
+}
+
+
+  read.delim(paste0("general_data/municipal/", 2011, ".txt"), 
+                            sep = ";", header = FALSE, 
+                            col.names = elec.col.names) %>% 
+    inner_join(crow_wing_codes, by = "mcd_code") %>% View
+
+all.except.20 <- clean_county_mun(2018) %>% 
+  rbind(clean_county_mun(2016), clean_county_mun(2014), clean_county_mun(2012),
+        clean_county_mun(2010), clean_county_mun(2008), clean_county_mun(2006)) 
+avg.votez <- all.except.20 %>% 
+#  filter(mun_name == "Manhattan Beach") %>% 
+#  filter(year %in% c(2008, 2012, 2016, 2020)) %>% 
+  filter(office %in% c("Mayor")) %>% 
+  group_by(mun_name, year) %>% 
+  summarize(votes = sum(candidate_votes)) %>% 
+  ungroup() %>% 
+  group_by(mun_name) %>% 
+  summarize(avg.votes = mean(votes))
+  
+
+all.except.20 %>% 
+  filter(office %in% c("Mayor")) %>% 
+  group_by(mun_name, year) %>% 
+  summarize(votes = sum(candidate_votes)) %>% 
+  full_join(avg.votez) %>% 
+  mutate(diff = (votes - avg.votes)/avg.votes) %>% 
+#  filter(mun_name != "Brainerd") %>% 
+  ggplot(aes(x = year, y = diff)) + geom_point(aes(color = mun_name)) + 
+    geom_line(aes(color = mun_name))
+
+
 ```
 
 

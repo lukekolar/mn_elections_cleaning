@@ -1,0 +1,342 @@
+MN;;;1001;Mayor (Aurora);02872;9001;MARY HESS;;;NP;2;2;311;82.71;376
+MN;;;1001;Mayor (Aurora);02872;9002;DAVE MEYER;;;NP;2;2;64;17.02;376
+MN;;;1001;Mayor (Aurora);02872;9901;WRITE-IN**;;;WI;2;2;1;0.27;376
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9001;DARRIN CHRISTIANSON;;;NP;2;2;130;18.71;695
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9002;DAVID LISLEGARD;;;NP;2;2;266;38.27;695
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9003;DAVE "D. CROMS" CROMLEY;;;NP;2;2;294;42.30;695
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9901;WRITE-IN**;;;WI;2;2;5;0.72;695
+MN;;;1001;Mayor (Barnesville);03574;9001;EUGENE PRIM;;;NP;3;3;274;100.00;274
+MN;;;1001;Mayor (Barnesville);03574;9901;WRITE-IN**;;;WI;3;3;0;0.00;274
+MN;;;1020;Council Member Ward 1 (Barnesville);03574;9001;BETTY STROM;;;NP;1;1;97;100.00;97
+MN;;;1020;Council Member Ward 1 (Barnesville);03574;9901;WRITE-IN**;;;WI;1;1;0;0.00;97
+MN;;;1021;Council Member Ward 2 (Barnesville);03574;9001;DAWN STUVLAND;;;NP;1;1;74;62.71;118
+MN;;;1021;Council Member Ward 2 (Barnesville);03574;9002;RICHARD SYLVESTER;;;NP;1;1;44;37.29;118
+MN;;;1021;Council Member Ward 2 (Barnesville);03574;9901;WRITE-IN**;;;WI;1;1;0;0.00;118
+MN;;;1022;Council Member Ward 3 (Barnesville);03574;9001;BRADLEY FIELD;;;NP;1;1;63;59.43;106
+MN;;;1022;Council Member Ward 3 (Barnesville);03574;9002;CATHERINE ENSTAD;;;NP;1;1;43;40.57;106
+MN;;;1022;Council Member Ward 3 (Barnesville);03574;9901;WRITE-IN**;;;WI;1;1;0;0.00;106
+MN;;;1001;Mayor (Benson);05212;9001;GARY LANDMARK;;;NP;2;2;394;50.32;783
+MN;;;1001;Mayor (Benson);05212;9002;TARA ULMANIEC;;;NP;2;2;386;49.30;783
+MN;;;1001;Mayor (Benson);05212;9901;WRITE-IN**;;;WI;2;2;3;0.38;783
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9001;DENNIS MINOR;;;NP;2;2;190;12.31;1543
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9002;LARRY SMITH;;;NP;2;2;123;7.97;1543
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9003;JONATHON POGGE-WEAVER;;;NP;2;2;359;23.27;1543
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9004;TERRI COLLINS;;;NP;2;2;479;31.04;1543
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9005;DONALD KRUMWIEDE;;;NP;2;2;94;6.09;1543
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9006;MIKE FUGLEBERG;;;NP;2;2;296;19.18;1543
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9901;WRITE-IN**;;;WI;2;2;2;0.13;1543
+MN;;;1001;Mayor (Bloomington);06616;9001;JIM MEAD;;;NP;32;32;2659;34.12;7794
+MN;;;1001;Mayor (Bloomington);06616;9002;GENE WINSTEAD;;;NP;32;32;5100;65.43;7794
+MN;;;1001;Mayor (Bloomington);06616;9901;WRITE-IN**;;;WI;32;32;35;0.45;7794
+MN;;;1010;Council Member at Large (Bloomington);06616;9001;KEVIN HEINEN;;;NP;32;32;2447;33.47;7311
+MN;;;1010;Council Member at Large (Bloomington);06616;9002;TIM BUSSE;;;NP;32;32;4838;66.17;7311
+MN;;;1010;Council Member at Large (Bloomington);06616;9901;WRITE-IN**;;;WI;32;32;26;0.36;7311
+MN;;;1020;Council Member District 1 (Bloomington);06616;9001;JOHNATHON MCCLELLAN;;;NP;8;8;1005;41.65;2413
+MN;;;1020;Council Member District 1 (Bloomington);06616;9002;DWAYNE A. LOWMAN;;;NP;8;8;1400;58.02;2413
+MN;;;1020;Council Member District 1 (Bloomington);06616;9901;WRITE-IN**;;;WI;8;8;8;0.33;2413
+MN;;;1021;Council Member District 2 (Bloomington);06616;9001;ANDREW CARLSON;;;NP;8;8;1303;55.57;2345
+MN;;;1021;Council Member District 2 (Bloomington);06616;9003;TOM HULTING;;;NP;8;8;1037;44.22;2345
+MN;;;1021;Council Member District 2 (Bloomington);06616;9901;WRITE-IN**;;;WI;8;8;5;0.21;2345
+MN;;;1001;Mayor (Circle Pines);11494;9001;DAVE BARTHOLOMAY;;;NP;2;2;743;64.66;1149
+MN;;;1001;Mayor (Circle Pines);11494;9002;RICK MILLER JR.;;;NP;2;2;40;3.48;1149
+MN;;;1001;Mayor (Circle Pines);11494;9003;RICHARD J. RUNBECK;;;NP;2;2;362;31.51;1149
+MN;;;1001;Mayor (Circle Pines);11494;9901;WRITE-IN**;;;WI;2;2;4;0.35;1149
+MN;;;1010;Council Member at Large (Circle Pines) (Elect 2);11494;9001;MIKE SCHWEIGERT;;;NP;2;2;594;32.32;1838
+MN;;;1010;Council Member at Large (Circle Pines) (Elect 2);11494;9002;MATT PERCY;;;NP;2;2;759;41.29;1838
+MN;;;1010;Council Member at Large (Circle Pines) (Elect 2);11494;9003;RICHARD WHITNEY;;;NP;2;2;360;19.59;1838
+MN;;;1010;Council Member at Large (Circle Pines) (Elect 2);11494;9004;RONALD SHULL;;;NP;2;2;114;6.20;1838
+MN;;;1010;Council Member at Large (Circle Pines) (Elect 2);11494;9901;WRITE-IN**;;;WI;2;2;11;0.60;1838
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9001;CHELSEY LANE;;;NP;1;1;93;5.33;1746
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9002;JULIE NASH;;;NP;1;1;699;40.03;1746
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9003;PATRICK TAYLOR;;;NP;1;1;147;8.42;1746
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9004;KEVIN SPAULDING;;;NP;1;1;406;23.25;1746
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9005;STEPHEN P. ASTRUP;;;NP;1;1;392;22.45;1746
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9901;WRITE-IN**;;;WI;1;1;9;0.52;1746
+MN;;;1001;Mayor (Duluth);17000;9002;EMILY LARSON;;;NP;35;35;15352;71.94;21339
+MN;;;1001;Mayor (Duluth);17000;9007;CHUCK HORTON;;;NP;35;35;5862;27.47;21339
+MN;;;1001;Mayor (Duluth);17000;9901;WRITE-IN**;;;WI;35;35;125;0.59;21339
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9001;ELISSA HANSEN;;;NP;35;35;12192;37.81;32247
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9002;NOAH HOBBS;;;NP;35;35;9271;28.75;32247
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9003;JIM BOOTH;;;NP;35;35;6922;21.47;32247
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9004;KRIS OSBAKKEN;;;NP;35;35;3699;11.47;32247
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9901;WRITE-IN**;;;WI;35;35;163;0.51;32247
+MN;;;1020;Council Member District 1 (Duluth);17000;9001;GARY ANDERSON;;;NP;8;8;3902;61.94;6300
+MN;;;1020;Council Member District 1 (Duluth);17000;9002;KARL SPRING;;;NP;8;8;2389;37.92;6300
+MN;;;1020;Council Member District 1 (Duluth);17000;9901;WRITE-IN**;;;WI;8;8;9;0.14;6300
+MN;;;1021;Council Member District 2 (Duluth);17000;9001;JOEL SIPRESS;;;NP;7;7;2891;97.47;2966
+MN;;;1021;Council Member District 2 (Duluth);17000;9901;WRITE-IN**;;;WI;7;7;75;2.53;2966
+MN;;;1022;Council Member District 3 (Duluth);17000;9001;EM WESTERLUND;;;NP;8;8;2278;82.36;2766
+MN;;;1022;Council Member District 3 (Duluth);17000;9002;BARRIE LOVE;;;NP;8;8;465;16.81;2766
+MN;;;1022;Council Member District 3 (Duluth);17000;9901;WRITE-IN**;;;WI;8;8;23;0.83;2766
+MN;;;1024;Council Member District 5 (Duluth);17000;9002;JANET KENNEDY;;;NP;8;8;1705;43.44;3925
+MN;;;1024;Council Member District 5 (Duluth);17000;9004;JAY FOSLE;;;NP;8;8;2215;56.43;3925
+MN;;;1024;Council Member District 5 (Duluth);17000;9901;WRITE-IN**;;;WI;8;8;5;0.13;3925
+MN;;;1131;CITY QUESTION 1 (Duluth);17000;9001;YES;;;NP;35;35;14031;66.98;20948
+MN;;;1131;CITY QUESTION 1 (Duluth);17000;9002;NO;;;NP;35;35;6917;33.02;20948
+MN;;;1132;CITY QUESTION 2 (Duluth);17000;9001;YES;;;NP;35;35;5271;25.30;20835
+MN;;;1132;CITY QUESTION 2 (Duluth);17000;9002;NO;;;NP;35;35;15564;74.70;20835
+MN;;;1133;CITY QUESTION 3 (Duluth);17000;9001;YES;;;NP;35;35;11528;59.30;19440
+MN;;;1133;CITY QUESTION 3 (Duluth);17000;9002;NO;;;NP;35;35;7912;40.70;19440
+MN;;;1001;Mayor (Falcon Heights);20420;9001;LISA L. MCDONALD;;;NP;2;2;95;17.46;544
+MN;;;1001;Mayor (Falcon Heights);20420;9002;PETER LINDSTROM;;;NP;2;2;445;81.80;544
+MN;;;1001;Mayor (Falcon Heights);20420;9901;WRITE-IN**;;;WI;2;2;4;0.74;544
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9001;JOE BROWN THUNDER;;;NP;2;2;349;36.39;959
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9002;GORDON STROM;;;NP;2;2;171;17.83;959
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9003;RANDY GUSTAFSON;;;NP;2;2;244;25.44;959
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9004;TOM BRACE;;;NP;2;2;190;19.81;959
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9901;WRITE-IN**;;;WI;2;2;5;0.52;959
+MN;;;1012;Special Election for Council Member at Large (Falcon Heights);20420;9001;TONY FISCHER;;;NP;2;2;276;59.61;463
+MN;;;1012;Special Election for Council Member at Large (Falcon Heights);20420;9002;MICHAEL TRACY;;;NP;2;2;181;39.09;463
+MN;;;1012;Special Election for Council Member at Large (Falcon Heights);20420;9901;WRITE-IN**;;;WI;2;2;6;1.30;463
+MN;;;1001;Mayor (Golden Valley);24308;9001;SHEP HARRIS;;;NP;8;8;2004;51.94;3858
+MN;;;1001;Mayor (Golden Valley);24308;9002;MARTHA (MARTI) MICKS;;;NP;8;8;1845;47.82;3858
+MN;;;1001;Mayor (Golden Valley);24308;9901;WRITE-IN**;;;WI;8;8;9;0.23;3858
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9001;CAROL BARRY;;;NP;8;8;1500;21.42;7004
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9002;STEVE SCHMIDGALL;;;NP;8;8;1642;23.44;7004
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9003;ANDY SCHULER;;;NP;8;8;583;8.32;7004
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9004;PAUL SCOFIELD;;;NP;8;8;819;11.69;7004
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9005;JOANIE CLAUSEN;;;NP;8;8;1968;28.10;7004
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9006;HATTIE BONDS;;;NP;8;8;473;6.75;7004
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9901;WRITE-IN**;;;WI;8;8;19;0.27;7004
+MN;;;1001;Mayor (Hopkins);30140;9001;GAROLD HEALY;;;NP;6;6;55;5.32;1034
+MN;;;1001;Mayor (Hopkins);30140;9002;MOLLY CUMMINGS;;;NP;6;6;832;80.46;1034
+MN;;;1001;Mayor (Hopkins);30140;9003;ROBERT IVERS;;;NP;6;6;71;6.87;1034
+MN;;;1001;Mayor (Hopkins);30140;9901;WRITE-IN**;;;WI;6;6;76;7.35;1034
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9001;JASON GADD;;;NP;6;6;729;43.39;1680
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9002;JEREMY GRENZ;;;NP;6;6;318;18.93;1680
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9003;AARON KUZNIA;;;NP;6;6;621;36.96;1680
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9901;WRITE-IN**;;;WI;6;6;12;0.71;1680
+MN;;;1012;Special Election for Council Member (Hopkins);30140;9001;KATY CAMPBELL;;;NP;6;6;404;40.48;998
+MN;;;1012;Special Election for Council Member (Hopkins);30140;9002;JAMES WARDEN;;;NP;6;6;369;36.97;998
+MN;;;1012;Special Election for Council Member (Hopkins);30140;9003;BRANDON HAUGH;;;NP;6;6;67;6.71;998
+MN;;;1012;Special Election for Council Member (Hopkins);30140;9004;SCOTT K. KERSSEN;;;NP;6;6;151;15.13;998
+MN;;;1012;Special Election for Council Member (Hopkins);30140;9901;WRITE-IN**;;;WI;6;6;7;0.70;998
+MN;;;1001;Mayor (Independence);30842;9001;MARVIN D JOHNSON;;;NP;1;1;576;93.96;613
+MN;;;1001;Mayor (Independence);30842;9901;WRITE-IN**;;;WI;1;1;37;6.04;613
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9001;THOMAS PALMQUIST;;;NP;1;1;74;6.57;1126
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9002;RAY MCCOY;;;NP;1;1;501;44.49;1126
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9003;ROBERT SIEVERS;;;NP;1;1;81;7.19;1126
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9004;RAYMOND FLEMAL;;;NP;1;1;95;8.44;1126
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9005;STEVE GROTTING;;;NP;1;1;367;32.59;1126
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9901;WRITE-IN**;;;WI;1;1;8;0.71;1126
+MN;;;1001;Mayor (Lino Lakes);37322;9001;JEFF REINERT;;;NP;7;7;2088;54.19;3853
+MN;;;1001;Mayor (Lino Lakes);37322;9002;MICHAEL MOONEY;;;NP;7;7;1752;45.47;3853
+MN;;;1001;Mayor (Lino Lakes);37322;9901;WRITE-IN**;;;WI;7;7;13;0.34;3853
+MN;;;1010;Council Member at Large (Lino Lakes) (Elect 2);37322;9001;MELISSA S. MAHER;;;NP;7;7;1997;29.16;6848
+MN;;;1010;Council Member at Large (Lino Lakes) (Elect 2);37322;9002;MICHAEL MANTHEY;;;NP;7;7;1629;23.79;6848
+MN;;;1010;Council Member at Large (Lino Lakes) (Elect 2);37322;9003;DAVE ROESER;;;NP;7;7;1498;21.88;6848
+MN;;;1010;Council Member at Large (Lino Lakes) (Elect 2);37322;9004;BYRON J. ROLAND;;;NP;7;7;308;4.50;6848
+MN;;;1010;Council Member at Large (Lino Lakes) (Elect 2);37322;9005;DALE STOESZ;;;NP;7;7;1386;20.24;6848
+MN;;;1010;Council Member at Large (Lino Lakes) (Elect 2);37322;9901;WRITE-IN**;;;WI;7;7;30;0.44;6848
+MN;;;1001;Mayor (Lonsdale);38150;9001;TIM RUD;;;NP;1;1;217;89.30;243
+MN;;;1001;Mayor (Lonsdale);38150;9901;WRITE-IN**;;;WI;1;1;26;10.70;243
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9001;JOSHUA T WARREN;;;NP;1;1;90;18.18;495
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9002;DOUG A. FINK;;;NP;1;1;119;24.04;495
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9003;KEVIN KODADA;;;NP;1;1;157;31.72;495
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9004;CINDY FURRER;;;NP;1;1;126;25.45;495
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9901;WRITE-IN**;;;WI;1;1;3;0.61;495
+MN;;;1001;Mayor (Mahtomedi);39428;9001;BILL COLEMAN;;;NP;2;2;396;29.73;1332
+MN;;;1001;Mayor (Mahtomedi);39428;9002;JUD MARSHALL;;;NP;2;2;637;47.82;1332
+MN;;;1001;Mayor (Mahtomedi);39428;9004;TODD ROGERS;;;NP;2;2;298;22.37;1332
+MN;;;1001;Mayor (Mahtomedi);39428;9901;WRITE-IN**;;;WI;2;2;1;0.08;1332
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9001;RICHARD BRAINERD;;;NP;2;2;779;35.75;2179
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9002;RICHARD GEIER;;;NP;2;2;327;15.01;2179
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9003;CHRISTOPHER BELFLOWER;;;NP;2;2;375;17.21;2179
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9004;TIMOTHY DEANS;;;NP;2;2;690;31.67;2179
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9901;WRITE-IN**;;;WI;2;2;8;0.37;2179
+MN;;;1010;Council Member at Large (Maplewood) (Elect 2);40382;9001;BRYAN SMITH;;;NP;15;15;2729;25.82;10571
+MN;;;1010;Council Member at Large (Maplewood) (Elect 2);40382;9002;DIANA LONGRIE;;;NP;15;15;2053;19.42;10571
+MN;;;1010;Council Member at Large (Maplewood) (Elect 2);40382;9003;BOB CARDINAL;;;NP;15;15;2584;24.44;10571
+MN;;;1010;Council Member at Large (Maplewood) (Elect 2);40382;9004;TOU XIONG;;;NP;15;15;3153;29.83;10571
+MN;;;1010;Council Member at Large (Maplewood) (Elect 2);40382;9901;WRITE-IN**;;;WI;15;15;52;0.49;10571
+MN;;;1020;Council Member Ward 1 (Minnetonka);43252;9001;BRIAN J. KIRK;;;NP;6;6;518;45.64;1135
+MN;;;1020;Council Member Ward 1 (Minnetonka);43252;9002;ROBERT L. "BOB" ELLINGSON;;;NP;6;6;609;53.66;1135
+MN;;;1020;Council Member Ward 1 (Minnetonka);43252;9901;WRITE-IN**;;;WI;6;6;8;0.70;1135
+MN;;;1021;Council Member Ward 2 (Minnetonka);43252;9001;TONY WAGNER;;;NP;5;5;408;61.35;665
+MN;;;1021;Council Member Ward 2 (Minnetonka);43252;9002;COLBERT BOYD;;;NP;5;5;255;38.35;665
+MN;;;1021;Council Member Ward 2 (Minnetonka);43252;9901;WRITE-IN**;;;WI;5;5;2;0.30;665
+MN;;;1022;Council Member Ward 3 (Minnetonka);43252;9001;BRAD WIERSUM;;;NP;6;6;1076;97.20;1107
+MN;;;1022;Council Member Ward 3 (Minnetonka);43252;9901;WRITE-IN**;;;WI;6;6;31;2.80;1107
+MN;;;1023;Council Member Ward 4 (Minnetonka);43252;9001;TIM BERGSTEDT;;;NP;6;6;1278;98.16;1302
+MN;;;1023;Council Member Ward 4 (Minnetonka);43252;9901;WRITE-IN**;;;WI;6;6;24;1.84;1302
+MN;;;1001;Mayor (New Brighton);45430;9001;GINA BAUMAN;;;NP;8;8;674;23.21;2904
+MN;;;1001;Mayor (New Brighton);45430;9002;DAVE JACOBSEN;;;NP;8;8;1085;37.36;2904
+MN;;;1001;Mayor (New Brighton);45430;9003;VAL JOHNSON;;;NP;8;8;1143;39.36;2904
+MN;;;1001;Mayor (New Brighton);45430;9901;WRITE-IN**;;;WI;8;8;2;0.07;2904
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9001;RICHARD "RICK" MOSES;;;NP;8;8;779;14.95;5209
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9002;PAUL JACOBSEN;;;NP;8;8;1698;32.60;5209
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9003;MARY BURG;;;NP;8;8;1854;35.59;5209
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9004;SUSAN ERICKSON;;;NP;8;8;871;16.72;5209
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9901;WRITE-IN**;;;WI;8;8;7;0.13;5209
+MN;;;1001;Mayor (Rushford);56284;9001;CHRIS HALLUM;;;NP;1;1;208;83.53;249
+MN;;;1001;Mayor (Rushford);56284;9901;WRITE-IN**;;;WI;1;1;41;16.47;249
+MN;;;1010;Council Member (Rushford) (Elect 2);56284;9001;ROGER COLBENSON;;;NP;1;1;58;13.71;423
+MN;;;1010;Council Member (Rushford) (Elect 2);56284;9901;WRITE-IN**;;;WI;1;1;365;86.29;423
+MN;;;1001;Mayor (Sacred Heart);56572;9001;DAN AGRE;;;NP;1;1;59;90.77;65
+MN;;;1001;Mayor (Sacred Heart);56572;9901;WRITE-IN**;;;WI;1;1;6;9.23;65
+MN;;;1010;Council Member (Sacred Heart) (Elect 2);56572;9001;BROOKE HEBRINK;;;NP;1;1;32;26.02;123
+MN;;;1010;Council Member (Sacred Heart) (Elect 2);56572;9002;SCOTT THOMPSON;;;NP;1;1;44;35.77;123
+MN;;;1010;Council Member (Sacred Heart) (Elect 2);56572;9901;WRITE-IN**;;;WI;1;1;47;38.21;123
+MN;;;1012;Special Election for Council Member (Sacred Heart);56572;9901;WRITE-IN**;;;WI;1;1;39;100.00;39
+MN;;;1001;Mayor (St. Anthony);56680;9001;JERRY FAUST;;;NP;3;3;296;95.79;309
+MN;;;1001;Mayor (St. Anthony);56680;9901;WRITE-IN**;;;WI;3;3;13;4.21;309
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9001;BONNIE BREVER;;;NP;3;3;316;53.47;591
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9002;HAL GRAY;;;NP;3;3;268;45.35;591
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9901;WRITE-IN**;;;WI;3;3;7;1.18;591
+MN;;;1001;Mayor (St Louis Park);57220;9002;CONRAD SEGAL;;;NP;16;16;950;21.92;4334
+MN;;;1001;Mayor (St Louis Park);57220;9003;JAKE SPANO;;;NP;16;16;3370;77.76;4334
+MN;;;1001;Mayor (St Louis Park);57220;9901;WRITE-IN**;;;WI;16;16;14;0.32;4334
+MN;;;1014;Council Member Seat A (St Louis Park);57220;9001;STEVE HALLFIN;;;NP;16;16;3226;97.23;3318
+MN;;;1014;Council Member Seat A (St Louis Park);57220;9901;WRITE-IN**;;;WI;16;16;92;2.77;3318
+MN;;;1015;Council Member Seat B (St Louis Park);57220;9001;SARA MAASKE;;;NP;16;16;1900;45.11;4212
+MN;;;1015;Council Member Seat B (St Louis Park);57220;9002;THOM MILLER;;;NP;16;16;2289;54.34;4212
+MN;;;1015;Council Member Seat B (St Louis Park);57220;9901;WRITE-IN**;;;WI;16;16;23;0.55;4212
+MN;;;2101;Council Member Ward 1 First Choice (St. Paul);58000;9001;TRAHERN JEEN CREWS;;;NP;16;16;416;13.99;2973
+MN;;;2101;Council Member Ward 1 First Choice (St. Paul);58000;9002;DAI THAO;;;NP;16;16;2503;84.19;2973
+MN;;;2101;Council Member Ward 1 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;16;16;54;1.82;2973
+MN;;;2102;Council Member Ward 1 Second Choice (St. Paul);58000;9001;TRAHERN JEEN CREWS;;;NP;16;16;551;47.95;1149
+MN;;;2102;Council Member Ward 1 Second Choice (St. Paul);58000;9002;DAI THAO;;;NP;16;16;544;47.35;1149
+MN;;;2102;Council Member Ward 1 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;16;16;54;4.70;1149
+MN;;;2103;Council Member Ward 1 Third Choice (St. Paul);58000;9001;TRAHERN JEEN CREWS;;;NP;16;16;109;22.11;493
+MN;;;2103;Council Member Ward 1 Third Choice (St. Paul);58000;9002;DAI THAO;;;NP;16;16;336;68.15;493
+MN;;;2103;Council Member Ward 1 Third Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;16;16;48;9.74;493
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9001;MICHAEL C JOHNSON;;;NP;15;15;75;1.31;5734
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9002;SHARON ANDERSON;;;NP;15;15;93;1.62;5734
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9003;REBECCA NOECKER;;;NP;15;15;2390;41.68;5734
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9004;DARREN TOBOLT;;;NP;15;15;2207;38.49;5734
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9005;BILL HOSKO;;;NP;15;15;840;14.65;5734
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9006;PAT FEARING;;;NP;15;15;110;1.92;5734
+MN;;;2111;Council Member Ward 2 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;19;0.33;5734
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9001;MICHAEL C JOHNSON;;;NP;15;15;158;3.79;4165
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9002;SHARON ANDERSON;;;NP;15;15;186;4.47;4165
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9003;REBECCA NOECKER;;;NP;15;15;1413;33.93;4165
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9004;DARREN TOBOLT;;;NP;15;15;1459;35.03;4165
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9005;BILL HOSKO;;;NP;15;15;698;16.76;4165
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9006;PAT FEARING;;;NP;15;15;216;5.19;4165
+MN;;;2112;Council Member Ward 2 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;35;0.84;4165
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9001;MICHAEL C JOHNSON;;;NP;15;15;225;10.52;2138
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9002;SHARON ANDERSON;;;NP;15;15;218;10.20;2138
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9003;REBECCA NOECKER;;;NP;15;15;344;16.09;2138
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9004;DARREN TOBOLT;;;NP;15;15;328;15.34;2138
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9005;BILL HOSKO;;;NP;15;15;654;30.59;2138
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9006;PAT FEARING;;;NP;15;15;333;15.58;2138
+MN;;;2113;Council Member Ward 2 Third Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;36;1.68;2138
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9001;MICHAEL C JOHNSON;;;NP;15;15;150;17.22;871
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9002;SHARON ANDERSON;;;NP;15;15;117;13.43;871
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9003;REBECCA NOECKER;;;NP;15;15;107;12.28;871
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9004;DARREN TOBOLT;;;NP;15;15;121;13.89;871
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9005;BILL HOSKO;;;NP;15;15;167;19.17;871
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9006;PAT FEARING;;;NP;15;15;192;22.04;871
+MN;;;2114;Council Member Ward 2 Fourth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;17;1.95;871
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9001;MICHAEL C JOHNSON;;;NP;15;15;157;23.64;664
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9002;SHARON ANDERSON;;;NP;15;15;82;12.35;664
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9003;REBECCA NOECKER;;;NP;15;15;95;14.31;664
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9004;DARREN TOBOLT;;;NP;15;15;114;17.17;664
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9005;BILL HOSKO;;;NP;15;15;95;14.31;664
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9006;PAT FEARING;;;NP;15;15;112;16.87;664
+MN;;;2115;Council Member Ward 2 Fifth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;9;1.36;664
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9001;MICHAEL C JOHNSON;;;NP;15;15;83;14.07;590
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9002;SHARON ANDERSON;;;NP;15;15;134;22.71;590
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9003;REBECCA NOECKER;;;NP;15;15;90;15.25;590
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9004;DARREN TOBOLT;;;NP;15;15;117;19.83;590
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9005;BILL HOSKO;;;NP;15;15;100;16.95;590
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9006;PAT FEARING;;;NP;15;15;46;7.80;590
+MN;;;2116;Council Member Ward 2 Sixth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;20;3.39;590
+MN;;;2121;Council Member Ward 3 First Choice (St. Paul);58000;9001;CHRIS TOLBERT;;;NP;14;14;4484;91.87;4881
+MN;;;2121;Council Member Ward 3 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;14;14;397;8.13;4881
+MN;;;2122;Council Member Ward 3 Second Choice (St. Paul);58000;9001;CHRIS TOLBERT;;;NP;14;14;722;76.97;938
+MN;;;2122;Council Member Ward 3 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;14;14;216;23.03;938
+MN;;;2131;Council Member Ward 4 First Choice (St. Paul);58000;9001;RUSS STARK;;;NP;15;15;3293;61.36;5367
+MN;;;2131;Council Member Ward 4 First Choice (St. Paul);58000;9002;TOM GOLDSTEIN;;;NP;15;15;2039;37.99;5367
+MN;;;2131;Council Member Ward 4 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;35;0.65;5367
+MN;;;2132;Council Member Ward 4 Second Choice (St. Paul);58000;9001;RUSS STARK;;;NP;15;15;799;45.48;1757
+MN;;;2132;Council Member Ward 4 Second Choice (St. Paul);58000;9002;TOM GOLDSTEIN;;;NP;15;15;866;49.29;1757
+MN;;;2132;Council Member Ward 4 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;92;5.24;1757
+MN;;;2133;Council Member Ward 4 Third Choice (St. Paul);58000;9001;RUSS STARK;;;NP;15;15;272;47.30;575
+MN;;;2133;Council Member Ward 4 Third Choice (St. Paul);58000;9002;TOM GOLDSTEIN;;;NP;15;15;247;42.96;575
+MN;;;2133;Council Member Ward 4 Third Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;15;15;56;9.74;575
+MN;;;2141;Council Member Ward 5 First Choice (St. Paul);58000;9001;DAVID SULLIVAN-NIGHTENGALE;;;NP;10;10;215;5.49;3916
+MN;;;2141;Council Member Ward 5 First Choice (St. Paul);58000;9002;DAVID J. GLASS;;;NP;10;10;1485;37.92;3916
+MN;;;2141;Council Member Ward 5 First Choice (St. Paul);58000;9003;AMY BRENDMOEN;;;NP;10;10;2202;56.23;3916
+MN;;;2141;Council Member Ward 5 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;10;10;14;0.36;3916
+MN;;;2142;Council Member Ward 5 Second Choice (St. Paul);58000;9001;DAVID SULLIVAN-NIGHTENGALE;;;NP;10;10;840;40.15;2092
+MN;;;2142;Council Member Ward 5 Second Choice (St. Paul);58000;9002;DAVID J. GLASS;;;NP;10;10;669;31.98;2092
+MN;;;2142;Council Member Ward 5 Second Choice (St. Paul);58000;9003;AMY BRENDMOEN;;;NP;10;10;544;26.00;2092
+MN;;;2142;Council Member Ward 5 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;10;10;39;1.86;2092
+MN;;;2143;Council Member Ward 5 Third Choice (St. Paul);58000;9001;DAVID SULLIVAN-NIGHTENGALE;;;NP;10;10;336;31.26;1075
+MN;;;2143;Council Member Ward 5 Third Choice (St. Paul);58000;9002;DAVID J. GLASS;;;NP;10;10;346;32.19;1075
+MN;;;2143;Council Member Ward 5 Third Choice (St. Paul);58000;9003;AMY BRENDMOEN;;;NP;10;10;346;32.19;1075
+MN;;;2143;Council Member Ward 5 Third Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;10;10;47;4.37;1075
+MN;;;2144;Council Member Ward 5 Fourth Choice (St. Paul);58000;9001;DAVID SULLIVAN-NIGHTENGALE;;;NP;10;10;44;10.86;405
+MN;;;2144;Council Member Ward 5 Fourth Choice (St. Paul);58000;9002;DAVID J. GLASS;;;NP;10;10;156;38.52;405
+MN;;;2144;Council Member Ward 5 Fourth Choice (St. Paul);58000;9003;AMY BRENDMOEN;;;NP;10;10;177;43.70;405
+MN;;;2144;Council Member Ward 5 Fourth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;10;10;28;6.91;405
+MN;;;2151;Council Member Ward 6 First Choice (St. Paul);58000;9001;DAN BOSTROM;;;NP;13;13;1571;73.83;2128
+MN;;;2151;Council Member Ward 6 First Choice (St. Paul);58000;9002;KEVIN T. BRADLEY;;;NP;13;13;251;11.80;2128
+MN;;;2151;Council Member Ward 6 First Choice (St. Paul);58000;9003;EDWARD DAVIS;;;NP;13;13;290;13.63;2128
+MN;;;2151;Council Member Ward 6 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;13;13;16;0.75;2128
+MN;;;2152;Council Member Ward 6 Second Choice (St. Paul);58000;9001;DAN BOSTROM;;;NP;13;13;400;39.41;1015
+MN;;;2152;Council Member Ward 6 Second Choice (St. Paul);58000;9002;KEVIN T. BRADLEY;;;NP;13;13;273;26.90;1015
+MN;;;2152;Council Member Ward 6 Second Choice (St. Paul);58000;9003;EDWARD DAVIS;;;NP;13;13;321;31.63;1015
+MN;;;2152;Council Member Ward 6 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;13;13;21;2.07;1015
+MN;;;2153;Council Member Ward 6 Third Choice (St. Paul);58000;9001;DAN BOSTROM;;;NP;13;13;306;44.67;685
+MN;;;2153;Council Member Ward 6 Third Choice (St. Paul);58000;9002;KEVIN T. BRADLEY;;;NP;13;13;199;29.05;685
+MN;;;2153;Council Member Ward 6 Third Choice (St. Paul);58000;9003;EDWARD DAVIS;;;NP;13;13;160;23.36;685
+MN;;;2153;Council Member Ward 6 Third Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;13;13;20;2.92;685
+MN;;;2154;Council Member Ward 6 Fourth Choice (St. Paul);58000;9001;DAN BOSTROM;;;NP;13;13;196;60.87;322
+MN;;;2154;Council Member Ward 6 Fourth Choice (St. Paul);58000;9002;KEVIN T. BRADLEY;;;NP;13;13;59;18.32;322
+MN;;;2154;Council Member Ward 6 Fourth Choice (St. Paul);58000;9003;EDWARD DAVIS;;;NP;13;13;50;15.53;322
+MN;;;2154;Council Member Ward 6 Fourth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;13;13;17;5.28;322
+MN;;;2161;Council Member Ward 7 First Choice (St. Paul);58000;9001;JANE PRINCE;;;NP;13;13;1574;94.76;1661
+MN;;;2161;Council Member Ward 7 First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;13;13;87;5.24;1661
+MN;;;2162;Council Member Ward 7 Second Choice (St. Paul);58000;9001;JANE PRINCE;;;NP;13;13;260;83.60;311
+MN;;;2162;Council Member Ward 7 Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;13;13;51;16.40;311
+MN;;;1001;Mayor (St. Paul Park);58018;9001;KEITH FRANKE;;;NP;4;4;559;96.38;580
+MN;;;1001;Mayor (St. Paul Park);58018;9901;WRITE-IN**;;;WI;4;4;21;3.62;580
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9001;DALE R. ROTH;;;NP;4;4;256;24.69;1037
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9002;TIM JONES;;;NP;4;4;360;34.72;1037
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9003;JENNIFER CHEESMAN;;;NP;4;4;412;39.73;1037
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9901;WRITE-IN**;;;WI;4;4;9;0.87;1037
+MN;;;1001;Mayor (St. Peter);58036;9001;CHUCK ZIEMAN;;;NP;4;4;934;67.73;1379
+MN;;;1001;Mayor (St. Peter);58036;9002;TIMOTHY STRAND;;;NP;4;4;444;32.20;1379
+MN;;;1001;Mayor (St. Peter);58036;9901;WRITE-IN**;;;WI;4;4;1;0.07;1379
+MN;;;1020;Council Member Ward 1 (St. Peter);58036;9001;THOMAS M GEISLER;;;NP;2;2;19;2.09;909
+MN;;;1020;Council Member Ward 1 (St. Peter);58036;9002;BRETT CHRISTENSEN;;;NP;2;2;24;2.64;909
+MN;;;1020;Council Member Ward 1 (St. Peter);58036;9003;JILL NIEBUHR;;;NP;2;2;86;9.46;909
+MN;;;1020;Council Member Ward 1 (St. Peter);58036;9004;ED JOHNSON;;;NP;2;2;367;40.37;909
+MN;;;1020;Council Member Ward 1 (St. Peter);58036;9005;JEFF BRAND;;;NP;2;2;413;45.43;909
+MN;;;1020;Council Member Ward 1 (St. Peter);58036;9901;WRITE-IN**;;;WI;2;2;0;0.00;909
+MN;;;1021;Council Member Ward 2 (St. Peter) (Elect 2);58036;9001;DAVID B MCGUIRE;;;NP;2;2;168;22.19;757
+MN;;;1021;Council Member Ward 2 (St. Peter) (Elect 2);58036;9002;JERRY PFEIFER;;;NP;2;2;284;37.52;757
+MN;;;1021;Council Member Ward 2 (St. Peter) (Elect 2);58036;9003;JOHN KVAMME;;;NP;2;2;302;39.89;757
+MN;;;1021;Council Member Ward 2 (St. Peter) (Elect 2);58036;9901;WRITE-IN**;;;WI;2;2;3;0.40;757
+MN;;;1001;Mayor (Savage);58738;9001;JANET WILLIAMS;;;NP;8;8;671;92.68;724
+MN;;;1001;Mayor (Savage);58738;9901;WRITE-IN**;;;WI;8;8;53;7.32;724
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9001;RAY LEATHERS;;;NP;8;8;154;11.10;1387
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9002;CHRISTINE KELLY;;;NP;8;8;416;29.99;1387
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9003;WAYNE LAWRENCE;;;NP;8;8;106;7.64;1387
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9004;BOB COUGHLEN;;;NP;8;8;173;12.47;1387
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9005;MATT JOHNSON;;;NP;8;8;377;27.18;1387
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9006;CHRIS RAITER;;;NP;8;8;149;10.74;1387
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9901;WRITE-IN**;;;WI;8;8;12;0.87;1387
+MN;;;1001;Mayor (Shakopee);59350;9001;MICHAEL (MIKE) LUCE;;;NP;14;14;198;4.47;4433
+MN;;;1001;Mayor (Shakopee);59350;9002;WILLIAM MARS;;;NP;14;14;2270;51.21;4433
+MN;;;1001;Mayor (Shakopee);59350;9003;KATHI MOCOL;;;NP;14;14;1590;35.87;4433
+MN;;;1001;Mayor (Shakopee);59350;9004;DAN HENNEN;;;NP;14;14;355;8.01;4433
+MN;;;1001;Mayor (Shakopee);59350;9901;WRITE-IN**;;;WI;14;14;20;0.45;4433
+MN;;;1010;Council Member (Shakopee) (Elect 2);59350;9001;MATT LEHMAN;;;NP;14;14;2594;32.52;7977
+MN;;;1010;Council Member (Shakopee) (Elect 2);59350;9002;JAY WHITING;;;NP;14;14;2261;28.34;7977
+MN;;;1010;Council Member (Shakopee) (Elect 2);59350;9003;AARON WEYER;;;NP;14;14;325;4.07;7977
+MN;;;1010;Council Member (Shakopee) (Elect 2);59350;9004;KARI MCGUIRE;;;NP;14;14;1201;15.06;7977
+MN;;;1010;Council Member (Shakopee) (Elect 2);59350;9005;JORDAN OLSON;;;NP;14;14;1560;19.56;7977
+MN;;;1010;Council Member (Shakopee) (Elect 2);59350;9901;WRITE-IN**;;;WI;14;14;36;0.45;7977
+MN;;;4013;Town Supervisor Seat C (White Township);69898;9001;CRAIG A. ANTTILA;;;NP;5;5;435;98.64;441
+MN;;;4013;Town Supervisor Seat C (White Township);69898;9901;WRITE-IN**;;;WI;5;5;6;1.36;441
+MN;;;1020;Council Member Ward 1 (White Bear Lake);69970;9001;DAN LOUISMET;;;NP;1;1;136;43.87;310
+MN;;;1020;Council Member Ward 1 (White Bear Lake);69970;9002;BILL WALSH;;;NP;1;1;172;55.48;310
+MN;;;1020;Council Member Ward 1 (White Bear Lake);69970;9901;WRITE-IN**;;;WI;1;1;2;0.65;310
+MN;;;1022;Council Member Ward 3 (White Bear Lake);69970;9001;DAN JONES;;;NP;2;2;177;97.79;181
+MN;;;1022;Council Member Ward 3 (White Bear Lake);69970;9901;WRITE-IN**;;;WI;2;2;4;2.21;181
+MN;;;1024;Council Member Ward 5 (White Bear Lake);69970;9001;STEVEN ENGSTRAN;;;NP;1;1;158;52.32;302
+MN;;;1024;Council Member Ward 5 (White Bear Lake);69970;9002;JIM BERRY;;;NP;1;1;143;47.35;302
+MN;;;1024;Council Member Ward 5 (White Bear Lake);69970;9901;WRITE-IN**;;;WI;1;1;1;0.33;302

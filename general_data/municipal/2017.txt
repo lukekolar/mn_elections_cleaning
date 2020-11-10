@@ -1,0 +1,574 @@
+MN;;;1001;Mayor (Aurora);02872;9001;David Lislegard;;;NP;1;1;461;80.88;570
+MN;;;1001;Mayor (Aurora);02872;9002;Dave Meyer;;;NP;1;1;101;17.72;570
+MN;;;1001;Mayor (Aurora);02872;9901;WRITE-IN**;;;WI;1;1;8;1.40;570
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9001;Dave Worshek;;;NP;1;1;460;50.61;909
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9002;James M. Lakso;;;NP;1;1;443;48.73;909
+MN;;;1010;Council Member (Aurora) (Elect 2);02872;9901;WRITE-IN**;;;WI;1;1;6;0.66;909
+MN;;;1001;Mayor (Benson);05212;9001;Anita Flodstrom;;;NP;2;2;76;10.70;710
+MN;;;1001;Mayor (Benson);05212;9002;Terri Collins;;;NP;2;2;626;88.17;710
+MN;;;1001;Mayor (Benson);05212;9901;WRITE-IN**;;;WI;2;2;8;1.13;710
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9001;Mark Schreck;;;NP;2;2;558;39.80;1402
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9002;Terry Flodstrom;;;NP;2;2;46;3.28;1402
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9003;Larry D Smith;;;NP;2;2;89;6.35;1402
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9004;Brad Johnson;;;NP;2;2;256;18.26;1402
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9005;John "Jack" Evenson;;;NP;2;2;450;32.10;1402
+MN;;;1010;Council Member (Benson) (Elect 2);05212;9901;WRITE-IN**;;;WI;2;2;3;0.21;1402
+MN;;;1010;Council Member at Large (Bloomington);06616;9001;Nathan Coulter;;;NP;32;32;6515;54.73;11903
+MN;;;1010;Council Member at Large (Bloomington);06616;9004;Michael Arulfo;;;NP;32;32;4799;40.32;11903
+MN;;;1010;Council Member at Large (Bloomington);06616;9901;WRITE-IN**;;;WI;32;32;589;4.95;11903
+MN;;;1021;Special Election for Council Member District 2 (Bloomington);06616;9001;Shawn Nelson;;;NP;8;8;1959;52.38;3740
+MN;;;1021;Special Election for Council Member District 2 (Bloomington);06616;9003;Eldon Spencer;;;NP;8;8;1762;47.11;3740
+MN;;;1021;Special Election for Council Member District 2 (Bloomington);06616;9901;WRITE-IN**;;;WI;8;8;19;0.51;3740
+MN;;;1022;Council Member District 3 (Bloomington);06616;9001;Larry Frost;;;NP;9;9;1370;39.42;3475
+MN;;;1022;Council Member District 3 (Bloomington);06616;9002;Jack Baloga;;;NP;9;9;2083;59.94;3475
+MN;;;1022;Council Member District 3 (Bloomington);06616;9901;WRITE-IN**;;;WI;9;9;22;0.63;3475
+MN;;;1023;Council Member District 4 (Bloomington);06616;9001;Jon Oleson;;;NP;7;7;885;49.41;1791
+MN;;;1023;Council Member District 4 (Bloomington);06616;9002;Patrick Martin;;;NP;7;7;891;49.75;1791
+MN;;;1023;Council Member District 4 (Bloomington);06616;9901;WRITE-IN**;;;WI;7;7;15;0.84;1791
+MN;;;1131;CITY QUESTION 1 (Chatfield);11008;9001;YES;;;NP;2;2;237;54.73;433
+MN;;;1131;CITY QUESTION 1 (Chatfield);11008;9002;NO;;;NP;2;2;196;45.27;433
+MN;;;1001;Mayor (Circle Pines);11494;9001;Dave Bartholomay;;;NP;2;2;671;96.27;697
+MN;;;1001;Mayor (Circle Pines);11494;9901;WRITE-IN**;;;WI;2;2;26;3.73;697
+MN;;;1010;Council Member (Circle Pines) (Elect 2);11494;9001;Mark Ziemer;;;NP;2;2;322;24.83;1297
+MN;;;1010;Council Member (Circle Pines) (Elect 2);11494;9002;Jennifer Rauner;;;NP;2;2;463;35.70;1297
+MN;;;1010;Council Member (Circle Pines) (Elect 2);11494;9003;Dean Goldberg;;;NP;2;2;504;38.86;1297
+MN;;;1010;Council Member (Circle Pines) (Elect 2);11494;9901;WRITE-IN**;;;WI;2;2;8;0.62;1297
+MN;;;1001;Mayor (Dilworth);15976;9001;Chad Olson;;;NP;1;1;309;89.57;345
+MN;;;1001;Mayor (Dilworth);15976;9901;WRITE-IN**;;;WI;1;1;36;10.43;345
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9001;John Giddings;;;NP;1;1;145;21.01;690
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9002;Steve Jesme;;;NP;1;1;199;28.84;690
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9003;Jason Kakac;;;NP;1;1;48;6.96;690
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9004;Jim Aasness;;;NP;1;1;151;21.88;690
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9005;Heath Knapper;;;NP;1;1;90;13.04;690
+MN;;;1010;Council Member (Dilworth) (Elect 2);15976;9901;WRITE-IN**;;;WI;1;1;57;8.26;690
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9001;Zack Filipovich;;;NP;34;34;8749;31.48;27791
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9002;Janet Kennedy;;;NP;34;34;6053;21.78;27791
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9003;Barbara A. Russ;;;NP;34;34;6568;23.63;27791
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9004;Rich Updegrove;;;NP;34;34;5899;21.23;27791
+MN;;;1010;Council Member at Large (Duluth) (Elect 2);17000;9901;WRITE-IN**;;;WI;34;34;522;1.88;27791
+MN;;;1021;Council Member District 2 (Duluth);17000;9001;Joel Sipress;;;NP;6;6;1934;67.06;2884
+MN;;;1021;Council Member District 2 (Duluth);17000;9002;Ryan Sistad;;;NP;6;6;944;32.73;2884
+MN;;;1021;Council Member District 2 (Duluth);17000;9901;WRITE-IN**;;;WI;6;6;6;0.21;2884
+MN;;;1023;Council Member District 4 (Duluth);17000;9001;Howie Hanson;;;NP;7;7;1259;47.47;2652
+MN;;;1023;Council Member District 4 (Duluth);17000;9002;Renee' K Van Nett;;;NP;7;7;1375;51.85;2652
+MN;;;1023;Council Member District 4 (Duluth);17000;9901;WRITE-IN**;;;WI;7;7;18;0.68;2652
+MN;;;1131;CITY QUESTION 1 (Duluth);17000;9001;YES;;;NP;34;34;12021;76.52;15710
+MN;;;1131;CITY QUESTION 1 (Duluth);17000;9002;NO;;;NP;34;34;3689;23.48;15710
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9001;Paula Mielke;;;NP;2;2;607;23.41;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9002;Melanie Leehy;;;NP;2;2;723;27.88;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9003;Tom Brace;;;NP;2;2;136;5.24;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9004;Tony Fischer;;;NP;2;2;229;8.83;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9005;Ronald Dixon;;;NP;2;2;58;2.24;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9006;Michael A. Wade;;;NP;2;2;125;4.82;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9007;Mark Miazga;;;NP;2;2;705;27.19;2593
+MN;;;1010;Council Member at Large (Falcon Heights) (Elect 2);20420;9901;WRITE-IN**;;;WI;2;2;10;0.39;2593
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9001;Gillian Rosenquist;;;NP;8;8;2111;33.10;6378
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9002;John Giese;;;NP;8;8;1073;16.82;6378
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9003;Jim Ryan;;;NP;8;8;660;10.35;6378
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9004;Andy Schuler;;;NP;8;8;469;7.35;6378
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9005;Larry Fonnest;;;NP;8;8;2041;32.00;6378
+MN;;;1010;Council Member (Golden Valley) (Elect 2);24308;9901;WRITE-IN**;;;WI;8;8;24;0.38;6378
+MN;;;1001;Mayor (Hopkins);30140;9001;Molly Cummings;;;NP;6;6;1877;90.24;2080
+MN;;;1001;Mayor (Hopkins);30140;9002;Bob Ivers;;;NP;6;6;194;9.33;2080
+MN;;;1001;Mayor (Hopkins);30140;9901;WRITE-IN**;;;WI;6;6;9;0.43;2080
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9001;Katy Campbell;;;NP;6;6;1262;40.36;3127
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9002;Diana Neidecker;;;NP;6;6;454;14.52;3127
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9003;Kristi Halverson;;;NP;6;6;1389;44.42;3127
+MN;;;1010;Council Member (Hopkins) (Elect 2);30140;9901;WRITE-IN**;;;WI;6;6;22;0.70;3127
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9001;Linda R. Betts;;;NP;1;1;99;47.14;210
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9002;Brad L. Spencer;;;NP;1;1;102;48.57;210
+MN;;;1010;Council Member (Independence) (Elect 2);30842;9901;WRITE-IN**;;;WI;1;1;9;4.29;210
+MN;;;1001;Mayor (Lino Lakes);37322;9001;Jeff Reinert;;;NP;7;7;1493;81.99;1821
+MN;;;1001;Mayor (Lino Lakes);37322;9901;WRITE-IN**;;;WI;7;7;328;18.01;1821
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9001;Dale Stoesz;;;NP;7;7;867;23.56;3680
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9002;Ryan Kenny;;;NP;7;7;293;7.96;3680
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9003;Bill Kusterman;;;NP;7;7;572;15.54;3680
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9004;Rob Rafferty;;;NP;7;7;882;23.97;3680
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9005;Brad Robinson;;;NP;7;7;661;17.96;3680
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9006;Jim Schueller;;;NP;7;7;376;10.22;3680
+MN;;;1010;Council Member (Lino Lakes) (Elect 2);37322;9901;WRITE-IN**;;;WI;7;7;29;0.79;3680
+MN;;;1001;Mayor (Lonsdale);38150;9001;Tim Rud;;;NP;1;1;330;85.49;386
+MN;;;1001;Mayor (Lonsdale);38150;9901;WRITE-IN**;;;WI;1;1;56;14.51;386
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9001;Steven E. Cherney;;;NP;1;1;215;29.53;728
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9002;Scott Pelava;;;NP;1;1;258;35.44;728
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9003;Roz Sirek Carson;;;NP;1;1;128;17.58;728
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9004;Timothy Duren;;;NP;1;1;117;16.07;728
+MN;;;1010;Council Member (Lonsdale) (Elect 2);38150;9901;WRITE-IN**;;;WI;1;1;10;1.37;728
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9001;Colin Johnson;;;NP;2;2;449;23.67;1897
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9002;Steven Wolgamot;;;NP;2;2;585;30.84;1897
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9003;Jeff Ledermann;;;NP;2;2;543;28.62;1897
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9004;Tony Yarusso;;;NP;2;2;312;16.45;1897
+MN;;;1010;Council Member at Large (Mahtomedi) (Elect 2);39428;9901;WRITE-IN**;;;WI;2;2;8;0.42;1897
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9001;Nekima Levy-Pounds;;;N P;134;134;15703;15.06;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9002;Jacob Frey;;;N P;134;134;26042;24.97;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9003;Gregg A. Iverson;;;N P;134;134;334;0.32;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9004;Betsy Hodges;;;N P;134;134;18860;18.08;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9005;Charlie Gers;;;N P;134;134;1232;1.18;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9006;David Rosenfeld;;;N P;134;134;474;0.45;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9007;Ian Simpson;;;N P;134;134;118;0.11;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9008;Captain Jack Sparrow;;;N P;134;134;435;0.42;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9009;Troy Benjegerdes;;;N P;134;134;183;0.18;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9010;Aswar Rahman;;;N P;134;134;746;0.72;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9011;Al Flowers;;;N P;134;134;704;0.67;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9012;Raymond Dehn;;;N P;134;134;18089;17.34;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9013;Tom Hoch;;;N P;134;134;20097;19.27;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9014;David John Wilson;;;N P;134;134;216;0.21;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9015;Ronald Lischeid;;;N P;134;134;317;0.30;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9016;L.A. Nik;;;N P;134;134;610;0.58;104297
+MN;;;2001;Mayor First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;137;0.13;104297
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9001;Nekima Levy-Pounds;;;N P;134;134;16085;17.43;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9002;Jacob Frey;;;N P;134;134;18362;19.90;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9003;Gregg A. Iverson;;;N P;134;134;913;0.99;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9004;Betsy Hodges;;;N P;134;134;15292;16.57;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9005;Charlie Gers;;;N P;134;134;923;1.00;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9006;David Rosenfeld;;;N P;134;134;796;0.86;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9007;Ian Simpson;;;N P;134;134;236;0.26;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9008;Captain Jack Sparrow;;;N P;134;134;1092;1.18;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9009;Troy Benjegerdes;;;N P;134;134;254;0.28;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9010;Aswar Rahman;;;N P;134;134;1943;2.11;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9011;Al Flowers;;;N P;134;134;2031;2.20;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9012;Raymond Dehn;;;N P;134;134;15236;16.51;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9013;Tom Hoch;;;N P;134;134;17223;18.67;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9014;David John Wilson;;;N P;134;134;431;0.47;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9015;Ronald Lischeid;;;N P;134;134;427;0.46;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9016;L.A. Nik;;;N P;134;134;820;0.89;92273
+MN;;;2002;Mayor Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;209;0.23;92273
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9001;Nekima Levy-Pounds;;;N P;134;134;12755;16.31;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9002;Jacob Frey;;;N P;134;134;11249;14.39;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9003;Gregg A. Iverson;;;N P;134;134;1554;1.99;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9004;Betsy Hodges;;;N P;134;134;16863;21.57;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9005;Charlie Gers;;;N P;134;134;973;1.24;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9006;David Rosenfeld;;;N P;134;134;1257;1.61;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9007;Ian Simpson;;;N P;134;134;504;0.64;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9008;Captain Jack Sparrow;;;N P;134;134;2718;3.48;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9009;Troy Benjegerdes;;;N P;134;134;373;0.48;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9010;Aswar Rahman;;;N P;134;134;2737;3.50;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9011;Al Flowers;;;N P;134;134;2755;3.52;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9012;Raymond Dehn;;;N P;134;134;10976;14.04;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9013;Tom Hoch;;;N P;134;134;10338;13.22;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9014;David John Wilson;;;N P;134;134;1053;1.35;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9015;Ronald Lischeid;;;N P;134;134;585;0.75;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9016;L.A. Nik;;;N P;134;134;1007;1.29;78188
+MN;;;2003;Mayor Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;491;0.63;78188
+MN;;;2101;Council Member Ward 1 First Choice (Minneapolis);43000;9001;Jillia Pessenda;;;N P;10;10;3839;44.02;8721
+MN;;;2101;Council Member Ward 1 First Choice (Minneapolis);43000;9002;Kevin Reich;;;N P;10;10;4012;46.00;8721
+MN;;;2101;Council Member Ward 1 First Choice (Minneapolis);43000;9003;John Hayden;;;N P;10;10;851;9.76;8721
+MN;;;2101;Council Member Ward 1 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;19;0.22;8721
+MN;;;2102;Council Member Ward 1 Second Choice (Minneapolis);43000;9001;Jillia Pessenda;;;N P;10;10;2337;36.06;6481
+MN;;;2102;Council Member Ward 1 Second Choice (Minneapolis);43000;9002;Kevin Reich;;;N P;10;10;2636;40.67;6481
+MN;;;2102;Council Member Ward 1 Second Choice (Minneapolis);43000;9003;John Hayden;;;N P;10;10;1424;21.97;6481
+MN;;;2102;Council Member Ward 1 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;84;1.30;6481
+MN;;;2103;Council Member Ward 1 Third Choice (Minneapolis);43000;9001;Jillia Pessenda;;;N P;10;10;641;16.68;3842
+MN;;;2103;Council Member Ward 1 Third Choice (Minneapolis);43000;9002;Kevin Reich;;;N P;10;10;759;19.76;3842
+MN;;;2103;Council Member Ward 1 Third Choice (Minneapolis);43000;9003;John Hayden;;;N P;10;10;2246;58.46;3842
+MN;;;2103;Council Member Ward 1 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;196;5.10;3842
+MN;;;2111;Council Member Ward 2 First Choice (Minneapolis);43000;9001;Cam Gordon;;;N P;11;11;5912;97.27;6078
+MN;;;2111;Council Member Ward 2 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;11;11;166;2.73;6078
+MN;;;2112;Council Member Ward 2 Second Choice (Minneapolis);43000;9001;Cam Gordon;;;N P;11;11;908;82.62;1099
+MN;;;2112;Council Member Ward 2 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;11;11;191;17.38;1099
+MN;;;2113;Council Member Ward 2 Third Choice (Minneapolis);43000;9001;Cam Gordon;;;N P;11;11;819;85.40;959
+MN;;;2113;Council Member Ward 2 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;11;11;140;14.60;959
+MN;;;2121;Council Member Ward 3 First Choice (Minneapolis);43000;9001;Ginger Jentzen;;;N P;12;12;3290;34.35;9578
+MN;;;2121;Council Member Ward 3 First Choice (Minneapolis);43000;9002;Samantha Pree-Stinson;;;N P;12;12;1006;10.50;9578
+MN;;;2121;Council Member Ward 3 First Choice (Minneapolis);43000;9003;Steve Fletcher;;;N P;12;12;2705;28.24;9578
+MN;;;2121;Council Member Ward 3 First Choice (Minneapolis);43000;9004;Tim Bildsoe;;;N P;12;12;2550;26.62;9578
+MN;;;2121;Council Member Ward 3 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;12;12;27;0.28;9578
+MN;;;2122;Council Member Ward 3 Second Choice (Minneapolis);43000;9001;Ginger Jentzen;;;N P;12;12;1058;13.65;7749
+MN;;;2122;Council Member Ward 3 Second Choice (Minneapolis);43000;9002;Samantha Pree-Stinson;;;N P;12;12;1830;23.62;7749
+MN;;;2122;Council Member Ward 3 Second Choice (Minneapolis);43000;9003;Steve Fletcher;;;N P;12;12;2962;38.22;7749
+MN;;;2122;Council Member Ward 3 Second Choice (Minneapolis);43000;9004;Tim Bildsoe;;;N P;12;12;1851;23.89;7749
+MN;;;2122;Council Member Ward 3 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;12;12;48;0.62;7749
+MN;;;2123;Council Member Ward 3 Third Choice (Minneapolis);43000;9001;Ginger Jentzen;;;N P;12;12;997;18.31;5446
+MN;;;2123;Council Member Ward 3 Third Choice (Minneapolis);43000;9002;Samantha Pree-Stinson;;;N P;12;12;1780;32.68;5446
+MN;;;2123;Council Member Ward 3 Third Choice (Minneapolis);43000;9003;Steve Fletcher;;;N P;12;12;1338;24.57;5446
+MN;;;2123;Council Member Ward 3 Third Choice (Minneapolis);43000;9004;Tim Bildsoe;;;N P;12;12;1178;21.63;5446
+MN;;;2123;Council Member Ward 3 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;12;12;153;2.81;5446
+MN;;;2131;Council Member Ward 4 First Choice (Minneapolis);43000;9001;Barbara A. "Barb" Johnson;;;N P;8;8;2254;42.94;5249
+MN;;;2131;Council Member Ward 4 First Choice (Minneapolis);43000;9002;Dana Hansen;;;N P;8;8;217;4.13;5249
+MN;;;2131;Council Member Ward 4 First Choice (Minneapolis);43000;9003;Stephanie Gasca;;;N P;8;8;632;12.04;5249
+MN;;;2131;Council Member Ward 4 First Choice (Minneapolis);43000;9004;Phillipe M. Cunningham;;;N P;8;8;2135;40.67;5249
+MN;;;2131;Council Member Ward 4 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;8;8;11;0.21;5249
+MN;;;2132;Council Member Ward 4 Second Choice (Minneapolis);43000;9001;Barbara A. "Barb" Johnson;;;N P;8;8;775;19.96;3882
+MN;;;2132;Council Member Ward 4 Second Choice (Minneapolis);43000;9002;Dana Hansen;;;N P;8;8;303;7.81;3882
+MN;;;2132;Council Member Ward 4 Second Choice (Minneapolis);43000;9003;Stephanie Gasca;;;N P;8;8;1624;41.83;3882
+MN;;;2132;Council Member Ward 4 Second Choice (Minneapolis);43000;9004;Phillipe M. Cunningham;;;N P;8;8;1144;29.47;3882
+MN;;;2132;Council Member Ward 4 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;8;8;36;0.93;3882
+MN;;;2133;Council Member Ward 4 Third Choice (Minneapolis);43000;9001;Barbara A. "Barb" Johnson;;;N P;8;8;666;23.26;2863
+MN;;;2133;Council Member Ward 4 Third Choice (Minneapolis);43000;9002;Dana Hansen;;;N P;8;8;641;22.39;2863
+MN;;;2133;Council Member Ward 4 Third Choice (Minneapolis);43000;9003;Stephanie Gasca;;;N P;8;8;913;31.89;2863
+MN;;;2133;Council Member Ward 4 Third Choice (Minneapolis);43000;9004;Phillipe M. Cunningham;;;N P;8;8;555;19.39;2863
+MN;;;2133;Council Member Ward 4 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;8;8;88;3.07;2863
+MN;;;2141;Council Member Ward 5 First Choice (Minneapolis);43000;9001;Blong Yang;;;N P;9;9;1605;38.28;4193
+MN;;;2141;Council Member Ward 5 First Choice (Minneapolis);43000;9002;Cathy Spann;;;N P;9;9;156;3.72;4193
+MN;;;2141;Council Member Ward 5 First Choice (Minneapolis);43000;9003;Jeremiah Ellison;;;N P;9;9;1981;47.25;4193
+MN;;;2141;Council Member Ward 5 First Choice (Minneapolis);43000;9004;Raeisha (RA) Williams;;;N P;9;9;443;10.57;4193
+MN;;;2141;Council Member Ward 5 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;8;0.19;4193
+MN;;;2142;Council Member Ward 5 Second Choice (Minneapolis);43000;9001;Blong Yang;;;N P;9;9;892;26.55;3360
+MN;;;2142;Council Member Ward 5 Second Choice (Minneapolis);43000;9002;Cathy Spann;;;N P;9;9;476;14.17;3360
+MN;;;2142;Council Member Ward 5 Second Choice (Minneapolis);43000;9003;Jeremiah Ellison;;;N P;9;9;957;28.48;3360
+MN;;;2142;Council Member Ward 5 Second Choice (Minneapolis);43000;9004;Raeisha (RA) Williams;;;N P;9;9;1017;30.27;3360
+MN;;;2142;Council Member Ward 5 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;18;0.54;3360
+MN;;;2143;Council Member Ward 5 Third Choice (Minneapolis);43000;9001;Blong Yang;;;N P;9;9;673;25.07;2685
+MN;;;2143;Council Member Ward 5 Third Choice (Minneapolis);43000;9002;Cathy Spann;;;N P;9;9;721;26.85;2685
+MN;;;2143;Council Member Ward 5 Third Choice (Minneapolis);43000;9003;Jeremiah Ellison;;;N P;9;9;457;17.02;2685
+MN;;;2143;Council Member Ward 5 Third Choice (Minneapolis);43000;9004;Raeisha (RA) Williams;;;N P;9;9;779;29.01;2685
+MN;;;2143;Council Member Ward 5 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;55;2.05;2685
+MN;;;2151;Council Member Ward 6 First Choice (Minneapolis);43000;9001;Abdi Warsame;;;N P;9;9;3603;50.13;7187
+MN;;;2151;Council Member Ward 6 First Choice (Minneapolis);43000;9002;Mohamud Noor;;;N P;9;9;3370;46.89;7187
+MN;;;2151;Council Member Ward 6 First Choice (Minneapolis);43000;9003;Fadumo Yusuf;;;N P;9;9;182;2.53;7187
+MN;;;2151;Council Member Ward 6 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;32;0.45;7187
+MN;;;2152;Council Member Ward 6 Second Choice (Minneapolis);43000;9001;Abdi Warsame;;;N P;9;9;1535;49.39;3108
+MN;;;2152;Council Member Ward 6 Second Choice (Minneapolis);43000;9002;Mohamud Noor;;;N P;9;9;1238;39.83;3108
+MN;;;2152;Council Member Ward 6 Second Choice (Minneapolis);43000;9003;Fadumo Yusuf;;;N P;9;9;282;9.07;3108
+MN;;;2152;Council Member Ward 6 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;53;1.71;3108
+MN;;;2153;Council Member Ward 6 Third Choice (Minneapolis);43000;9001;Abdi Warsame;;;N P;9;9;513;29.21;1756
+MN;;;2153;Council Member Ward 6 Third Choice (Minneapolis);43000;9002;Mohamud Noor;;;N P;9;9;512;29.16;1756
+MN;;;2153;Council Member Ward 6 Third Choice (Minneapolis);43000;9003;Fadumo Yusuf;;;N P;9;9;583;33.20;1756
+MN;;;2153;Council Member Ward 6 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;148;8.43;1756
+MN;;;2161;Council Member Ward 7 First Choice (Minneapolis);43000;9001;Joe Kovacs;;;N P;10;10;599;6.60;9074
+MN;;;2161;Council Member Ward 7 First Choice (Minneapolis);43000;9002;Teqen Zéa-Aida;;;N P;10;10;888;9.79;9074
+MN;;;2161;Council Member Ward 7 First Choice (Minneapolis);43000;9003;Lisa Goodman;;;N P;10;10;4742;52.26;9074
+MN;;;2161;Council Member Ward 7 First Choice (Minneapolis);43000;9004;Janne Flisrand;;;N P;10;10;2832;31.21;9074
+MN;;;2161;Council Member Ward 7 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;13;0.14;9074
+MN;;;2162;Council Member Ward 7 Second Choice (Minneapolis);43000;9001;Joe Kovacs;;;N P;10;10;550;8.57;6420
+MN;;;2162;Council Member Ward 7 Second Choice (Minneapolis);43000;9002;Teqen Zéa-Aida;;;N P;10;10;1958;30.50;6420
+MN;;;2162;Council Member Ward 7 Second Choice (Minneapolis);43000;9003;Lisa Goodman;;;N P;10;10;1614;25.14;6420
+MN;;;2162;Council Member Ward 7 Second Choice (Minneapolis);43000;9004;Janne Flisrand;;;N P;10;10;2252;35.08;6420
+MN;;;2162;Council Member Ward 7 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;46;0.72;6420
+MN;;;2163;Council Member Ward 7 Third Choice (Minneapolis);43000;9001;Joe Kovacs;;;N P;10;10;384;8.89;4320
+MN;;;2163;Council Member Ward 7 Third Choice (Minneapolis);43000;9002;Teqen Zéa-Aida;;;N P;10;10;1783;41.27;4320
+MN;;;2163;Council Member Ward 7 Third Choice (Minneapolis);43000;9003;Lisa Goodman;;;N P;10;10;1071;24.79;4320
+MN;;;2163;Council Member Ward 7 Third Choice (Minneapolis);43000;9004;Janne Flisrand;;;N P;10;10;949;21.97;4320
+MN;;;2163;Council Member Ward 7 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;133;3.08;4320
+MN;;;2171;Council Member Ward 8 First Choice (Minneapolis);43000;9001;Andrea Jenkins;;;N P;8;8;5762;73.09;7883
+MN;;;2171;Council Member Ward 8 First Choice (Minneapolis);43000;9002;Terry White;;;N P;8;8;1007;12.77;7883
+MN;;;2171;Council Member Ward 8 First Choice (Minneapolis);43000;9003;David Holsinger;;;N P;8;8;387;4.91;7883
+MN;;;2171;Council Member Ward 8 First Choice (Minneapolis);43000;9004;April Kane;;;N P;8;8;710;9.01;7883
+MN;;;2171;Council Member Ward 8 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;8;8;17;0.22;7883
+MN;;;2172;Council Member Ward 8 Second Choice (Minneapolis);43000;9001;Andrea Jenkins;;;N P;8;8;1179;20.34;5796
+MN;;;2172;Council Member Ward 8 Second Choice (Minneapolis);43000;9002;Terry White;;;N P;8;8;1908;32.92;5796
+MN;;;2172;Council Member Ward 8 Second Choice (Minneapolis);43000;9003;David Holsinger;;;N P;8;8;260;4.49;5796
+MN;;;2172;Council Member Ward 8 Second Choice (Minneapolis);43000;9004;April Kane;;;N P;8;8;2395;41.32;5796
+MN;;;2172;Council Member Ward 8 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;8;8;54;0.93;5796
+MN;;;2173;Council Member Ward 8 Third Choice (Minneapolis);43000;9001;Andrea Jenkins;;;N P;8;8;321;8.81;3645
+MN;;;2173;Council Member Ward 8 Third Choice (Minneapolis);43000;9002;Terry White;;;N P;8;8;1448;39.73;3645
+MN;;;2173;Council Member Ward 8 Third Choice (Minneapolis);43000;9003;David Holsinger;;;N P;8;8;502;13.77;3645
+MN;;;2173;Council Member Ward 8 Third Choice (Minneapolis);43000;9004;April Kane;;;N P;8;8;1264;34.68;3645
+MN;;;2173;Council Member Ward 8 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;8;8;110;3.02;3645
+MN;;;2181;Council Member Ward 9 First Choice (Minneapolis);43000;9001;Alondra Cano;;;N P;9;9;2621;47.61;5505
+MN;;;2181;Council Member Ward 9 First Choice (Minneapolis);43000;9002;Ronald W. Peterson;;;N P;9;9;166;3.02;5505
+MN;;;2181;Council Member Ward 9 First Choice (Minneapolis);43000;9003;Mohamed Farah;;;N P;9;9;1075;19.53;5505
+MN;;;2181;Council Member Ward 9 First Choice (Minneapolis);43000;9004;Gary Schiff;;;N P;9;9;1622;29.46;5505
+MN;;;2181;Council Member Ward 9 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;21;0.38;5505
+MN;;;2182;Council Member Ward 9 Second Choice (Minneapolis);43000;9001;Alondra Cano;;;N P;9;9;947;22.64;4182
+MN;;;2182;Council Member Ward 9 Second Choice (Minneapolis);43000;9002;Ronald W. Peterson;;;N P;9;9;179;4.28;4182
+MN;;;2182;Council Member Ward 9 Second Choice (Minneapolis);43000;9003;Mohamed Farah;;;N P;9;9;1838;43.95;4182
+MN;;;2182;Council Member Ward 9 Second Choice (Minneapolis);43000;9004;Gary Schiff;;;N P;9;9;1167;27.91;4182
+MN;;;2182;Council Member Ward 9 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;51;1.22;4182
+MN;;;2183;Council Member Ward 9 Third Choice (Minneapolis);43000;9001;Alondra Cano;;;N P;9;9;566;18.90;2995
+MN;;;2183;Council Member Ward 9 Third Choice (Minneapolis);43000;9002;Ronald W. Peterson;;;N P;9;9;236;7.88;2995
+MN;;;2183;Council Member Ward 9 Third Choice (Minneapolis);43000;9003;Mohamed Farah;;;N P;9;9;1155;38.56;2995
+MN;;;2183;Council Member Ward 9 Third Choice (Minneapolis);43000;9004;Gary Schiff;;;N P;9;9;937;31.29;2995
+MN;;;2183;Council Member Ward 9 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;9;9;101;3.37;2995
+MN;;;2191;Council Member Ward 10 First Choice (Minneapolis);43000;9001;Bruce Lundeen;;;N P;12;12;416;5.48;7589
+MN;;;2191;Council Member Ward 10 First Choice (Minneapolis);43000;9002;Lisa Bender;;;N P;12;12;4883;64.34;7589
+MN;;;2191;Council Member Ward 10 First Choice (Minneapolis);43000;9003;David Schorn;;;N P;12;12;709;9.34;7589
+MN;;;2191;Council Member Ward 10 First Choice (Minneapolis);43000;9004;Saralyn Romanishan;;;N P;12;12;1561;20.57;7589
+MN;;;2191;Council Member Ward 10 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;12;12;20;0.26;7589
+MN;;;2192;Council Member Ward 10 Second Choice (Minneapolis);43000;9001;Bruce Lundeen;;;N P;12;12;217;4.10;5290
+MN;;;2192;Council Member Ward 10 Second Choice (Minneapolis);43000;9002;Lisa Bender;;;N P;12;12;978;18.49;5290
+MN;;;2192;Council Member Ward 10 Second Choice (Minneapolis);43000;9003;David Schorn;;;N P;12;12;1751;33.10;5290
+MN;;;2192;Council Member Ward 10 Second Choice (Minneapolis);43000;9004;Saralyn Romanishan;;;N P;12;12;2255;42.63;5290
+MN;;;2192;Council Member Ward 10 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;12;12;89;1.68;5290
+MN;;;2193;Council Member Ward 10 Third Choice (Minneapolis);43000;9001;Bruce Lundeen;;;N P;12;12;301;7.24;4159
+MN;;;2193;Council Member Ward 10 Third Choice (Minneapolis);43000;9002;Lisa Bender;;;N P;12;12;540;12.98;4159
+MN;;;2193;Council Member Ward 10 Third Choice (Minneapolis);43000;9003;David Schorn;;;N P;12;12;2098;50.44;4159
+MN;;;2193;Council Member Ward 10 Third Choice (Minneapolis);43000;9004;Saralyn Romanishan;;;N P;12;12;1089;26.18;4159
+MN;;;2193;Council Member Ward 10 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;12;12;131;3.15;4159
+MN;;;2201;Council Member Ward 11 First Choice (Minneapolis);43000;9001;John Quincy;;;N P;10;10;3198;34.92;9157
+MN;;;2201;Council Member Ward 11 First Choice (Minneapolis);43000;9002;Jeremy Schroeder;;;N P;10;10;3229;35.26;9157
+MN;;;2201;Council Member Ward 11 First Choice (Minneapolis);43000;9003;Erica Mauter;;;N P;10;10;2696;29.44;9157
+MN;;;2201;Council Member Ward 11 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;34;0.37;9157
+MN;;;2202;Council Member Ward 11 Second Choice (Minneapolis);43000;9001;John Quincy;;;N P;10;10;1962;27.40;7160
+MN;;;2202;Council Member Ward 11 Second Choice (Minneapolis);43000;9002;Jeremy Schroeder;;;N P;10;10;2724;38.04;7160
+MN;;;2202;Council Member Ward 11 Second Choice (Minneapolis);43000;9003;Erica Mauter;;;N P;10;10;2437;34.04;7160
+MN;;;2202;Council Member Ward 11 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;37;0.52;7160
+MN;;;2203;Council Member Ward 11 Third Choice (Minneapolis);43000;9001;John Quincy;;;N P;10;10;1918;38.74;4951
+MN;;;2203;Council Member Ward 11 Third Choice (Minneapolis);43000;9002;Jeremy Schroeder;;;N P;10;10;1312;26.50;4951
+MN;;;2203;Council Member Ward 11 Third Choice (Minneapolis);43000;9003;Erica Mauter;;;N P;10;10;1557;31.45;4951
+MN;;;2203;Council Member Ward 11 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;10;10;164;3.31;4951
+MN;;;2211;Council Member Ward 12 First Choice (Minneapolis);43000;9001;Andrew Johnson;;;N P;13;13;8874;87.15;10182
+MN;;;2211;Council Member Ward 12 First Choice (Minneapolis);43000;9002;Harrison Bullard;;;N P;13;13;316;3.10;10182
+MN;;;2211;Council Member Ward 12 First Choice (Minneapolis);43000;9003;Will Jaeger;;;N P;13;13;957;9.40;10182
+MN;;;2211;Council Member Ward 12 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;13;13;35;0.34;10182
+MN;;;2212;Council Member Ward 12 Second Choice (Minneapolis);43000;9001;Andrew Johnson;;;N P;13;13;657;15.71;4182
+MN;;;2212;Council Member Ward 12 Second Choice (Minneapolis);43000;9002;Harrison Bullard;;;N P;13;13;1675;40.05;4182
+MN;;;2212;Council Member Ward 12 Second Choice (Minneapolis);43000;9003;Will Jaeger;;;N P;13;13;1744;41.70;4182
+MN;;;2212;Council Member Ward 12 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;13;13;106;2.53;4182
+MN;;;2213;Council Member Ward 12 Third Choice (Minneapolis);43000;9001;Andrew Johnson;;;N P;13;13;489;15.85;3086
+MN;;;2213;Council Member Ward 12 Third Choice (Minneapolis);43000;9002;Harrison Bullard;;;N P;13;13;1323;42.87;3086
+MN;;;2213;Council Member Ward 12 Third Choice (Minneapolis);43000;9003;Will Jaeger;;;N P;13;13;1133;36.71;3086
+MN;;;2213;Council Member Ward 12 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;13;13;141;4.57;3086
+MN;;;2221;Council Member Ward 13 First Choice (Minneapolis);43000;9001;Linea Palmisano;;;N P;13;13;9404;83.19;11304
+MN;;;2221;Council Member Ward 13 First Choice (Minneapolis);43000;9002;Bob Reuer;;;N P;13;13;1832;16.21;11304
+MN;;;2221;Council Member Ward 13 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;13;13;68;0.60;11304
+MN;;;2222;Council Member Ward 13 Second Choice (Minneapolis);43000;9001;Linea Palmisano;;;N P;13;13;896;26.35;3400
+MN;;;2222;Council Member Ward 13 Second Choice (Minneapolis);43000;9002;Bob Reuer;;;N P;13;13;2254;66.29;3400
+MN;;;2222;Council Member Ward 13 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;13;13;250;7.35;3400
+MN;;;2223;Council Member Ward 13 Third Choice (Minneapolis);43000;9001;Linea Palmisano;;;N P;13;13;338;38.76;872
+MN;;;2223;Council Member Ward 13 Third Choice (Minneapolis);43000;9002;Bob Reuer;;;N P;13;13;184;21.10;872
+MN;;;2223;Council Member Ward 13 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;13;13;350;40.14;872
+MN;;;2401;Board of Estimate and Taxation First Choice (Minneapolis);43000;9001;David B. Wheeler;;;NP;134;134;19252;27.67;69566
+MN;;;2401;Board of Estimate and Taxation First Choice (Minneapolis);43000;9002;Carol Becker;;;NP;134;134;48099;69.14;69566
+MN;;;2401;Board of Estimate and Taxation First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;2215;3.18;69566
+MN;;;2402;Board of Estimate and Taxation Second Choice (Minneapolis);43000;9001;David B. Wheeler;;;NP;134;134;31847;69.40;45888
+MN;;;2402;Board of Estimate and Taxation Second Choice (Minneapolis);43000;9002;Carol Becker;;;NP;134;134;12729;27.74;45888
+MN;;;2402;Board of Estimate and Taxation Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;1312;2.86;45888
+MN;;;2403;Board of Estimate and Taxation Third Choice (Minneapolis);43000;9001;David B. Wheeler;;;NP;134;134;1340;21.32;6286
+MN;;;2403;Board of Estimate and Taxation Third Choice (Minneapolis);43000;9002;Carol Becker;;;NP;134;134;2016;32.07;6286
+MN;;;2403;Board of Estimate and Taxation Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;2930;46.61;6286
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9001;Bob Sullentrop;;;NP;134;134;1651;1.96;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9002;Jonathan Honerbrink;;;NP;134;134;2603;3.09;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9003;Russ Henry;;;NP;134;134;9044;10.74;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9004;Mike Derus;;;NP;134;134;10657;12.66;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9005;Latrisha Vetaw;;;NP;134;134;18506;21.98;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9006;Meg Forney;;;NP;134;134;18975;22.54;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9007;Charlie Casserly;;;NP;134;134;3746;4.45;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9008;Londel French;;;NP;134;134;12387;14.71;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9009;Devin Hogan;;;NP;134;134;6225;7.39;84186
+MN;;;2501;Park and Recreation Commissioner at Large First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;392;0.47;84186
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9001;Bob Sullentrop;;;NP;134;134;1784;2.68;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9002;Jonathan Honerbrink;;;NP;134;134;2249;3.37;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9003;Russ Henry;;;NP;134;134;7730;11.60;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9004;Mike Derus;;;NP;134;134;8256;12.39;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9005;Latrisha Vetaw;;;NP;134;134;13071;19.61;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9006;Meg Forney;;;NP;134;134;12655;18.99;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9007;Charlie Casserly;;;NP;134;134;2695;4.04;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9008;Londel French;;;NP;134;134;10217;15.33;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9009;Devin Hogan;;;NP;134;134;7665;11.50;66641
+MN;;;2502;Park and Recreation Commissioner at Large Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;319;0.48;66641
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9001;Bob Sullentrop;;;NP;134;134;1811;3.28;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9002;Jonathan Honerbrink;;;NP;134;134;2551;4.62;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9003;Russ Henry;;;NP;134;134;7654;13.86;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9004;Mike Derus;;;NP;134;134;6382;11.56;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9005;Latrisha Vetaw;;;NP;134;134;7884;14.28;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9006;Meg Forney;;;NP;134;134;8120;14.71;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9007;Charlie Casserly;;;NP;134;134;3045;5.51;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9008;Londel French;;;NP;134;134;8743;15.83;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9009;Devin Hogan;;;NP;134;134;8506;15.40;55218
+MN;;;2503;Park and Recreation Commissioner at Large Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;134;134;522;0.95;55218
+MN;;;2511;Park and Recreation Commissioner District 1 First Choice (Minneapolis);43000;9001;Chris Meyer;;;NP;22;22;6354;44.47;14288
+MN;;;2511;Park and Recreation Commissioner District 1 First Choice (Minneapolis);43000;9002;Mohamed Issa Barre;;;NP;22;22;2786;19.50;14288
+MN;;;2511;Park and Recreation Commissioner District 1 First Choice (Minneapolis);43000;9003;Billy Menz;;;NP;22;22;5066;35.46;14288
+MN;;;2511;Park and Recreation Commissioner District 1 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;22;22;82;0.57;14288
+MN;;;2512;Park and Recreation Commissioner District 1 Second Choice (Minneapolis);43000;9001;Chris Meyer;;;NP;22;22;3054;33.33;9164
+MN;;;2512;Park and Recreation Commissioner District 1 Second Choice (Minneapolis);43000;9002;Mohamed Issa Barre;;;NP;22;22;2282;24.90;9164
+MN;;;2512;Park and Recreation Commissioner District 1 Second Choice (Minneapolis);43000;9003;Billy Menz;;;NP;22;22;3742;40.83;9164
+MN;;;2512;Park and Recreation Commissioner District 1 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;22;22;86;0.94;9164
+MN;;;2513;Park and Recreation Commissioner District 1 Third Choice (Minneapolis);43000;9001;Chris Meyer;;;NP;22;22;1427;22.30;6400
+MN;;;2513;Park and Recreation Commissioner District 1 Third Choice (Minneapolis);43000;9002;Mohamed Issa Barre;;;NP;22;22;3024;47.25;6400
+MN;;;2513;Park and Recreation Commissioner District 1 Third Choice (Minneapolis);43000;9003;Billy Menz;;;NP;22;22;1768;27.63;6400
+MN;;;2513;Park and Recreation Commissioner District 1 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;22;22;181;2.83;6400
+MN;;;2521;Park and Recreation Commissioner District 2 First Choice (Minneapolis);43000;9001;Mike Talley Tate;;;NP;19;19;3761;42.25;8901
+MN;;;2521;Park and Recreation Commissioner District 2 First Choice (Minneapolis);43000;9002;Kale Severson;;;NP;19;19;5073;56.99;8901
+MN;;;2521;Park and Recreation Commissioner District 2 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;19;19;67;0.75;8901
+MN;;;2522;Park and Recreation Commissioner District 2 Second Choice (Minneapolis);43000;9001;Mike Talley Tate;;;NP;19;19;2844;56.04;5075
+MN;;;2522;Park and Recreation Commissioner District 2 Second Choice (Minneapolis);43000;9002;Kale Severson;;;NP;19;19;2092;41.22;5075
+MN;;;2522;Park and Recreation Commissioner District 2 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;19;19;139;2.74;5075
+MN;;;2523;Park and Recreation Commissioner District 2 Third Choice (Minneapolis);43000;9001;Mike Talley Tate;;;NP;19;19;400;33.00;1212
+MN;;;2523;Park and Recreation Commissioner District 2 Third Choice (Minneapolis);43000;9002;Kale Severson;;;NP;19;19;405;33.42;1212
+MN;;;2523;Park and Recreation Commissioner District 2 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;19;19;407;33.58;1212
+MN;;;2531;Park and Recreation Commissioner District 3 First Choice (Minneapolis);43000;9001;AK Hassan;;;NP;22;22;7057;48.55;14536
+MN;;;2531;Park and Recreation Commissioner District 3 First Choice (Minneapolis);43000;9002;Abdi Gurhan Mohamed;;;NP;22;22;5363;36.89;14536
+MN;;;2531;Park and Recreation Commissioner District 3 First Choice (Minneapolis);43000;9003;Charles Exner;;;NP;22;22;2064;14.20;14536
+MN;;;2531;Park and Recreation Commissioner District 3 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;22;22;52;0.36;14536
+MN;;;2532;Park and Recreation Commissioner District 3 Second Choice (Minneapolis);43000;9001;AK Hassan;;;NP;22;22;2988;36.47;8192
+MN;;;2532;Park and Recreation Commissioner District 3 Second Choice (Minneapolis);43000;9002;Abdi Gurhan Mohamed;;;NP;22;22;3511;42.86;8192
+MN;;;2532;Park and Recreation Commissioner District 3 Second Choice (Minneapolis);43000;9003;Charles Exner;;;NP;22;22;1584;19.34;8192
+MN;;;2532;Park and Recreation Commissioner District 3 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;22;22;109;1.33;8192
+MN;;;2533;Park and Recreation Commissioner District 3 Third Choice (Minneapolis);43000;9001;AK Hassan;;;NP;22;22;1220;22.26;5480
+MN;;;2533;Park and Recreation Commissioner District 3 Third Choice (Minneapolis);43000;9002;Abdi Gurhan Mohamed;;;NP;22;22;1496;27.30;5480
+MN;;;2533;Park and Recreation Commissioner District 3 Third Choice (Minneapolis);43000;9003;Charles Exner;;;NP;22;22;2581;47.10;5480
+MN;;;2533;Park and Recreation Commissioner District 3 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;22;22;183;3.34;5480
+MN;;;2541;Park and Recreation Commissioner District 4 First Choice (Minneapolis);43000;9001;Jono Cowgill;;;NP;23;23;6787;50.31;13490
+MN;;;2541;Park and Recreation Commissioner District 4 First Choice (Minneapolis);43000;9002;Tom Nordyke;;;NP;23;23;6602;48.94;13490
+MN;;;2541;Park and Recreation Commissioner District 4 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;23;23;101;0.75;13490
+MN;;;2542;Park and Recreation Commissioner District 4 Second Choice (Minneapolis);43000;9001;Jono Cowgill;;;NP;23;23;2870;44.83;6402
+MN;;;2542;Park and Recreation Commissioner District 4 Second Choice (Minneapolis);43000;9002;Tom Nordyke;;;NP;23;23;3350;52.33;6402
+MN;;;2542;Park and Recreation Commissioner District 4 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;23;23;182;2.84;6402
+MN;;;2543;Park and Recreation Commissioner District 4 Third Choice (Minneapolis);43000;9001;Jono Cowgill;;;NP;23;23;219;23.99;913
+MN;;;2543;Park and Recreation Commissioner District 4 Third Choice (Minneapolis);43000;9002;Tom Nordyke;;;NP;23;23;207;22.67;913
+MN;;;2543;Park and Recreation Commissioner District 4 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;23;23;487;53.34;913
+MN;;;2551;Park and Recreation Commissioner District 5 First Choice (Minneapolis);43000;9001;Bill Shroyer;;;NP;24;24;3985;24.56;16227
+MN;;;2551;Park and Recreation Commissioner District 5 First Choice (Minneapolis);43000;9002;Steffanie Musich;;;NP;24;24;9464;58.32;16227
+MN;;;2551;Park and Recreation Commissioner District 5 First Choice (Minneapolis);43000;9003;Andrea Fahrenkrug;;;NP;24;24;2688;16.56;16227
+MN;;;2551;Park and Recreation Commissioner District 5 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;24;24;90;0.55;16227
+MN;;;2552;Park and Recreation Commissioner District 5 Second Choice (Minneapolis);43000;9001;Bill Shroyer;;;NP;24;24;2982;30.09;9909
+MN;;;2552;Park and Recreation Commissioner District 5 Second Choice (Minneapolis);43000;9002;Steffanie Musich;;;NP;24;24;2791;28.17;9909
+MN;;;2552;Park and Recreation Commissioner District 5 Second Choice (Minneapolis);43000;9003;Andrea Fahrenkrug;;;NP;24;24;4017;40.54;9909
+MN;;;2552;Park and Recreation Commissioner District 5 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;24;24;119;1.20;9909
+MN;;;2553;Park and Recreation Commissioner District 5 Third Choice (Minneapolis);43000;9001;Bill Shroyer;;;NP;24;24;3189;48.30;6602
+MN;;;2553;Park and Recreation Commissioner District 5 Third Choice (Minneapolis);43000;9002;Steffanie Musich;;;NP;24;24;1087;16.46;6602
+MN;;;2553;Park and Recreation Commissioner District 5 Third Choice (Minneapolis);43000;9003;Andrea Fahrenkrug;;;NP;24;24;2129;32.25;6602
+MN;;;2553;Park and Recreation Commissioner District 5 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;24;24;197;2.98;6602
+MN;;;2561;Park and Recreation Commissioner District 6 First Choice (Minneapolis);43000;9001;Robert M Schlosser "Bob";;;NP;24;24;579;3.13;18469
+MN;;;2561;Park and Recreation Commissioner District 6 First Choice (Minneapolis);43000;9002;Brad Bourn;;;NP;24;24;8080;43.75;18469
+MN;;;2561;Park and Recreation Commissioner District 6 First Choice (Minneapolis);43000;9003;Bob Fine;;;NP;24;24;7486;40.53;18469
+MN;;;2561;Park and Recreation Commissioner District 6 First Choice (Minneapolis);43000;9004;Jennifer Zielinski;;;NP;24;24;2269;12.29;18469
+MN;;;2561;Park and Recreation Commissioner District 6 First Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;24;24;55;0.30;18469
+MN;;;2562;Park and Recreation Commissioner District 6 Second Choice (Minneapolis);43000;9001;Robert M Schlosser "Bob";;;NP;24;24;1217;11.83;10286
+MN;;;2562;Park and Recreation Commissioner District 6 Second Choice (Minneapolis);43000;9002;Brad Bourn;;;NP;24;24;2504;24.34;10286
+MN;;;2562;Park and Recreation Commissioner District 6 Second Choice (Minneapolis);43000;9003;Bob Fine;;;NP;24;24;3837;37.30;10286
+MN;;;2562;Park and Recreation Commissioner District 6 Second Choice (Minneapolis);43000;9004;Jennifer Zielinski;;;NP;24;24;2587;25.15;10286
+MN;;;2562;Park and Recreation Commissioner District 6 Second Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;24;24;141;1.37;10286
+MN;;;2563;Park and Recreation Commissioner District 6 Third Choice (Minneapolis);43000;9001;Robert M Schlosser "Bob";;;NP;24;24;1742;29.05;5997
+MN;;;2563;Park and Recreation Commissioner District 6 Third Choice (Minneapolis);43000;9002;Brad Bourn;;;NP;24;24;1152;19.21;5997
+MN;;;2563;Park and Recreation Commissioner District 6 Third Choice (Minneapolis);43000;9003;Bob Fine;;;NP;24;24;1048;17.48;5997
+MN;;;2563;Park and Recreation Commissioner District 6 Third Choice (Minneapolis);43000;9004;Jennifer Zielinski;;;NP;24;24;1842;30.72;5997
+MN;;;2563;Park and Recreation Commissioner District 6 Third Choice (Minneapolis);43000;9901;WRITE-IN**;;;WI;24;24;213;3.55;5997
+MN;;;1001;Mayor (Minnetonka);43252;9001;Brad Wiersum;;;NP;23;23;4719;69.18;6821
+MN;;;1001;Mayor (Minnetonka);43252;9002;Ashwin Patel;;;NP;23;23;2079;30.48;6821
+MN;;;1001;Mayor (Minnetonka);43252;9901;WRITE-IN**;;;WI;23;23;23;0.34;6821
+MN;;;1014;Council Member at Large A (Minnetonka);43252;9001;Brian J Kirk;;;NP;23;23;1983;28.54;6947
+MN;;;1014;Council Member at Large A (Minnetonka);43252;9002;Deb Calvert;;;NP;23;23;4954;71.31;6947
+MN;;;1014;Council Member at Large A (Minnetonka);43252;9901;WRITE-IN**;;;WI;23;23;10;0.14;6947
+MN;;;1015;Council Member at Large B (Minnetonka);43252;9001;Patty Acomb;;;NP;23;23;5237;78.95;6633
+MN;;;1015;Council Member at Large B (Minnetonka);43252;9002;Derrick Banks;;;NP;23;23;1376;20.74;6633
+MN;;;1015;Council Member at Large B (Minnetonka);43252;9901;WRITE-IN**;;;WI;23;23;20;0.30;6633
+MN;;;1131;CITY QUESTION 1 (Mounds View);44530;9001;YES;;;NP;4;4;1079;67.35;1602
+MN;;;1131;CITY QUESTION 1 (Mounds View);44530;9002;NO;;;NP;4;4;523;32.65;1602
+MN;;;1001;Mayor (New Brighton);45430;9001;Sharon Doffing;;;NP;8;8;2190;45.67;4795
+MN;;;1001;Mayor (New Brighton);45430;9002;Valerie Johnson;;;NP;8;8;2579;53.79;4795
+MN;;;1001;Mayor (New Brighton);45430;9901;WRITE-IN**;;;WI;8;8;26;0.54;4795
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9001;Susan Erickson;;;NP;8;8;1334;15.01;8889
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9002;Graeme Allen;;;NP;8;8;2208;24.84;8889
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9003;Emily Dunsworth;;;NP;8;8;2269;25.53;8889
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9004;David A. Jacobsen;;;NP;8;8;1023;11.51;8889
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9005;Peter R Berthelsen;;;NP;8;8;325;3.66;8889
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9006;Gina Bauman;;;NP;8;8;1708;19.21;8889
+MN;;;1010;Council Member at Large (New Brighton) (Elect 2);45430;9901;WRITE-IN**;;;WI;8;8;22;0.25;8889
+MN;;;1012;Special Election for Council Member at Large (Northfield);46924;9001;Greg Colby;;;NP;8;8;2806;61.87;4535
+MN;;;1012;Special Election for Council Member at Large (Northfield);46924;9002;Jon Denison;;;NP;8;8;674;14.86;4535
+MN;;;1012;Special Election for Council Member at Large (Northfield);46924;9003;Don McGee;;;NP;8;8;953;21.01;4535
+MN;;;1012;Special Election for Council Member at Large (Northfield);46924;9901;WRITE-IN**;;;WI;8;8;102;2.25;4535
+MN;;;1001;Mayor (Rushford);56284;9001;Chris Hallum;;;NP;1;1;126;86.30;146
+MN;;;1001;Mayor (Rushford);56284;9901;WRITE-IN**;;;WI;1;1;20;13.70;146
+MN;;;1010;Council Member (Rushford) (Elect 2);56284;9901;WRITE-IN**;;;WI;1;1;250;100.00;250
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9001;Thomas Randle;;;NP;3;3;176;4.09;4307
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9002;Nancy Robinett;;;NP;3;3;989;22.96;4307
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9003;Randy Stille;;;NP;3;3;1211;28.12;4307
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9004;Dave Colling;;;NP;3;3;824;19.13;4307
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9005;Christopher Clark;;;NP;3;3;86;2.00;4307
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9006;Jan Jenson;;;NP;3;3;1007;23.38;4307
+MN;;;1010;Council Member (St. Anthony) (Elect 2);56680;9901;WRITE-IN**;;;WI;3;3;14;0.33;4307
+MN;;;1020;Council Member Ward 1 (St Louis Park);57220;9001;Brian Shekleton;;;NP;4;4;924;42.11;2194
+MN;;;1020;Council Member Ward 1 (St Louis Park);57220;9003;Margaret Rog;;;NP;4;4;1258;57.34;2194
+MN;;;1020;Council Member Ward 1 (St Louis Park);57220;9901;WRITE-IN**;;;WI;4;4;12;0.55;2194
+MN;;;1021;Council Member Ward 2 (St Louis Park);57220;9001;Noelle Racette;;;NP;4;4;594;29.97;1982
+MN;;;1021;Council Member Ward 2 (St Louis Park);57220;9002;Anne Mavity;;;NP;4;4;1381;69.68;1982
+MN;;;1021;Council Member Ward 2 (St Louis Park);57220;9901;WRITE-IN**;;;WI;4;4;7;0.35;1982
+MN;;;1022;Council Member Ward 3 (St Louis Park);57220;9001;Rachel Harris;;;NP;4;4;1109;62.34;1779
+MN;;;1022;Council Member Ward 3 (St Louis Park);57220;9002;Jim Leuthner;;;NP;4;4;664;37.32;1779
+MN;;;1022;Council Member Ward 3 (St Louis Park);57220;9901;WRITE-IN**;;;WI;4;4;6;0.34;1779
+MN;;;1023;Council Member Ward 4 (St Louis Park);57220;9001;Tim Brausen;;;NP;4;4;1208;96.25;1255
+MN;;;1023;Council Member Ward 4 (St Louis Park);57220;9901;WRITE-IN**;;;WI;4;4;47;3.75;1255
+MN;;;2001;Mayor First Choice (St. Paul);58000;9001;Elizabeth A. Dickinson;;;NP;96;96;2927;4.75;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9002;Trahern Crews;;;NP;96;96;162;0.26;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9003;Melvin Carter;;;NP;96;96;31353;50.86;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9004;Dai Thao;;;NP;96;96;7590;12.31;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9005;Tom Goldstein;;;NP;96;96;2360;3.83;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9006;Barnabas Joshua Yshua;;;NP;96;96;94;0.15;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9007;Chris Holbrook;;;NP;96;96;854;1.39;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9008;Sharon Anderson;;;NP;96;96;487;0.79;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9009;Pat Harris;;;NP;96;96;15281;24.79;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9010;Holden Holden;;;NP;96;96;446;0.72;61646
+MN;;;2001;Mayor First Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;96;96;92;0.15;61646
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9001;Elizabeth A. Dickinson;;;NP;96;96;7633;16.25;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9002;Trahern Crews;;;NP;96;96;565;1.20;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9003;Melvin Carter;;;NP;96;96;9609;20.46;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9004;Dai Thao;;;NP;96;96;11642;24.79;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9005;Tom Goldstein;;;NP;96;96;4488;9.56;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9006;Barnabas Joshua Yshua;;;NP;96;96;252;0.54;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9007;Chris Holbrook;;;NP;96;96;993;2.11;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9008;Sharon Anderson;;;NP;96;96;928;1.98;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9009;Pat Harris;;;NP;96;96;10040;21.38;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9010;Holden Holden;;;NP;96;96;564;1.20;46962
+MN;;;2002;Mayor Second Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;96;96;248;0.53;46962
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9001;Elizabeth A. Dickinson;;;NP;96;96;7081;20.61;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9002;Trahern Crews;;;NP;96;96;675;1.96;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9003;Melvin Carter;;;NP;96;96;3773;10.98;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9004;Dai Thao;;;NP;96;96;8951;26.05;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9005;Tom Goldstein;;;NP;96;96;4431;12.89;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9006;Barnabas Joshua Yshua;;;NP;96;96;413;1.20;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9007;Chris Holbrook;;;NP;96;96;1036;3.01;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9008;Sharon Anderson;;;NP;96;96;1108;3.22;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9009;Pat Harris;;;NP;96;96;5987;17.42;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9010;Holden Holden;;;NP;96;96;547;1.59;34364
+MN;;;2003;Mayor Third Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;96;96;362;1.05;34364
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9001;Elizabeth A. Dickinson;;;NP;96;96;2943;17.33;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9002;Trahern Crews;;;NP;96;96;624;3.67;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9003;Melvin Carter;;;NP;96;96;1609;9.48;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9004;Dai Thao;;;NP;96;96;3788;22.31;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9005;Tom Goldstein;;;NP;96;96;2773;16.33;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9006;Barnabas Joshua Yshua;;;NP;96;96;383;2.26;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9007;Chris Holbrook;;;NP;96;96;675;3.98;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9008;Sharon Anderson;;;NP;96;96;848;4.99;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9009;Pat Harris;;;NP;96;96;2654;15.63;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9010;Holden Holden;;;NP;96;96;395;2.33;16981
+MN;;;2004;Mayor Fourth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;96;96;289;1.70;16981
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9001;Elizabeth A. Dickinson;;;NP;96;96;1272;12.75;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9002;Trahern Crews;;;NP;96;96;563;5.64;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9003;Melvin Carter;;;NP;96;96;1082;10.84;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9004;Dai Thao;;;NP;96;96;1642;16.46;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9005;Tom Goldstein;;;NP;96;96;1449;14.52;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9006;Barnabas Joshua Yshua;;;NP;96;96;422;4.23;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9007;Chris Holbrook;;;NP;96;96;702;7.04;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9008;Sharon Anderson;;;NP;96;96;681;6.83;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9009;Pat Harris;;;NP;96;96;1527;15.30;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9010;Holden Holden;;;NP;96;96;359;3.60;9978
+MN;;;2005;Mayor Fifth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;96;96;279;2.80;9978
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9001;Elizabeth A. Dickinson;;;NP;96;96;522;7.47;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9002;Trahern Crews;;;NP;96;96;568;8.13;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9003;Melvin Carter;;;NP;96;96;956;13.69;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9004;Dai Thao;;;NP;96;96;1032;14.78;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9005;Tom Goldstein;;;NP;96;96;578;8.28;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9006;Barnabas Joshua Yshua;;;NP;96;96;437;6.26;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9007;Chris Holbrook;;;NP;96;96;602;8.62;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9008;Sharon Anderson;;;NP;96;96;621;8.89;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9009;Pat Harris;;;NP;96;96;916;13.12;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9010;Holden Holden;;;NP;96;96;420;6.01;6984
+MN;;;2006;Mayor Sixth Choice (St. Paul);58000;9901;WRITE-IN**;;;WI;96;96;332;4.75;6984
+MN;;;1001;Special Election for Mayor (St. Paul Park);58018;9001;Sandra Dingle;;;NP;4;4;453;60.24;752
+MN;;;1001;Special Election for Mayor (St. Paul Park);58018;9002;Patrick Downs;;;NP;4;4;126;16.76;752
+MN;;;1001;Special Election for Mayor (St. Paul Park);58018;9003;Andrew Cison;;;NP;4;4;168;22.34;752
+MN;;;1001;Special Election for Mayor (St. Paul Park);58018;9901;WRITE-IN**;;;WI;4;4;5;0.66;752
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9001;Bruce Zenner;;;NP;4;4;371;30.92;1200
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9002;Jeff Haggerty;;;NP;4;4;234;19.50;1200
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9003;Dale Roth;;;NP;4;4;174;14.50;1200
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9004;Jeff Swenson;;;NP;4;4;413;34.42;1200
+MN;;;1010;Council Member at Large (St. Paul Park) (Elect 2);58018;9901;WRITE-IN**;;;WI;4;4;8;0.67;1200
+MN;;;1001;Mayor (St. Peter);58036;9001;Chuck Zieman;;;NP;4;4;956;96.86;987
+MN;;;1001;Mayor (St. Peter);58036;9901;WRITE-IN**;;;WI;4;4;31;3.14;987
+MN;;;1020;Council Member Ward 1 (St. Peter) (Elect 2);58036;9001;Susan Carlin;;;NP;2;2;368;29.44;1250
+MN;;;1020;Council Member Ward 1 (St. Peter) (Elect 2);58036;9002;Peter Kuhlman;;;NP;2;2;245;19.60;1250
+MN;;;1020;Council Member Ward 1 (St. Peter) (Elect 2);58036;9003;Edward Johnson;;;NP;2;2;387;30.96;1250
+MN;;;1020;Council Member Ward 1 (St. Peter) (Elect 2);58036;9004;Roger Parras;;;NP;2;2;243;19.44;1250
+MN;;;1020;Council Member Ward 1 (St. Peter) (Elect 2);58036;9901;WRITE-IN**;;;WI;2;2;7;0.56;1250
+MN;;;1021;Council Member Ward 2 (St. Peter);58036;9001;David B. McGuire;;;NP;2;2;32;9.22;347
+MN;;;1021;Council Member Ward 2 (St. Peter);58036;9002;Stephen C. Grams;;;NP;2;2;155;44.67;347
+MN;;;1021;Council Member Ward 2 (St. Peter);58036;9003;Bradley Devos;;;NP;2;2;120;34.58;347
+MN;;;1021;Council Member Ward 2 (St. Peter);58036;9004;Terry L. Bergeman;;;NP;2;2;35;10.09;347
+MN;;;1021;Council Member Ward 2 (St. Peter);58036;9901;WRITE-IN**;;;WI;2;2;5;1.44;347
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9001;Gene Abbott;;;NP;9;9;2937;42.92;6843
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9002;Carl J. Boudreau;;;NP;9;9;1571;22.96;6843
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9003;Bob Coughlen;;;NP;9;9;2219;32.43;6843
+MN;;;1010;Council Member (Savage) (Elect 2);58738;9901;WRITE-IN**;;;WI;9;9;116;1.70;6843
+MN;;;4012;Town Supervisor Seat B (White Township);69898;9001;Jon D. Skelton;;;NP;3;3;919;96.84;949
+MN;;;4012;Town Supervisor Seat B (White Township);69898;9901;WRITE-IN**;;;WI;3;3;30;3.16;949
+MN;;;1001;Mayor (White Bear Lake);69970;9001;Jo Emerson;;;NP;7;7;2222;79.33;2801
+MN;;;1001;Mayor (White Bear Lake);69970;9002;Jeff Brown;;;NP;7;7;483;17.24;2801
+MN;;;1001;Mayor (White Bear Lake);69970;9901;WRITE-IN**;;;WI;7;7;96;3.43;2801
+MN;;;1021;Council Member Ward 2 (White Bear Lake);69970;9001;Douglas Biehn;;;NP;1;1;554;97.19;570
+MN;;;1021;Council Member Ward 2 (White Bear Lake);69970;9901;WRITE-IN**;;;WI;1;1;16;2.81;570
+MN;;;1023;Council Member Ward 4 (White Bear Lake);69970;9001;Kevin L. Edberg;;;NP;2;2;470;97.51;482
+MN;;;1023;Council Member Ward 4 (White Bear Lake);69970;9901;WRITE-IN**;;;WI;2;2;12;2.49;482
